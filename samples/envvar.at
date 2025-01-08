@@ -1,0 +1,7 @@
+@NAME = getEnv(@USERNAME)
+@GREETING = "Hello, "
+@if(@NAME == "Alice") {
+    @print("Welcome back, Alice!")
+} @else {
+    @print(@GREETING + @NAME)
+}

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "atlang": {
+      "commandName": "Project",
+      "commandLineArgs": "../../../../samples/server.at"
+    }
+  }
+}

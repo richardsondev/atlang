@@ -1,0 +1,8 @@
+@IPURL = "https://ip.billywr.com/ip.txt"
+@IP = getWeb(@IPURL)
+@IPTEXT = "Your IP is "
+@print(@IPTEXT + @IP)
+@POSTDATA = "[]"
+@IP = postWeb(@IPURL, @POSTDATA)
+@IPTEXT = "POST response: "
+@print(@IPTEXT + @IP)

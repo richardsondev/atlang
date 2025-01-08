@@ -1,0 +1,27 @@
+{
+  "name": "atlang",
+  "displayName": "AtLang",
+  "description": "AtLang (@) Language Support",
+  "publisher": "richardsondev",
+  "version": "0.0.1",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "atlang",
+      "aliases": ["atlang (@)", "atlang"],
+      "extensions": [".at"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "atlang",
+      "scopeName": "source.atlang",
+      "path": "./syntaxes/syntax.json"
+    }]
+  }
+}

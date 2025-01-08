@@ -1,0 +1,134 @@
+# .NET C# Gitignore
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Mono Auto Generated Files
+data.db
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Logs
+*.log
+
+# Application Insights
+*.ai.config
+
+# Resharper
+*.DotSettings.user
+
+# DotNet specific
+global.json
+*.dll
+*.pdb
+*.exe
+*.app
+*.cache
+*.so
+*.dylib
+*.lib
+*.mdb
+*.csproj.user
+
+# Web.config and packages
+web.config.transform
+packages/
+
+# Other system files
+.DS_Store
+*.swp
+*~
+.project
+.idea/
+
+# Rider
+.idea/
+*.iml
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Publish results
+publish/
+out/
+
+# Azure Function Apps
+local.settings.json
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopCache.xml
+
+# Visual Studio profiler
+*.vsp
+*.vspx
+*.sap
+*.e2e
+*.log
+.perf*
+*.testlog
+
+# TFS-specific files
+*.tfstate
+*.tfstate.backup
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Windows Explorer thumbnail cache files
+Thumbs.db
+
+# JetBrains Rider
+.idea/
+*.iml
+
+# Workspaces
+*.code-workspace
+
+# VS Code directories
+.vscode/
+
+# MacOS files
+.DS_Store
+
+# Temporary Files
+*.tmp
+
+# VS
+.vs/
+

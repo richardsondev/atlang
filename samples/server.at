@@ -1,0 +1,3 @@
+@SERVER_ROOT_PATH = "./samples/server_files"
+@SERVER_PORT = "8081"
+@startServer(@SERVER_ROOT_PATH, @SERVER_PORT)
