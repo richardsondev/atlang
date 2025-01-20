@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
         <EnableMicrosoftTestingExtensionsCrashDump>true</EnableMicrosoftTestingExtensionsCrashDump>
+        <AssemblyName>AtLangCompiler.Tests</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

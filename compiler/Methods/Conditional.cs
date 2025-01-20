@@ -3,6 +3,15 @@ using System.Reflection.Emit;
 
 namespace AtLangCompiler.Methods;
 
+internal class IfToken : ILexerTokenConfig
+{
+    public IReadOnlyDictionary<string, TokenType> TokenStrings => new Dictionary<string, TokenType>
+    {
+        { "@if", TokenType.IF },
+        { "@else", TokenType.ELSE }
+    };
+}
+
 internal class IfStatement : ASTNode
 {
     public ASTNode LeftExpr { get; }
@@ -17,7 +26,8 @@ internal class IfStatement : ASTNode
     }
 }
 
-[ParserFor(TokenType.IF)]
+[ParserFor(TokenType.IF, inputTokens: 2, inputSeparator: "==", hasBody: true)]
+[ParserFor(TokenType.ELSE, hasBody: true, prerequisiteToken: TokenType.IF)]
 internal class ConditionalStatementParser : IStatementParser
 {
     public ASTNode ParseStatement(Parser parser)

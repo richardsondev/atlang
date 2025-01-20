@@ -9,7 +9,7 @@ internal class StartServerToken : ILexerTokenConfig
 {
     public IReadOnlyDictionary<string, TokenType> TokenStrings => new Dictionary<string, TokenType>
     {
-        { "startServer", TokenType.STARTSERVER }
+        { "@startServer", TokenType.STARTSERVER }
     };
 }
 
@@ -25,7 +25,7 @@ internal class StartServerAssign : ASTNode
     }
 }
 
-[ParserFor(TokenType.STARTSERVER)]
+[ParserFor(TokenType.STARTSERVER, inputTokens: 2)]
 internal class ServerStatementParser : IStatementParser
 {
     public ASTNode ParseStatement(Parser parser)
