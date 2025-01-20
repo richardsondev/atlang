@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace AtLangCompiler.Tests
 {
@@ -138,12 +139,18 @@ namespace AtLangCompiler.Tests
             [
                 "// Time-date stamp:",
                 "// MVID:",
-                "// Image base:"
+                "// Image base:",
+                "//      0x(.*?) Sorted",
+                "//      0x(.*?) MaskValid",
+                "// Metadata header: 2.0, heaps:"
             ];
+
+            IReadOnlyCollection<Regex> ignoredLinePatterns =
+                ignoredLinePrefixes.Select(q => new Regex(q, RegexOptions.Compiled)).ToList();
 
             string[] lines = input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
             IEnumerable<string> filteredLines = lines.Where(line =>
-                !ignoredLinePrefixes.Any(prefix => line.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+                !ignoredLinePatterns.Any(pattern => pattern.IsMatch(line))
             );
 
             return string.Join(Environment.NewLine, filteredLines);
