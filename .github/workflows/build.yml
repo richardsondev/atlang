@@ -51,4 +51,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: compiler-artifact
-        path: compiler/bin/Debug/net9.0/
+        path: compiler/bin/Release/net9.0/
