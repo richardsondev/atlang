@@ -110,7 +110,7 @@ namespace AtLangCompiler.Tests
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = ildasmPath,
-                    Arguments = $"/ALL /METADATA=RAW /OUT={outputILPath} {inputPath}",
+                    Arguments = $"/ALL /METADATA=RAW /OUT={outputILPath} \"{inputPath}\"",
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
