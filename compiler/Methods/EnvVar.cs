@@ -7,7 +7,7 @@ internal class GetEnvToken : ILexerTokenConfig
 {
     public IReadOnlyDictionary<string, TokenType> TokenStrings => new Dictionary<string, TokenType>
     {
-        { "getEnv", TokenType.GETENV }
+        { "@getEnv", TokenType.GETENV }
     };
 }
 
@@ -25,7 +25,7 @@ internal class EnvVarAssignment : ASTNode
     }
 }
 
-[ParserFor(TokenType.GETENV)]
+[ParserFor(TokenType.GETENV, inputTokens: 1)]
 internal class EnvironmentStatementParser : IStatementParser
 {
     public ASTNode ParseStatement(Parser parser)

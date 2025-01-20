@@ -54,7 +54,7 @@ The compiler is developed in C# using .NET 9's IL assembly writing capabilities.
    
 4. **Environment Variable Reading**  
    ```plaintext
-   @NAME = getEnv(@USERNAME)
+   @NAME = @getEnv(@USERNAME)
    ```
 
 5. **Static Web Server**  
@@ -67,7 +67,7 @@ The compiler is developed in C# using .NET 9's IL assembly writing capabilities.
 6. **HTTP GET**  
    ```plaintext
    @IPURL = "https://ip.billywr.com/ip.txt"
-   @IP = getWeb(@IPURL)
+   @IP = @getWeb(@IPURL)
    @IPTEXT = "Your IP is "
    @print(@IPTEXT + @IP)
    ```
@@ -76,7 +76,7 @@ The compiler is developed in C# using .NET 9's IL assembly writing capabilities.
    ```plaintext
    @IPURL = "https://ip.billywr.com/ip.txt"
    @POSTDATA = "[]"
-   @IP = postWeb(@IPURL, @POSTDATA)
+   @IP = @postWeb(@IPURL, @POSTDATA)
    @IPTEXT = "POST response: "
    @print(@IPTEXT + @IP)
    ```

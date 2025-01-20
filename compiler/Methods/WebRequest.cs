@@ -8,8 +8,8 @@ internal class WebRequestToken : ILexerTokenConfig
 {
     public IReadOnlyDictionary<string, TokenType> TokenStrings => new Dictionary<string, TokenType>
     {
-        { "getWeb", TokenType.GETWEB },
-        { "postWeb", TokenType.POSTWEB }
+        { "@getWeb", TokenType.GETWEB },
+        { "@postWeb", TokenType.POSTWEB }
     };
 }
 
@@ -31,8 +31,8 @@ internal class WebRequestAssign : ASTNode
     }
 }
 
-[ParserFor(TokenType.GETWEB)]
-[ParserFor(TokenType.POSTWEB)]
+[ParserFor(TokenType.GETWEB, inputTokens: 1)]
+[ParserFor(TokenType.POSTWEB, inputTokens: 2)]
 internal class WebRequestParser : IStatementParser
 {
     public ASTNode ParseStatement(Parser parser)

@@ -3,13 +3,21 @@ using System.Reflection.Emit;
 
 namespace AtLangCompiler.Methods;
 
+internal class PrintToken : ILexerTokenConfig
+{
+    public IReadOnlyDictionary<string, TokenType> TokenStrings => new Dictionary<string, TokenType>
+    {
+        { "@print", TokenType.PRINT }
+    };
+}
+
 internal class PrintStatement : ASTNode
 {
     public ASTNode Expr { get; }
     public PrintStatement(ASTNode expr) { Expr = expr; }
 }
 
-[ParserFor(TokenType.PRINT)]
+[ParserFor(TokenType.PRINT, inputTokens: 1)]
 internal class PrintStatementParser : IStatementParser
 {
     public ASTNode ParseStatement(Parser parser)

@@ -38,22 +38,6 @@ internal class Lexer
 
         string rest = text.Substring(pos);
 
-        if (rest.StartsWith("@if"))
-        {
-            pos += 3;
-            return new Token(TokenType.IF, "@if");
-        }
-        if (rest.StartsWith("@else"))
-        {
-            pos += 5;
-            return new Token(TokenType.ELSE, "@else");
-        }
-        if (rest.StartsWith("@print"))
-        {
-            pos += 6;
-            return new Token(TokenType.PRINT, "@print");
-        }
-
         foreach (KeyValuePair<string, TokenType> methodToken in methodTokenTypeMap)
         {
             if (rest.StartsWith(methodToken.Key))
