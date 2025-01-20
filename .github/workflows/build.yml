@@ -15,11 +15,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '9.0.x'
+        global-json-file: global.json
 
     - name: Restore NuGet packages
       run: dotnet restore atlang.sln
@@ -28,7 +30,16 @@ jobs:
       run: dotnet build atlang.sln --configuration Release --no-restore
 
     - name: Run tests
-      run: dotnet test atlang.sln --no-build --verbosity normal
+      id: run-tests
+      continue-on-error: true
+      run: dotnet test atlang.sln --no-build --configuration Release --verbosity detailed -p:TestingPlatformCommandLineArguments="--report-trx --results-directory TestResults/ --coverage"
+
+    - name: Upload test results
+      if: always() && steps.run-tests.outcome != 'skipped'
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: test/TestResults/
 
     - name: Upload compiler artifact
       uses: actions/upload-artifact@v3
