@@ -1,0 +1,37 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore NuGet packages
+      run: dotnet restore atlang.sln
+
+    - name: Build the solution
+      run: dotnet build atlang.sln --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test atlang.sln --no-build --verbosity normal
+
+    - name: Upload compiler artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: compiler-artifact
+        path: compiler/bin/Debug/net9.0/
