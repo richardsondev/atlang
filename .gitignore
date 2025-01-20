@@ -44,7 +44,6 @@ $RECYCLE.BIN/
 *.DotSettings.user
 
 # DotNet specific
-global.json
 *.dll
 *.pdb
 *.exe
@@ -132,3 +131,5 @@ Thumbs.db
 # VS
 .vs/
 
+# Tests
+TestResults/

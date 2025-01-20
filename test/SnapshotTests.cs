@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace AtLangCompiler.Tests
 {
@@ -16,7 +17,7 @@ namespace AtLangCompiler.Tests
 
             string assemblyName = Path.GetFileNameWithoutExtension(atFilePath);
             string tempFolder = Path.Combine(Path.GetTempPath(), nameof(SnapshotTests), Guid.NewGuid().ToString());
-            string tempAssembly = Path.Combine(tempFolder, assemblyName + ".exe");
+            string tempAssembly = Path.Combine(tempFolder, assemblyName + ".dll");
             Directory.CreateDirectory(tempFolder);
 
             try
@@ -110,7 +111,7 @@ namespace AtLangCompiler.Tests
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = ildasmPath,
-                    Arguments = $"/all /metadata=RAW /output={outputILPath} {inputPath}",
+                    Arguments = $"-ALL -METADATA=RAW -OUT=\"{outputILPath}\" \"{inputPath}\"",
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
@@ -125,7 +126,7 @@ namespace AtLangCompiler.Tests
 
             if (process.ExitCode != 0)
             {
-                throw new Exception($"ILDASM failed: {stderr}\n{stdout}");
+                throw new Exception($"ILDASM failed: {process.StartInfo.FileName} {process.StartInfo.Arguments}\n{stderr}\n{stdout}");
             }
         }
 
@@ -138,12 +139,18 @@ namespace AtLangCompiler.Tests
             [
                 "// Time-date stamp:",
                 "// MVID:",
-                "// Image base:"
+                "// Image base:",
+                "//      0x(.*?) Sorted",
+                "//      0x(.*?) MaskValid",
+                "// Metadata header: 2.0, heaps:"
             ];
+
+            IReadOnlyCollection<Regex> ignoredLinePatterns =
+                ignoredLinePrefixes.Select(q => new Regex(q, RegexOptions.Compiled)).ToList();
 
             string[] lines = input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
             IEnumerable<string> filteredLines = lines.Where(line =>
-                !ignoredLinePrefixes.Any(prefix => line.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+                !ignoredLinePatterns.Any(pattern => pattern.IsMatch(line))
             );
 
             return string.Join(Environment.NewLine, filteredLines);
