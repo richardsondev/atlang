@@ -1,0 +1,45 @@
+﻿<Project Sdk="MSTest.Sdk/3.6.1">
+
+    <PropertyGroup>
+        <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="..\samples\**\*">
+            <Link>samples\%(RecursiveDir)%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include=".\snapshots\**\*">
+            <Link>snapshots\%(RecursiveDir)%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NETCore.ILDAsm" />
+        <PackageReference Include="runtime.win-x64.Microsoft.NETCore.ILDAsm" GeneratePathProperty="true" />
+        <PackageReference Include="runtime.linux-x64.Microsoft.NETCore.ILDAsm" GeneratePathProperty="true" />
+        <PackageReference Include="runtime.osx-x64.Microsoft.NETCore.ILDAsm" GeneratePathProperty="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Include ildasm binaries for all supported platforms -->
+        <None Include="$(Pkgruntime_win-x64_Microsoft_NETCore_ILDAsm)\runtimes\win-x64\native\ildasm.exe">
+            <Link>ildasm\win-x64\%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="$(Pkgruntime_linux-x64_Microsoft_NETCore_ILDAsm)\runtimes\linux-x64\native\ildasm">
+            <Link>ildasm\linux-x64\%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="$(Pkgruntime_osx-x64_Microsoft_NETCore_ILDAsm)\runtimes\osx-x64\native\ildasm">
+            <Link>ildasm\osx-x64\%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\compiler\AtLangCompiler.csproj" />
+    </ItemGroup>
+
+</Project>
