@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtLangCompiler", "AtLangCompiler.csproj", "{7F849BAA-4D52-486F-9E8D-4E53F97EE880}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtLangCompiler", ".\compiler\AtLangCompiler.csproj", "{7F849BAA-4D52-486F-9E8D-4E53F97EE880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", ".\test\Tests.csproj", "{C06EDF4A-5207-4A32-9C59-82551327D411}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7F849BAA-4D52-486F-9E8D-4E53F97EE880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F849BAA-4D52-486F-9E8D-4E53F97EE880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F849BAA-4D52-486F-9E8D-4E53F97EE880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C06EDF4A-5207-4A32-9C59-82551327D411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C06EDF4A-5207-4A32-9C59-82551327D411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C06EDF4A-5207-4A32-9C59-82551327D411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C06EDF4A-5207-4A32-9C59-82551327D411}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

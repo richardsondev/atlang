@@ -2,7 +2,7 @@
 
 ## Overview
 
-**AtLang** is a work-in-progress (WIP) compiled, CIL-based language intended as a learning tool. It is **not recommended** for production scenarios at this stage.
+**AtLang** is a work-in-progress (WIP) compiled, CIL-based language intended as a learning tool. It is **not recommended** for production scenarios.
 
 Despite its simple syntax, AtLang can perform significant operations with a single method. For example, spinning up a static file HTTP server requires only a single command: `@startServer(...)`.
 
@@ -26,7 +26,7 @@ The compiler is developed in C# using .NET 9's IL assembly writing capabilities.
    ```
 4. **Run the Generated Program**  
    ```bash
-   dotnet AtLangGenerated.exe
+   dotnet your_program.exe
    ```
 
 ---
@@ -94,3 +94,25 @@ Explore the `./samples` folder for complete sample programs ready to compile and
 1. **Self-Contained EXE Generation**  
 2. **Asynchronous Operations**  
 3. **Enhanced VS Code Extension Features**  
+
+---
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE), which grants permission for personal and commercial use, modification, distribution, and private use, with attribution. By using this software, you agree to the terms outlined in the license. For more details, please refer to the [LICENSE](./LICENSE) file.
+
+---
+
+## Contributing
+
+Contributions are welcomed. Whether you're fixing a bug, adding a new feature, or improving documentation, your efforts make a difference. 
+
+### How to Contribute:
+1. **Report Issues:** If you encounter a bug or have suggestions for improvement, please create an issue in the [GitHub repository](https://github.com/richardsondev/atlang/issues).
+2. **Submit Pull Requests:** Fork the repository, make your changes, and submit a pull request for review. Be sure to follow any contribution guidelines outlined in the repository.
+3. **Join Discussions:** Engage with other contributors and maintainers by participating in discussions in issues or pull requests.
+
+### Guidelines:
+- Ensure your code follows the project's style and testing guidelines.
+- Include clear and concise commit messages to help maintainers understand your changes.
+- Be respectful and collaborative in your interactions with others.

@@ -1,4 +1,6 @@
-﻿public enum TokenType
+﻿namespace AtLangCompiler;
+
+public enum TokenType
 {
     AT, IDENT, EQUAL, GETENV, LPAREN, RPAREN, LBRACE, RBRACE,
     STRING, PLUS, IF, ELSE, PRINT, EQEQ, EOF, GETWEB, POSTWEB, STARTSERVER
