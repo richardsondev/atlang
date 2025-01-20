@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.StaticFiles;
 using System.Net;
 using System.Reflection.Emit;
+using System.Text;
 
 namespace AtLangCompiler.Methods;
 
@@ -224,13 +225,44 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
 
         // -------------- 404 branch --------------
         {
-            // Load the HttpListenerContext into the evaluation stack and get its Response
-            il.Emit(OpCodes.Ldloc, contextLocal);
-            il.Emit(OpCodes.Callvirt, typeof(HttpListenerContext).GetProperty("Response")!.GetGetMethod()!);
+            LocalBuilder byteArrayLocal = il.DeclareLocal(typeof(byte[]));
 
-            // Set StatusCode = 404
-            il.Emit(OpCodes.Ldc_I4, 404);
-            il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetProperty("StatusCode")!.GetSetMethod()!);
+            // Set the StatusCode to 404
+            il.Emit(OpCodes.Ldloc, contextLocal); // Load contextLocal
+            il.Emit(OpCodes.Callvirt, typeof(HttpListenerContext).GetProperty("Response")!.GetGetMethod()!); // contextLocal.Response
+            il.Emit(OpCodes.Ldc_I4, 404); // Push 404 onto the stack
+            il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetProperty("StatusCode")!.GetSetMethod()!); // Response.StatusCode = 404
+
+            // Set the ContentType to "text/plain"
+            il.Emit(OpCodes.Ldloc, contextLocal); // Load contextLocal
+            il.Emit(OpCodes.Callvirt, typeof(HttpListenerContext).GetProperty("Response")!.GetGetMethod()!); // contextLocal.Response
+            il.Emit(OpCodes.Ldstr, "text/plain"); // Push "text/plain" onto the stack
+            il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetProperty("ContentType")!.GetSetMethod()!); // Response.ContentType = "text/plain"
+
+            // Convert "404 Not Found" to a byte array
+            il.Emit(OpCodes.Call, typeof(Encoding).GetProperty("UTF8")!.GetGetMethod()!); // Get Encoding.UTF8
+            il.Emit(OpCodes.Ldstr, "404 Not Found"); // Push the string "404 Not Found"
+            il.Emit(OpCodes.Callvirt, typeof(Encoding).GetMethod("GetBytes", [typeof(string)])!); // Call Encoding.UTF8.GetBytes(string)
+            il.Emit(OpCodes.Stloc, byteArrayLocal); // Store the byte array in byteArrayLocal
+
+            // Get the OutputStream
+            il.Emit(OpCodes.Ldloc, contextLocal); // Load contextLocal
+            il.Emit(OpCodes.Callvirt, typeof(HttpListenerContext).GetProperty("Response")!.GetGetMethod()!); // contextLocal.Response
+            il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetProperty("OutputStream")!.GetGetMethod()!); // Response.OutputStream
+            il.Emit(OpCodes.Stloc, outputStreamLocal); // Store the OutputStream in outputStreamLocal
+
+            // Write content to the OutputStream
+            il.Emit(OpCodes.Ldloc, outputStreamLocal); // Load the OutputStream
+            il.Emit(OpCodes.Ldloc, byteArrayLocal); // Load the byte array
+            il.Emit(OpCodes.Ldc_I4_0); // Push offset (0)
+            il.Emit(OpCodes.Ldloc, byteArrayLocal); // Load the byte array again
+            il.Emit(OpCodes.Ldlen); // Get the length of the array
+            il.Emit(OpCodes.Conv_I4); // Convert length to int32
+            il.Emit(OpCodes.Callvirt, typeof(Stream).GetMethod("Write", [typeof(byte[]), typeof(int), typeof(int)])!); // Write bytes to the stream
+
+            // Close the OutputStream
+            il.Emit(OpCodes.Ldloc, outputStreamLocal); // Load the OutputStream
+            il.Emit(OpCodes.Callvirt, typeof(Stream).GetMethod("Close")!); // Close the OutputStream
 
             // jump to end
             il.Emit(OpCodes.Br, labelEnd);
