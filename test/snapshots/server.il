@@ -25,7 +25,7 @@
 // ----- COFF Header:
 // Machine:                    0x014c
 // Number of sections:         0x0002
-// Time-date stamp:            0x678cff1b
+// Time-date stamp:            0x678df44e
 // Ptr to symbol table:        0x00000000
 // Number of symbols:          0x00000000
 // Size of optional header:    0x00e0
@@ -503,7 +503,7 @@
 //    3 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#174, 6:string#9b, 7:string#0, 8:blob#0
 //    4 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#174, 6:string#1a9, 7:string#0, 8:blob#0
 //    5 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#174, 6:string#141, 7:string#0, 8:blob#0
-//    6 == 0:0002, 1:0002, 2:0000, 3:0000, 4:00000001, 5:blob#257, 6:string#24b, 7:string#0, 8:blob#0
+//    6 == 0:0002, 1:0003, 2:0000, 3:0000, 4:00000001, 5:blob#257, 6:string#24b, 7:string#0, 8:blob#0
 // =================================================
 // 36(0x24): AssemblyRefProcessor cRecs:    0(0), cbRec:  6(0x6), cbTable:     0(0)
 //   col  0:  Processor    oCol: 0, cbCol:4, ULONG  
@@ -638,20 +638,20 @@
                 3A AF E9 3D 0F C3 C2 34 8B 76 4F AF B0 B1 C0 73   // :..=...4.vO....s
                 3D E5 14 59 AE AB 46 58 03 84 BF 9D 74 C4 E2 81   // =..Y..FX....t...
                 64 B7 CD E2 47 F8 91 BA 07 89 1C 9D 87 2A D2 BB ) // d...G........*..
-  .ver 2:2:0:0
+  .ver 2:3:0:0
 }
 .assembly /*20000001*/ server
 {
   .ver 0:0:0:0
 }
 .module MainModule
-// MVID: {c3e77d68-5652-4176-8193-5f95eda28158}
+// MVID: {1309ee02-6b34-459b-8d41-8bc75bc0980c}
 .imagebase 0x00400000
 .file alignment 0x00000200
 .stackreserve 0x00100000
 .subsystem 0x0003       // WINDOWS_CUI
 .corflags 0x00000001    //  ILONLY
-// Image base: 0x000002250F5D0000
+// Image base: 0x000001AE17790000
 
 
 // =============== CLASS MEMBERS DECLARATION ===================
