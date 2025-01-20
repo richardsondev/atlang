@@ -125,7 +125,7 @@ namespace AtLangCompiler.Tests
 
             if (process.ExitCode != 0)
             {
-                throw new Exception($"ILDASM failed: {stderr}\n{stdout}");
+                throw new Exception($"ILDASM failed: {process.StartInfo.FileName} {process.StartInfo.Arguments}\n{stderr}\n{stdout}");
             }
         }
 
