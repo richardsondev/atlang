@@ -32,7 +32,7 @@ jobs:
     - name: Run tests
       id: run-tests
       continue-on-error: true
-      run: dotnet test atlang.sln --no-build --configuration Release --verbosity detailed -p:TestingPlatformCommandLineArguments="--report-trx --results-directory TestResults/ --coverage"
+      run: dotnet test atlang.sln --no-build --configuration Release --verbosity normal -p:TestingPlatformCommandLineArguments="--report-trx --results-directory TestResults/ --coverage"
 
     - name: Upload test results
       if: always() && steps.run-tests.outcome != 'skipped'
