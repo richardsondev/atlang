@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "saturday"
       time: "02:00"
     open-pull-requests-limit: 10
@@ -11,7 +11,7 @@ updates:
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "saturday"
       time: "02:00"
     open-pull-requests-limit: 10
@@ -19,7 +19,7 @@ updates:
   - package-ecosystem: "dotnet-sdk"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "saturday"
       time: "02:00"
     open-pull-requests-limit: 10
