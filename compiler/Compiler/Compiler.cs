@@ -84,6 +84,13 @@ public static class Compiler
         peBlob.WriteContentTo(fileStream);
 
         // Required until this is self-contained
-        File.Copy("AtLangCompiler.runtimeconfig.json", $"{assemblyName}.runtimeconfig.json", true);
+        var outputFolder = Path.GetDirectoryName(outputPath);
+        File.Copy("AtLangCompiler.runtimeconfig.json", Path.Join(outputFolder, $"{assemblyName}.runtimeconfig.json"), true);
+        
+        var requiredAssemblies = ilEmitter.GetRequiredAssemblies();
+        foreach (var requiredAssembly in requiredAssemblies)
+        {
+            File.Copy(requiredAssembly, Path.Join(outputFolder, Path.GetFileName(requiredAssembly)), true);
+        }
     }
 }

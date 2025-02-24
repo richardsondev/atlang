@@ -1,6 +1,7 @@
 ﻿using AtLangCompiler.ILEmitter;
 using Microsoft.AspNetCore.StaticFiles;
 using System.Net;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 
@@ -45,6 +46,7 @@ internal class ServerStatementParser : IStatementParser
 }
 
 [EmitterFor(typeof(StartServerAssign))]
+[RequiredAssembly("Microsoft.AspNetCore.StaticFiles.dll")]
 internal class StartServer : IMethodEmitter<StartServerAssign>
 {
     private readonly ILGenerator il;
@@ -64,7 +66,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
 
         il.Emit(OpCodes.Ldloc, dictLocal);                    // push Dictionary<string,string>
         il.Emit(OpCodes.Ldstr, node.ServerRootPath);          // push the variable name (e.g. "ROOT_PATH")
-        System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, string>)
+        MethodInfo dictGetItem = typeof(Dictionary<string, string>)
             .GetProperty("Item")!
             .GetGetMethod()!;
         il.Emit(OpCodes.Callvirt, dictGetItem);               // calls dict[varName]
@@ -100,7 +102,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Ldstr, "http://+:");
         il.Emit(OpCodes.Ldloc, portStrLocal); // push listener
 
-        System.Reflection.MethodInfo stringConcat2 = typeof(string).GetMethod(nameof(string.Concat), [typeof(string), typeof(string)])!;
+        MethodInfo stringConcat2 = typeof(string).GetMethod(nameof(string.Concat), [typeof(string), typeof(string)])!;
         il.Emit(OpCodes.Call, stringConcat2);   // => "http://+:{port}"
 
         // now Concat with "/"
@@ -123,7 +125,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Call, typeof(Console).GetMethod("get_Out")!);
         il.Emit(OpCodes.Ldstr, "Server listening at ");
         il.Emit(OpCodes.Ldloc, listener);
-        System.Reflection.MethodInfo concat = typeof(string).GetMethod(nameof(string.Concat), [typeof(string), typeof(string)])!;
+        MethodInfo concat = typeof(string).GetMethod(nameof(string.Concat), [typeof(string), typeof(string)])!;
         il.Emit(OpCodes.Call, concat);
         il.Emit(OpCodes.Callvirt, typeof(TextWriter).GetMethod(nameof(TextWriter.WriteLine), [typeof(string)])!);
 
@@ -147,7 +149,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetProperty("Headers")!.GetGetMethod()!);
         il.Emit(OpCodes.Ldstr, "X-Powered-By");
         il.Emit(OpCodes.Ldstr, "AtLang/0.0.1");
-        System.Reflection.MethodInfo setMethod = typeof(WebHeaderCollection).GetMethod("Set", [typeof(string), typeof(string)])!;
+        MethodInfo setMethod = typeof(WebHeaderCollection).GetMethod("Set", [typeof(string), typeof(string)])!;
         il.Emit(OpCodes.Callvirt, setMethod);
 
         il.Emit(OpCodes.Ldloc, requestLocal);
@@ -155,7 +157,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Dup);
         il.Emit(OpCodes.Callvirt, typeof(Uri).GetProperty("LocalPath")!.GetGetMethod()!);
         il.Emit(OpCodes.Stloc, requestLocalPath);
-        System.Reflection.MethodInfo toStringMethod = typeof(Uri).GetMethod("ToString", Type.EmptyTypes)!;
+        MethodInfo toStringMethod = typeof(Uri).GetMethod("ToString", Type.EmptyTypes)!;
         il.Emit(OpCodes.Callvirt, toStringMethod);
         il.Emit(OpCodes.Stloc, requestUriString);
 
@@ -183,7 +185,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Ldc_I4_S, (sbyte)'\\'); // Character '\'
         il.Emit(OpCodes.Stelem_I2); // Store '\' at index 2
 
-        System.Reflection.MethodInfo trimMethod = typeof(string).GetMethod("Trim", [typeof(char[])])!;
+        MethodInfo trimMethod = typeof(string).GetMethod("Trim", [typeof(char[])])!;
         il.Emit(OpCodes.Call, trimMethod); // Call string.Trim(char[])
         il.Emit(OpCodes.Stloc, requestUriStringLocal); // Store the trimmed string back
 
@@ -201,7 +203,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         // filePathLocal = Path.Combine(serverRootStrLocal, requestLocal.Url.LocalPath)
         il.Emit(OpCodes.Ldloc, serverRootStrLocal);  // the root path from dictionary
         il.Emit(OpCodes.Ldloc, requestUriStringLocal);
-        System.Reflection.MethodInfo pathCombine = typeof(Path).GetMethod("Combine", [typeof(string), typeof(string)])!;
+        MethodInfo pathCombine = typeof(Path).GetMethod("Combine", [typeof(string), typeof(string)])!;
         il.Emit(OpCodes.Call, pathCombine);
         il.Emit(OpCodes.Stloc, filePathLocal);
 
@@ -212,7 +214,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
 
         // Check if file exists
         il.Emit(OpCodes.Ldloc, filePathLocal);
-        System.Reflection.MethodInfo fileExists = typeof(File).GetMethod("Exists", [typeof(string)])!;
+        MethodInfo fileExists = typeof(File).GetMethod("Exists", [typeof(string)])!;
         il.Emit(OpCodes.Call, fileExists);
 
         Label labelFileExists = il.DefineLabel();
@@ -277,7 +279,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
 
         // FileInfo fileInfoLocal = new FileInfo(filePathLocal)
         il.Emit(OpCodes.Ldloc, filePathLocal);
-        System.Reflection.ConstructorInfo fileInfoConstructor = typeof(FileInfo).GetConstructor([typeof(string)])!;
+        ConstructorInfo fileInfoConstructor = typeof(FileInfo).GetConstructor([typeof(string)])!;
         il.Emit(OpCodes.Newobj, fileInfoConstructor);
         il.Emit(OpCodes.Callvirt, typeof(FileInfo).GetProperty("Length")!.GetGetMethod()!);
         il.Emit(OpCodes.Stloc, fileLengthLocal); // Store the file length in fileLengthLocal
@@ -291,7 +293,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetProperty("ContentLength64")!.GetSetMethod()!); // Set ContentLength64
 
         // Create an instance of FileExtensionContentTypeProvider
-        System.Reflection.ConstructorInfo providerConstructor = typeof(FileExtensionContentTypeProvider).GetConstructor(Type.EmptyTypes)!;
+        ConstructorInfo providerConstructor = typeof(FileExtensionContentTypeProvider).GetConstructor(Type.EmptyTypes)!;
         il.Emit(OpCodes.Newobj, providerConstructor); // new FileExtensionContentTypeProvider()
         il.Emit(OpCodes.Stloc, providerLocal); // Store the instance in providerLocal
 
@@ -301,7 +303,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Ldloc, providerLocal);
         il.Emit(OpCodes.Ldloc, filePathLocal);
         il.Emit(OpCodes.Ldloca_S, contentTypeLocal);
-        System.Reflection.MethodInfo tryGetContentType = typeof(FileExtensionContentTypeProvider).GetMethod("TryGetContentType", [typeof(string), typeof(string).MakeByRefType()])!;
+        MethodInfo tryGetContentType = typeof(FileExtensionContentTypeProvider).GetMethod("TryGetContentType", [typeof(string), typeof(string).MakeByRefType()])!;
         il.Emit(OpCodes.Callvirt, tryGetContentType); // Call TryGetContentType(filePathLocal, out contentType)
 
         // Check if contentTypeLocal is null and fallback to "application/octet-stream"
@@ -347,7 +349,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
 
         // The resulting array is now on the stack
 
-        System.Reflection.MethodInfo concat3 = typeof(string).GetMethod(nameof(string.Concat), [typeof(string[])])!;
+        MethodInfo concat3 = typeof(string).GetMethod(nameof(string.Concat), [typeof(string[])])!;
         il.Emit(OpCodes.Call, concat3);
         il.Emit(OpCodes.Callvirt, typeof(TextWriter).GetMethod(nameof(TextWriter.WriteLine), [typeof(string)])!);
 
@@ -362,7 +364,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Ldloc, filePathLocal); // Load filePathLocal
         il.Emit(OpCodes.Ldc_I4, (int)FileMode.Open); // Load FileMode.Open
         il.Emit(OpCodes.Ldc_I4, (int)FileAccess.Read); // Load FileAccess.Read
-        System.Reflection.ConstructorInfo fileStreamConstructor = typeof(FileStream).GetConstructor([typeof(string), typeof(FileMode), typeof(FileAccess)])!;
+        ConstructorInfo fileStreamConstructor = typeof(FileStream).GetConstructor([typeof(string), typeof(FileMode), typeof(FileAccess)])!;
         il.Emit(OpCodes.Newobj, fileStreamConstructor); // new FileStream(filePathLocal, FileMode.Open, FileAccess.Read)
         il.Emit(OpCodes.Stloc, fileStreamLocal); // Store the FileStream in fileStreamLocal
 
@@ -375,7 +377,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         // Copy fileStream to outputStream using Stream.CopyTo
         il.Emit(OpCodes.Ldloc, fileStreamLocal); // Load fileStreamLocal
         il.Emit(OpCodes.Ldloc, outputStreamLocal); // Load outputStreamLocal
-        System.Reflection.MethodInfo streamCopyTo = typeof(Stream).GetMethod("CopyTo", [typeof(Stream)])!;
+        MethodInfo streamCopyTo = typeof(Stream).GetMethod("CopyTo", [typeof(Stream)])!;
         il.Emit(OpCodes.Callvirt, streamCopyTo); // Call fileStreamLocal.CopyTo(outputStreamLocal)
 
         // Dispose the fileStream
