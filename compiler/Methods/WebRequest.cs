@@ -131,6 +131,7 @@ internal class WebRequest : IMethodEmitter<WebRequestAssign>
         System.Reflection.MethodInfo dictSetItem = typeof(Dictionary<string, object>)
             .GetProperty("Item")!
             .GetSetMethod()!;
+        il.Emit(OpCodes.Isinst, typeof(string));
         il.Emit(OpCodes.Callvirt, dictSetItem);
     }
 }
