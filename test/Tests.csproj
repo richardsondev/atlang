@@ -4,6 +4,7 @@
         <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
         <EnableMicrosoftTestingExtensionsCrashDump>true</EnableMicrosoftTestingExtensionsCrashDump>
         <AssemblyName>AtLangCompiler.Tests</AssemblyName>
+        <DefaultNamespace>AtLangCompiler.Tests</DefaultNamespace>
     </PropertyGroup>
 
     <ItemGroup>

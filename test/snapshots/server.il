@@ -25,7 +25,7 @@
 // ----- COFF Header:
 // Machine:                    0x014c
 // Number of sections:         0x0002
-// Time-date stamp:            0x678e1eea
+// Time-date stamp:            0x678e83de
 // Ptr to symbol table:        0x00000000
 // Number of symbols:          0x00000000
 // Size of optional header:    0x00e0
@@ -37,7 +37,7 @@
 // Size of code:                   0x00001000
 // Size of init.data:              0x00000200
 // Size of uninit.data:            0x00000000
-// Addr. of entry point:           0x00002f06
+// Addr. of entry point:           0x00002f16
 // Base of code:                   0x00002000
 // Base of data:                   0x00004000
 // Image base:                     0x00400000
@@ -61,7 +61,7 @@
 // Loader flags:                   0x00000000
 // Directories:                    0x00000010
 // 0x00000000 [0x00000000] address [size] of Export Directory:          
-// 0x00002eb4 [0x0000004f] address [size] of Import Directory:          
+// 0x00002ec4 [0x0000004f] address [size] of Import Directory:          
 // 0x00000000 [0x00000000] address [size] of Resource Directory:        
 // 0x00000000 [0x00000000] address [size] of Exception Directory:       
 // 0x00000000 [0x00000000] address [size] of Security Directory:        
@@ -79,7 +79,7 @@
 
 // Image sections:
 //              .text
-//              0x00000f0c Virtual Size
+//              0x00000f1c Virtual Size
 //              0x00002000 Virtual Address
 //              0x00001000 Size of Raw Data
 //              0x00000200 Pointer to Raw Data
@@ -110,13 +110,13 @@
 //              0x00002000 Page RVA
 //              0x0000000c Block Size
 //              0x00000002 Number of Entries
-//              Entry 1: Type 0x3 Offset 0x00000f08
+//              Entry 1: Type 0x3 Offset 0x00000f18
 //              Entry 2: Type 0x0 Offset 0x00000000
 
 // Import Address Table
 //     DLL : mscoree.dll
 //              0x00002000 Import Address Table
-//              0x00002ef6 Import Name Table
+//              0x00002f06 Import Name Table
 //              0          Time Date Stamp
 //              0          Index of First Forwarder Reference
 //
@@ -133,11 +133,11 @@
 // Header size:                        0x00000048
 // Major runtime version:              0x0002
 // Minor runtime version:              0x0005
-// 0x000022c0 [0x00000b74] address [size] of Metadata Directory:        
+// 0x000022c0 [0x00000b84] address [size] of Metadata Directory:        
 // Flags:                              0x00000001
 // Entry point token:                  0x06000001
 // 0x00000000 [0x00000000] address [size] of Resources Directory:       
-// 0x00002e34 [0x00000080] address [size] of Strong Name Signature:     
+// 0x00002e44 [0x00000080] address [size] of Strong Name Signature:     
 // 0x00000000 [0x00000000] address [size] of CodeManager Table:         
 // 0x00000000 [0x00000000] address [size] of VTableFixups Directory:    
 // 0x00000000 [0x00000000] address [size] of Export Address Table:      
@@ -164,14 +164,14 @@
 //              '#Strings' Name
 //    Stream 3:
 //              0x00000628 Offset
-//              0x000001e8 Size
+//              0x000001f8 Size
 //              '#US' Name
 //    Stream 4:
-//              0x00000810 Offset
+//              0x00000820 Offset
 //              0x00000010 Size
 //              '#GUID' Name
 //    Stream 5:
-//              0x00000820 Offset
+//              0x00000830 Offset
 //              0x00000354 Size
 //              '#Blob' Name
 
@@ -196,18 +196,18 @@
 // PE additional info   : 171               ( 3.34%)
 // Num.of PE sections   : 2
 // CLR header size     : 72                 ( 1.41%)
-// CLR meta-data size  : 2932               (57.27%)
+// CLR meta-data size  : 2948               (57.58%)
 // CLR additional info : 128                ( 2.50%)
 // CLR method headers  : 13                 ( 0.25%)
 // Managed code         : 610               (11.91%)
 // Data                 : 512               (10.00%)
-// Unaccounted          : 170               ( 3.32%)
+// Unaccounted          : 154               ( 3.01%)
 
 // Num.of PE sections   : 2
 //   .text    - 4096
 //   .reloc   - 512
 
-// CLR meta-data size  : 2932
+// CLR meta-data size  : 2948
 //   Module        -    1 (10 bytes)
 //   TypeDef       -    2 (28 bytes)      0 interfaces, 0 explicit layout
 //   TypeRef       -   22 (132 bytes)
@@ -219,7 +219,7 @@
 //   AssemblyRef   -    6 (120 bytes)
 //   Strings       -   820 bytes
 //   Blobs         -   852 bytes
-//   UserStrings   -   488 bytes
+//   UserStrings   -   504 bytes
 //   Guids         -    16 bytes
 //   Uncategorized -   172 bytes
 
@@ -244,12 +244,12 @@
 //            flags: 0x00, streams: 5
 // Stream 0: name: #~, size 648
 // Stream 1: name: #Strings, size 820
-// Stream 2: name: #US, size 488
+// Stream 2: name: #US, size 504
 // Stream 3: name: #GUID, size 16
 // Stream 4: name: #Blob, size 852
 // Metadata header: 2.0, heaps: 0x00, rid: 0x01, valid: 0x0000000908020447, sorted: 0x000016003301fa00
 // 
-// Strings: 820(0x334), Blobs: 852(0x354), Guids: 16(0x10), User strings: 488(0x1e8)
+// Strings: 820(0x334), Blobs: 852(0x354), Guids: 16(0x10), User strings: 504(0x1f8)
 // =================================================
 //  0(0): Module               cRecs:    1(0x1), cbRec: 10(0xa), cbTable:    10(0xa)
 //   col  0:  Generation   oCol: 0, cbCol:2, USHORT 
@@ -650,13 +650,13 @@
   .ver 0:0:0:0
 }
 .module MainModule
-// MVID: {dc173647-5832-4109-b228-43d247c7bb47}
+// MVID: {3616f8eb-381b-43cf-8a85-a08dddd86578}
 .imagebase 0x00400000
 .file alignment 0x00000200
 .stackreserve 0x00100000
 .subsystem 0x0003       // WINDOWS_CUI
 .corflags 0x00000001    //  ILONLY
-// Image base: 0x0000029A06FA0000
+// Image base: 0x000001B9F2900000
 
 
 // =============== CLASS MEMBERS DECLARATION ===================
@@ -713,11 +713,11 @@
     IL_0042:  /* 0C   |                  */ stloc.2
     IL_0043:  /* 73   | (0A)000005       */ newobj     instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000003*/::.ctor() /* 0A000005 */
     IL_0048:  /* 13   | 04               */ stloc.s    V_4
-    IL_004a:  /* 72   | (70)000073       */ ldstr      "http://+:" /* 70000073 */
+    IL_004a:  /* 72   | (70)000073       */ ldstr      "http://127.0.0.1:" /* 70000073 */
     IL_004f:  /* 08   |                  */ ldloc.2
     IL_0050:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string,
                                                                                                                                     string) /* 0A000006 */
-    IL_0055:  /* 72   | (70)000087       */ ldstr      "/" /* 70000087 */
+    IL_0055:  /* 72   | (70)000097       */ ldstr      "/" /* 70000097 */
     IL_005a:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string,
                                                                                                                                     string) /* 0A000006 */
     IL_005f:  /* 0D   |                  */ stloc.3
@@ -728,7 +728,7 @@
     IL_006d:  /* 11   | 04               */ ldloc.s    V_4
     IL_006f:  /* 6F   | (0A)000009       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000003*/::Start() /* 0A000009 */
     IL_0074:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_0079:  /* 72   | (70)00008B       */ ldstr      "Server listening at " /* 7000008B */
+    IL_0079:  /* 72   | (70)00009B       */ ldstr      "Server listening at " /* 7000009B */
     IL_007e:  /* 09   |                  */ ldloc.3
     IL_007f:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string,
                                                                                                                                     string) /* 0A000006 */
@@ -742,8 +742,8 @@
     IL_009b:  /* 11   | 05               */ ldloc.s    V_5
     IL_009d:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
     IL_00a2:  /* 6F   | (0A)00000F       */ callvirt   instance class [System.Net.WebHeaderCollection/*23000004*/]System.Net.WebHeaderCollection/*0100000B*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::get_Headers() /* 0A00000F */
-    IL_00a7:  /* 72   | (70)0000B5       */ ldstr      "X-Powered-By" /* 700000B5 */
-    IL_00ac:  /* 72   | (70)0000CF       */ ldstr      "AtLang/0.0.1" /* 700000CF */
+    IL_00a7:  /* 72   | (70)0000C5       */ ldstr      "X-Powered-By" /* 700000C5 */
+    IL_00ac:  /* 72   | (70)0000DF       */ ldstr      "AtLang/0.0.1" /* 700000DF */
     IL_00b1:  /* 6F   | (0A)000010       */ callvirt   instance void [System.Net.WebHeaderCollection/*23000004*/]System.Net.WebHeaderCollection/*0100000B*/::Set(string,
                                                                                                                                                                  string) /* 0A000010 */
     IL_00b6:  /* 11   | 06               */ ldloc.s    V_6
@@ -754,7 +754,7 @@
     IL_00c5:  /* 6F   | (0A)000013       */ callvirt   instance string [System.Private.Uri/*23000005*/]System.Uri/*0100000C*/::ToString() /* 0A000013 */
     IL_00ca:  /* 13   | 08               */ stloc.s    V_8
     IL_00cc:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_00d1:  /* 72   | (70)0000E9       */ ldstr      "Received request: " /* 700000E9 */
+    IL_00d1:  /* 72   | (70)0000F9       */ ldstr      "Received request: " /* 700000F9 */
     IL_00d6:  /* 11   | 08               */ ldloc.s    V_8
     IL_00d8:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string,
                                                                                                                                     string) /* 0A000006 */
@@ -780,7 +780,7 @@
     IL_0102:  /* 28   | (0A)000015       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::IsNullOrWhiteSpace(string) /* 0A000015 */
     IL_0107:  /* 2C   | 07               */ brfalse.s  IL_0110
 
-    IL_0109:  /* 72   | (70)00010F       */ ldstr      "index.html" /* 7000010F */
+    IL_0109:  /* 72   | (70)00011F       */ ldstr      "index.html" /* 7000011F */
     IL_010e:  /* 13   | 09               */ stloc.s    V_9
     IL_0110:  /* 07   |                  */ ldloc.1
     IL_0111:  /* 11   | 09               */ ldloc.s    V_9
@@ -795,7 +795,7 @@
     IL_012d:  /* 3A   | 0000006A         */ brtrue     IL_019c
 
     IL_0132:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_0137:  /* 72   | (70)000125       */ ldstr      "Not found" /* 70000125 */
+    IL_0137:  /* 72   | (70)000135       */ ldstr      "Not found" /* 70000135 */
     IL_013c:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
     IL_0141:  /* 11   | 05               */ ldloc.s    V_5
     IL_0143:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
@@ -803,10 +803,10 @@
     IL_014d:  /* 6F   | (0A)000018       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_StatusCode(int32) /* 0A000018 */
     IL_0152:  /* 11   | 05               */ ldloc.s    V_5
     IL_0154:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
-    IL_0159:  /* 72   | (70)000139       */ ldstr      "text/plain" /* 70000139 */
+    IL_0159:  /* 72   | (70)000149       */ ldstr      "text/plain" /* 70000149 */
     IL_015e:  /* 6F   | (0A)000019       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_ContentType(string) /* 0A000019 */
     IL_0163:  /* 28   | (0A)00001A       */ call       class [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/ [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/::get_UTF8() /* 0A00001A */
-    IL_0168:  /* 72   | (70)00014F       */ ldstr      "404 Not Found" /* 7000014F */
+    IL_0168:  /* 72   | (70)00015F       */ ldstr      "404 Not Found" /* 7000015F */
     IL_016d:  /* 6F   | (0A)00001B       */ callvirt   instance uint8[] [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/::GetBytes(string) /* 0A00001B */
     IL_0172:  /* 13   | 11               */ stloc.s    V_17
     IL_0174:  /* 11   | 05               */ ldloc.s    V_5
@@ -827,7 +827,7 @@
     IL_0197:  /* 38   | 000000B8         */ br         IL_0254
 
     IL_019c:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_01a1:  /* 72   | (70)00016B       */ ldstr      "Found" /* 7000016B */
+    IL_01a1:  /* 72   | (70)00017B       */ ldstr      "Found" /* 7000017B */
     IL_01a6:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
     IL_01ab:  /* 11   | 0D               */ ldloc.s    V_13
     IL_01ad:  /* 73   | (0A)00001F       */ newobj     instance void [System.Private.CoreLib/*23000001*/]System.IO.FileInfo/*01000011*/::.ctor(string) /* 0A00001F */
@@ -839,7 +839,7 @@
     IL_01c2:  /* 6F   | (0A)000021       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_ContentLength64(int64) /* 0A000021 */
     IL_01c7:  /* 73   | (0A)000022       */ newobj     instance void [Microsoft.AspNetCore.StaticFiles/*23000006*/]Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider/*01000012*/::.ctor() /* 0A000022 */
     IL_01cc:  /* 13   | 0A               */ stloc.s    V_10
-    IL_01ce:  /* 72   | (70)000177       */ ldstr      "text/html" /* 70000177 */
+    IL_01ce:  /* 72   | (70)000187       */ ldstr      "text/html" /* 70000187 */
     IL_01d3:  /* 13   | 0B               */ stloc.s    V_11
     IL_01d5:  /* 11   | 0A               */ ldloc.s    V_10
     IL_01d7:  /* 11   | 0D               */ ldloc.s    V_13
@@ -848,7 +848,7 @@
                                                                                                                                                                                                                     string&) /* 0A000023 */
     IL_01e0:  /* 2D   | 07               */ brtrue.s   IL_01e9
 
-    IL_01e2:  /* 72   | (70)00018B       */ ldstr      "application/octet-stream" /* 7000018B */
+    IL_01e2:  /* 72   | (70)00019B       */ ldstr      "application/octet-stream" /* 7000019B */
     IL_01e7:  /* 13   | 0B               */ stloc.s    V_11
     IL_01e9:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
     IL_01ee:  /* 1B   |                  */ ldc.i4.5
@@ -859,7 +859,7 @@
     IL_01f8:  /* A2   |                  */ stelem.ref
     IL_01f9:  /* 25   |                  */ dup
     IL_01fa:  /* 17   |                  */ ldc.i4.1
-    IL_01fb:  /* 72   | (70)0001BD       */ ldstr      " > Type: " /* 700001BD */
+    IL_01fb:  /* 72   | (70)0001CD       */ ldstr      " > Type: " /* 700001CD */
     IL_0200:  /* A2   |                  */ stelem.ref
     IL_0201:  /* 25   |                  */ dup
     IL_0202:  /* 18   |                  */ ldc.i4.2
@@ -867,7 +867,7 @@
     IL_0205:  /* A2   |                  */ stelem.ref
     IL_0206:  /* 25   |                  */ dup
     IL_0207:  /* 19   |                  */ ldc.i4.3
-    IL_0208:  /* 72   | (70)0001D1       */ ldstr      " > Bytes: " /* 700001D1 */
+    IL_0208:  /* 72   | (70)0001E1       */ ldstr      " > Bytes: " /* 700001E1 */
     IL_020d:  /* A2   |                  */ stelem.ref
     IL_020e:  /* 25   |                  */ dup
     IL_020f:  /* 1A   |                  */ ldc.i4.4
