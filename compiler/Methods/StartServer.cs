@@ -1,4 +1,4 @@
-﻿using AtLangCompiler.ILEmitter;
+using AtLangCompiler.ILEmitter;
 using Microsoft.AspNetCore.StaticFiles;
 using System.Net;
 using System.Reflection.Emit;
@@ -97,7 +97,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
 
         // We'll push "http://+:"
         // Then push portStrLocal, call Concat, then push "/" and call Concat again.
-        il.Emit(OpCodes.Ldstr, "http://+:");
+        il.Emit(OpCodes.Ldstr, "http://127.0.0.1:");
         il.Emit(OpCodes.Ldloc, portStrLocal); // push listener
 
         System.Reflection.MethodInfo stringConcat2 = typeof(string).GetMethod(nameof(string.Concat), [typeof(string), typeof(string)])!;

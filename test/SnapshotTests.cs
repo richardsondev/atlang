@@ -16,7 +16,7 @@ namespace AtLangCompiler.Tests
             Assert.IsTrue(File.Exists(atFilePath), $"AT file not found: {atFilePath}");
 
             string assemblyName = Path.GetFileNameWithoutExtension(atFilePath);
-            string tempFolder = Path.Combine(Path.GetTempPath(), nameof(SnapshotTests), Guid.NewGuid().ToString());
+            string tempFolder = Path.Combine(Path.GetTempPath(), "AtLang", nameof(SnapshotTests), Guid.NewGuid().ToString());
             string tempAssembly = Path.Combine(tempFolder, assemblyName + ".dll");
             Directory.CreateDirectory(tempFolder);
 
