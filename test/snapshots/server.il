@@ -25,7 +25,7 @@
 // ----- COFF Header:
 // Machine:                    0x014c
 // Number of sections:         0x0002
-// Time-date stamp:            0x678e1eea
+// Time-date stamp:            0x67bc6905
 // Ptr to symbol table:        0x00000000
 // Number of symbols:          0x00000000
 // Size of optional header:    0x00e0
@@ -37,7 +37,7 @@
 // Size of code:                   0x00001000
 // Size of init.data:              0x00000200
 // Size of uninit.data:            0x00000000
-// Addr. of entry point:           0x00002f06
+// Addr. of entry point:           0x00002f16
 // Base of code:                   0x00002000
 // Base of data:                   0x00004000
 // Image base:                     0x00400000
@@ -61,7 +61,7 @@
 // Loader flags:                   0x00000000
 // Directories:                    0x00000010
 // 0x00000000 [0x00000000] address [size] of Export Directory:          
-// 0x00002eb4 [0x0000004f] address [size] of Import Directory:          
+// 0x00002ec4 [0x0000004f] address [size] of Import Directory:          
 // 0x00000000 [0x00000000] address [size] of Resource Directory:        
 // 0x00000000 [0x00000000] address [size] of Exception Directory:       
 // 0x00000000 [0x00000000] address [size] of Security Directory:        
@@ -79,7 +79,7 @@
 
 // Image sections:
 //              .text
-//              0x00000f0c Virtual Size
+//              0x00000f1c Virtual Size
 //              0x00002000 Virtual Address
 //              0x00001000 Size of Raw Data
 //              0x00000200 Pointer to Raw Data
@@ -110,13 +110,13 @@
 //              0x00002000 Page RVA
 //              0x0000000c Block Size
 //              0x00000002 Number of Entries
-//              Entry 1: Type 0x3 Offset 0x00000f08
+//              Entry 1: Type 0x3 Offset 0x00000f18
 //              Entry 2: Type 0x0 Offset 0x00000000
 
 // Import Address Table
 //     DLL : mscoree.dll
 //              0x00002000 Import Address Table
-//              0x00002ef6 Import Name Table
+//              0x00002f06 Import Name Table
 //              0          Time Date Stamp
 //              0          Index of First Forwarder Reference
 //
@@ -133,11 +133,11 @@
 // Header size:                        0x00000048
 // Major runtime version:              0x0002
 // Minor runtime version:              0x0005
-// 0x000022c0 [0x00000b74] address [size] of Metadata Directory:        
+// 0x000022d0 [0x00000b74] address [size] of Metadata Directory:        
 // Flags:                              0x00000001
 // Entry point token:                  0x06000001
 // 0x00000000 [0x00000000] address [size] of Resources Directory:       
-// 0x00002e34 [0x00000080] address [size] of Strong Name Signature:     
+// 0x00002e44 [0x00000080] address [size] of Strong Name Signature:     
 // 0x00000000 [0x00000000] address [size] of CodeManager Table:         
 // 0x00000000 [0x00000000] address [size] of VTableFixups Directory:    
 // 0x00000000 [0x00000000] address [size] of Export Address Table:      
@@ -199,9 +199,9 @@
 // CLR meta-data size  : 2932               (57.27%)
 // CLR additional info : 128                ( 2.50%)
 // CLR method headers  : 13                 ( 0.25%)
-// Managed code         : 610               (11.91%)
+// Managed code         : 625               (12.21%)
 // Data                 : 512               (10.00%)
-// Unaccounted          : 170               ( 3.32%)
+// Unaccounted          : 155               ( 3.03%)
 
 // Num.of PE sections   : 2
 //   .text    - 4096
@@ -230,8 +230,8 @@
 //   Num.of fat headers    - 1
 //   Num.of tiny headers   - 1
 
-// Managed code : 610
-//   Ave method size - 305
+// Managed code : 625
+//   Ave method size - 312
 // Classes defined in this module:
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Class AtLangProgram                  (public) (auto) (ansi) 
@@ -266,9 +266,9 @@
 //   col  2:  Namespace    oCol: 4, cbCol:2, string 
 // -------------------------------------------------
 //    1 == 0:ResolutionScope[23000001], 1:string#1, 2:string#55
-//    2 == 0:ResolutionScope[23000001], 1:string#14f, 2:string#34
-//    3 == 0:ResolutionScope[23000002], 1:string#244, 2:string#2cc
-//    4 == 0:ResolutionScope[23000001], 1:string#133, 2:string#1b6
+//    2 == 0:ResolutionScope[23000001], 1:string#133, 2:string#1b6
+//    3 == 0:ResolutionScope[23000001], 1:string#14f, 2:string#34
+//    4 == 0:ResolutionScope[23000002], 1:string#244, 2:string#2cc
 //    5 == 0:ResolutionScope[23000002], 1:string#1e6, 2:string#2cc
 //    6 == 0:ResolutionScope[23000003], 1:string#ab, 2:string#1b6
 //    7 == 0:ResolutionScope[23000001], 1:string#251, 2:string#34
@@ -319,7 +319,7 @@
 //   col  5:  ParamList    oCol: c, cbCol:2, Param  
 // -------------------------------------------------
 //    1 == 0:00002050, 1:0000, 2:0096, 3:string#1c2, 4:blob#34f, 5:Param[8000001]
-//    2 == 0:000022b7, 1:0000, 2:1806, 3:string#263, 4:blob#aa, 5:Param[8000001]
+//    2 == 0:000022c6, 1:0000, 2:1806, 3:string#263, 4:blob#aa, 5:Param[8000001]
 // =================================================
 //  7(0x7): ParamPtr             cRecs:    0(0), cbRec:  2(0x2), cbTable:     0(0)
 //   col  0:  Param        oCol: 0, cbCol:2, Param  
@@ -341,15 +341,15 @@
 //    1 == 0:MemberRefParent[1b000001], 1:string#263, 2:blob#aa
 //    2 == 0:MemberRefParent[1b000001], 1:string#1ad, 2:blob#ae
 //    3 == 0:MemberRefParent[1b000001], 1:string#1a4, 2:blob#b6
-//    4 == 0:MemberRefParent[01000002], 1:string#148, 2:blob#bd
-//    5 == 0:MemberRefParent[01000003], 1:string#263, 2:blob#aa
-//    6 == 0:MemberRefParent[01000004], 1:string#2be, 2:blob#164
-//    7 == 0:MemberRefParent[01000003], 1:string#293, 2:blob#16a
+//    4 == 0:MemberRefParent[01000003], 1:string#148, 2:blob#bd
+//    5 == 0:MemberRefParent[01000004], 1:string#263, 2:blob#aa
+//    6 == 0:MemberRefParent[01000002], 1:string#2be, 2:blob#164
+//    7 == 0:MemberRefParent[01000004], 1:string#293, 2:blob#16a
 //    8 == 0:MemberRefParent[01000005], 1:string#70, 2:blob#16f
-//    9 == 0:MemberRefParent[01000003], 1:string#2db, 2:blob#aa
+//    9 == 0:MemberRefParent[01000004], 1:string#2db, 2:blob#aa
 //    a == 0:MemberRefParent[01000006], 1:string#301, 2:blob#216
 //    b == 0:MemberRefParent[01000007], 1:string#be, 2:blob#16f
-//    c == 0:MemberRefParent[01000003], 1:string#329, 2:blob#21b
+//    c == 0:MemberRefParent[01000004], 1:string#329, 2:blob#21b
 //    d == 0:MemberRefParent[01000008], 1:string#2e1, 2:blob#220
 //    e == 0:MemberRefParent[01000008], 1:string#f2, 2:blob#225
 //    f == 0:MemberRefParent[0100000a], 1:string#2a0, 2:blob#22a
@@ -357,9 +357,9 @@
 //   11 == 0:MemberRefParent[01000009], 1:string#172, 2:blob#235
 //   12 == 0:MemberRefParent[0100000c], 1:string#13a, 2:blob#23a
 //   13 == 0:MemberRefParent[0100000c], 1:string#131, 2:blob#23a
-//   14 == 0:MemberRefParent[01000004], 1:string#1bd, 2:blob#23e
-//   15 == 0:MemberRefParent[01000004], 1:string#74, 2:blob#244
-//   16 == 0:MemberRefParent[01000002], 1:string#c8, 2:blob#164
+//   14 == 0:MemberRefParent[01000002], 1:string#1bd, 2:blob#23e
+//   15 == 0:MemberRefParent[01000002], 1:string#74, 2:blob#244
+//   16 == 0:MemberRefParent[01000003], 1:string#c8, 2:blob#164
 //   17 == 0:MemberRefParent[0100000e], 1:string#2b7, 2:blob#244
 //   18 == 0:MemberRefParent[0100000a], 1:string#87, 2:blob#249
 //   19 == 0:MemberRefParent[0100000a], 1:string#d0, 2:blob#16f
@@ -373,7 +373,7 @@
 //   21 == 0:MemberRefParent[0100000a], 1:string#e, 2:blob#26a
 //   22 == 0:MemberRefParent[01000012], 1:string#263, 2:blob#aa
 //   23 == 0:MemberRefParent[01000012], 1:string#e0, 2:blob#311
-//   24 == 0:MemberRefParent[01000004], 1:string#2be, 2:blob#318
+//   24 == 0:MemberRefParent[01000002], 1:string#2be, 2:blob#318
 //   25 == 0:MemberRefParent[01000013], 1:string#263, 2:blob#31e
 //   26 == 0:MemberRefParent[01000010], 1:string#203, 2:blob#327
 //   27 == 0:MemberRefParent[01000010], 1:string#11a, 2:blob#aa
@@ -650,13 +650,13 @@
   .ver 0:0:0:0
 }
 .module MainModule
-// MVID: {dc173647-5832-4109-b228-43d247c7bb47}
+// MVID: {9abc6ad2-9ca7-49ea-b577-052ac6ebf576}
 .imagebase 0x00400000
 .file alignment 0x00000200
 .stackreserve 0x00100000
 .subsystem 0x0003       // WINDOWS_CUI
 .corflags 0x00000001    //  ILONLY
-// Image base: 0x0000029A06FA0000
+// Image base: 0x00000225CE980000
 
 
 // =============== CLASS MEMBERS DECLARATION ===================
@@ -670,13 +670,13 @@
   {
     .entrypoint
     // Method begins at RVA 0x2050
-    // Code size       603 (0x25b)
+    // Code size       618 (0x26a)
     .maxstack  5
-    .locals /*11000001*/ init (class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,string> V_0,
+    .locals /*11000001*/ init (class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object> V_0,
              string V_1,
              string V_2,
              string V_3,
-             class [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000003*/ V_4,
+             class [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000004*/ V_4,
              class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/ V_5,
              class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerRequest/*01000009*/ V_6,
              string V_7,
@@ -690,222 +690,225 @@
              class [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/ V_15,
              class [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/ V_16,
              uint8[] V_17)
-    IL_0000:  /* 73   | (0A)000001       */ newobj     instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,string>/*1B000001*/::.ctor() /* 0A000001 */
+    IL_0000:  /* 73   | (0A)000001       */ newobj     instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::.ctor() /* 0A000001 */
     IL_0005:  /* 0A   |                  */ stloc.0
     IL_0006:  /* 06   |                  */ ldloc.0
     IL_0007:  /* 72   | (70)000001       */ ldstr      "SERVER_ROOT_PATH" /* 70000001 */
     IL_000c:  /* 72   | (70)000023       */ ldstr      "./samples/server_files" /* 70000023 */
-    IL_0011:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,string>/*1B000001*/::set_Item(!0,
+    IL_0011:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_0016:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
                                                                                                                                                                                                         !1) /* 0A000002 */
-    IL_0016:  /* 06   |                  */ ldloc.0
-    IL_0017:  /* 72   | (70)000051       */ ldstr      "SERVER_PORT" /* 70000051 */
-    IL_001c:  /* 72   | (70)000069       */ ldstr      "8081" /* 70000069 */
-    IL_0021:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,string>/*1B000001*/::set_Item(!0,
+    IL_001b:  /* 06   |                  */ ldloc.0
+    IL_001c:  /* 72   | (70)000051       */ ldstr      "SERVER_PORT" /* 70000051 */
+    IL_0021:  /* 72   | (70)000069       */ ldstr      "8081" /* 70000069 */
+    IL_0026:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_002b:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
                                                                                                                                                                                                         !1) /* 0A000002 */
-    IL_0026:  /* 06   |                  */ ldloc.0
-    IL_0027:  /* 72   | (70)000001       */ ldstr      "SERVER_ROOT_PATH" /* 70000001 */
-    IL_002c:  /* 6F   | (0A)000003       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,string>/*1B000001*/::get_Item(!0) /* 0A000003 */
-    IL_0031:  /* 28   | (0A)000004       */ call       string [System.Private.CoreLib/*23000001*/]System.IO.Path/*01000002*/::GetFullPath(string) /* 0A000004 */
-    IL_0036:  /* 0B   |                  */ stloc.1
-    IL_0037:  /* 06   |                  */ ldloc.0
-    IL_0038:  /* 72   | (70)000051       */ ldstr      "SERVER_PORT" /* 70000051 */
-    IL_003d:  /* 6F   | (0A)000003       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,string>/*1B000001*/::get_Item(!0) /* 0A000003 */
-    IL_0042:  /* 0C   |                  */ stloc.2
-    IL_0043:  /* 73   | (0A)000005       */ newobj     instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000003*/::.ctor() /* 0A000005 */
-    IL_0048:  /* 13   | 04               */ stloc.s    V_4
-    IL_004a:  /* 72   | (70)000073       */ ldstr      "http://+:" /* 70000073 */
-    IL_004f:  /* 08   |                  */ ldloc.2
-    IL_0050:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string,
+    IL_0030:  /* 06   |                  */ ldloc.0
+    IL_0031:  /* 72   | (70)000001       */ ldstr      "SERVER_ROOT_PATH" /* 70000001 */
+    IL_0036:  /* 6F   | (0A)000003       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000003 */
+    IL_003b:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_0040:  /* 28   | (0A)000004       */ call       string [System.Private.CoreLib/*23000001*/]System.IO.Path/*01000003*/::GetFullPath(string) /* 0A000004 */
+    IL_0045:  /* 0B   |                  */ stloc.1
+    IL_0046:  /* 06   |                  */ ldloc.0
+    IL_0047:  /* 72   | (70)000051       */ ldstr      "SERVER_PORT" /* 70000051 */
+    IL_004c:  /* 6F   | (0A)000003       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000003 */
+    IL_0051:  /* 0C   |                  */ stloc.2
+    IL_0052:  /* 73   | (0A)000005       */ newobj     instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000004*/::.ctor() /* 0A000005 */
+    IL_0057:  /* 13   | 04               */ stloc.s    V_4
+    IL_0059:  /* 72   | (70)000073       */ ldstr      "http://+:" /* 70000073 */
+    IL_005e:  /* 08   |                  */ ldloc.2
+    IL_005f:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string,
                                                                                                                                     string) /* 0A000006 */
-    IL_0055:  /* 72   | (70)000087       */ ldstr      "/" /* 70000087 */
-    IL_005a:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string,
+    IL_0064:  /* 72   | (70)000087       */ ldstr      "/" /* 70000087 */
+    IL_0069:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string,
                                                                                                                                     string) /* 0A000006 */
-    IL_005f:  /* 0D   |                  */ stloc.3
-    IL_0060:  /* 11   | 04               */ ldloc.s    V_4
-    IL_0062:  /* 6F   | (0A)000007       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerPrefixCollection/*01000005*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000003*/::get_Prefixes() /* 0A000007 */
-    IL_0067:  /* 09   |                  */ ldloc.3
-    IL_0068:  /* 6F   | (0A)000008       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerPrefixCollection/*01000005*/::Add(string) /* 0A000008 */
-    IL_006d:  /* 11   | 04               */ ldloc.s    V_4
-    IL_006f:  /* 6F   | (0A)000009       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000003*/::Start() /* 0A000009 */
-    IL_0074:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_0079:  /* 72   | (70)00008B       */ ldstr      "Server listening at " /* 7000008B */
-    IL_007e:  /* 09   |                  */ ldloc.3
-    IL_007f:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string,
+    IL_006e:  /* 0D   |                  */ stloc.3
+    IL_006f:  /* 11   | 04               */ ldloc.s    V_4
+    IL_0071:  /* 6F   | (0A)000007       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerPrefixCollection/*01000005*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000004*/::get_Prefixes() /* 0A000007 */
+    IL_0076:  /* 09   |                  */ ldloc.3
+    IL_0077:  /* 6F   | (0A)000008       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerPrefixCollection/*01000005*/::Add(string) /* 0A000008 */
+    IL_007c:  /* 11   | 04               */ ldloc.s    V_4
+    IL_007e:  /* 6F   | (0A)000009       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000004*/::Start() /* 0A000009 */
+    IL_0083:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
+    IL_0088:  /* 72   | (70)00008B       */ ldstr      "Server listening at " /* 7000008B */
+    IL_008d:  /* 09   |                  */ ldloc.3
+    IL_008e:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string,
                                                                                                                                     string) /* 0A000006 */
-    IL_0084:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
-    IL_0089:  /* 11   | 04               */ ldloc.s    V_4
-    IL_008b:  /* 6F   | (0A)00000C       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000003*/::GetContext() /* 0A00000C */
-    IL_0090:  /* 13   | 05               */ stloc.s    V_5
-    IL_0092:  /* 11   | 05               */ ldloc.s    V_5
-    IL_0094:  /* 6F   | (0A)00000D       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerRequest/*01000009*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Request() /* 0A00000D */
-    IL_0099:  /* 13   | 06               */ stloc.s    V_6
-    IL_009b:  /* 11   | 05               */ ldloc.s    V_5
-    IL_009d:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
-    IL_00a2:  /* 6F   | (0A)00000F       */ callvirt   instance class [System.Net.WebHeaderCollection/*23000004*/]System.Net.WebHeaderCollection/*0100000B*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::get_Headers() /* 0A00000F */
-    IL_00a7:  /* 72   | (70)0000B5       */ ldstr      "X-Powered-By" /* 700000B5 */
-    IL_00ac:  /* 72   | (70)0000CF       */ ldstr      "AtLang/0.0.1" /* 700000CF */
-    IL_00b1:  /* 6F   | (0A)000010       */ callvirt   instance void [System.Net.WebHeaderCollection/*23000004*/]System.Net.WebHeaderCollection/*0100000B*/::Set(string,
+    IL_0093:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
+    IL_0098:  /* 11   | 04               */ ldloc.s    V_4
+    IL_009a:  /* 6F   | (0A)00000C       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListener/*01000004*/::GetContext() /* 0A00000C */
+    IL_009f:  /* 13   | 05               */ stloc.s    V_5
+    IL_00a1:  /* 11   | 05               */ ldloc.s    V_5
+    IL_00a3:  /* 6F   | (0A)00000D       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerRequest/*01000009*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Request() /* 0A00000D */
+    IL_00a8:  /* 13   | 06               */ stloc.s    V_6
+    IL_00aa:  /* 11   | 05               */ ldloc.s    V_5
+    IL_00ac:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
+    IL_00b1:  /* 6F   | (0A)00000F       */ callvirt   instance class [System.Net.WebHeaderCollection/*23000004*/]System.Net.WebHeaderCollection/*0100000B*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::get_Headers() /* 0A00000F */
+    IL_00b6:  /* 72   | (70)0000B5       */ ldstr      "X-Powered-By" /* 700000B5 */
+    IL_00bb:  /* 72   | (70)0000CF       */ ldstr      "AtLang/0.0.1" /* 700000CF */
+    IL_00c0:  /* 6F   | (0A)000010       */ callvirt   instance void [System.Net.WebHeaderCollection/*23000004*/]System.Net.WebHeaderCollection/*0100000B*/::Set(string,
                                                                                                                                                                  string) /* 0A000010 */
-    IL_00b6:  /* 11   | 06               */ ldloc.s    V_6
-    IL_00b8:  /* 6F   | (0A)000011       */ callvirt   instance class [System.Private.Uri/*23000005*/]System.Uri/*0100000C*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerRequest/*01000009*/::get_Url() /* 0A000011 */
-    IL_00bd:  /* 25   |                  */ dup
-    IL_00be:  /* 6F   | (0A)000012       */ callvirt   instance string [System.Private.Uri/*23000005*/]System.Uri/*0100000C*/::get_LocalPath() /* 0A000012 */
-    IL_00c3:  /* 13   | 07               */ stloc.s    V_7
-    IL_00c5:  /* 6F   | (0A)000013       */ callvirt   instance string [System.Private.Uri/*23000005*/]System.Uri/*0100000C*/::ToString() /* 0A000013 */
-    IL_00ca:  /* 13   | 08               */ stloc.s    V_8
-    IL_00cc:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_00d1:  /* 72   | (70)0000E9       */ ldstr      "Received request: " /* 700000E9 */
-    IL_00d6:  /* 11   | 08               */ ldloc.s    V_8
-    IL_00d8:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string,
+    IL_00c5:  /* 11   | 06               */ ldloc.s    V_6
+    IL_00c7:  /* 6F   | (0A)000011       */ callvirt   instance class [System.Private.Uri/*23000005*/]System.Uri/*0100000C*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerRequest/*01000009*/::get_Url() /* 0A000011 */
+    IL_00cc:  /* 25   |                  */ dup
+    IL_00cd:  /* 6F   | (0A)000012       */ callvirt   instance string [System.Private.Uri/*23000005*/]System.Uri/*0100000C*/::get_LocalPath() /* 0A000012 */
+    IL_00d2:  /* 13   | 07               */ stloc.s    V_7
+    IL_00d4:  /* 6F   | (0A)000013       */ callvirt   instance string [System.Private.Uri/*23000005*/]System.Uri/*0100000C*/::ToString() /* 0A000013 */
+    IL_00d9:  /* 13   | 08               */ stloc.s    V_8
+    IL_00db:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
+    IL_00e0:  /* 72   | (70)0000E9       */ ldstr      "Received request: " /* 700000E9 */
+    IL_00e5:  /* 11   | 08               */ ldloc.s    V_8
+    IL_00e7:  /* 28   | (0A)000006       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string,
                                                                                                                                     string) /* 0A000006 */
-    IL_00dd:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
-    IL_00e2:  /* 11   | 07               */ ldloc.s    V_7
-    IL_00e4:  /* 19   |                  */ ldc.i4.3
-    IL_00e5:  /* 8D   | (01)00000D       */ newarr     [System.Private.CoreLib/*23000001*/]System.Char/*0100000D*/
-    IL_00ea:  /* 25   |                  */ dup
-    IL_00eb:  /* 16   |                  */ ldc.i4.0
-    IL_00ec:  /* 1F   | 2F               */ ldc.i4.s   47
-    IL_00ee:  /* 9D   |                  */ stelem.i2
-    IL_00ef:  /* 25   |                  */ dup
-    IL_00f0:  /* 17   |                  */ ldc.i4.1
-    IL_00f1:  /* 1F   | 2E               */ ldc.i4.s   46
-    IL_00f3:  /* 9D   |                  */ stelem.i2
-    IL_00f4:  /* 25   |                  */ dup
-    IL_00f5:  /* 18   |                  */ ldc.i4.2
-    IL_00f6:  /* 1F   | 5C               */ ldc.i4.s   92
-    IL_00f8:  /* 9D   |                  */ stelem.i2
-    IL_00f9:  /* 28   | (0A)000014       */ call       instance string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Trim(char[]) /* 0A000014 */
-    IL_00fe:  /* 13   | 09               */ stloc.s    V_9
-    IL_0100:  /* 11   | 09               */ ldloc.s    V_9
-    IL_0102:  /* 28   | (0A)000015       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::IsNullOrWhiteSpace(string) /* 0A000015 */
-    IL_0107:  /* 2C   | 07               */ brfalse.s  IL_0110
+    IL_00ec:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
+    IL_00f1:  /* 11   | 07               */ ldloc.s    V_7
+    IL_00f3:  /* 19   |                  */ ldc.i4.3
+    IL_00f4:  /* 8D   | (01)00000D       */ newarr     [System.Private.CoreLib/*23000001*/]System.Char/*0100000D*/
+    IL_00f9:  /* 25   |                  */ dup
+    IL_00fa:  /* 16   |                  */ ldc.i4.0
+    IL_00fb:  /* 1F   | 2F               */ ldc.i4.s   47
+    IL_00fd:  /* 9D   |                  */ stelem.i2
+    IL_00fe:  /* 25   |                  */ dup
+    IL_00ff:  /* 17   |                  */ ldc.i4.1
+    IL_0100:  /* 1F   | 2E               */ ldc.i4.s   46
+    IL_0102:  /* 9D   |                  */ stelem.i2
+    IL_0103:  /* 25   |                  */ dup
+    IL_0104:  /* 18   |                  */ ldc.i4.2
+    IL_0105:  /* 1F   | 5C               */ ldc.i4.s   92
+    IL_0107:  /* 9D   |                  */ stelem.i2
+    IL_0108:  /* 28   | (0A)000014       */ call       instance string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Trim(char[]) /* 0A000014 */
+    IL_010d:  /* 13   | 09               */ stloc.s    V_9
+    IL_010f:  /* 11   | 09               */ ldloc.s    V_9
+    IL_0111:  /* 28   | (0A)000015       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::IsNullOrWhiteSpace(string) /* 0A000015 */
+    IL_0116:  /* 2C   | 07               */ brfalse.s  IL_011f
 
-    IL_0109:  /* 72   | (70)00010F       */ ldstr      "index.html" /* 7000010F */
-    IL_010e:  /* 13   | 09               */ stloc.s    V_9
-    IL_0110:  /* 07   |                  */ ldloc.1
-    IL_0111:  /* 11   | 09               */ ldloc.s    V_9
-    IL_0113:  /* 28   | (0A)000016       */ call       string [System.Private.CoreLib/*23000001*/]System.IO.Path/*01000002*/::Combine(string,
+    IL_0118:  /* 72   | (70)00010F       */ ldstr      "index.html" /* 7000010F */
+    IL_011d:  /* 13   | 09               */ stloc.s    V_9
+    IL_011f:  /* 07   |                  */ ldloc.1
+    IL_0120:  /* 11   | 09               */ ldloc.s    V_9
+    IL_0122:  /* 28   | (0A)000016       */ call       string [System.Private.CoreLib/*23000001*/]System.IO.Path/*01000003*/::Combine(string,
                                                                                                                                       string) /* 0A000016 */
-    IL_0118:  /* 13   | 0D               */ stloc.s    V_13
-    IL_011a:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_011f:  /* 11   | 0D               */ ldloc.s    V_13
-    IL_0121:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
-    IL_0126:  /* 11   | 0D               */ ldloc.s    V_13
-    IL_0128:  /* 28   | (0A)000017       */ call       bool [System.Private.CoreLib/*23000001*/]System.IO.File/*0100000E*/::Exists(string) /* 0A000017 */
-    IL_012d:  /* 3A   | 0000006A         */ brtrue     IL_019c
+    IL_0127:  /* 13   | 0D               */ stloc.s    V_13
+    IL_0129:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
+    IL_012e:  /* 11   | 0D               */ ldloc.s    V_13
+    IL_0130:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
+    IL_0135:  /* 11   | 0D               */ ldloc.s    V_13
+    IL_0137:  /* 28   | (0A)000017       */ call       bool [System.Private.CoreLib/*23000001*/]System.IO.File/*0100000E*/::Exists(string) /* 0A000017 */
+    IL_013c:  /* 3A   | 0000006A         */ brtrue     IL_01ab
 
-    IL_0132:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_0137:  /* 72   | (70)000125       */ ldstr      "Not found" /* 70000125 */
-    IL_013c:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
-    IL_0141:  /* 11   | 05               */ ldloc.s    V_5
-    IL_0143:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
-    IL_0148:  /* 20   | 00000194         */ ldc.i4     0x194
-    IL_014d:  /* 6F   | (0A)000018       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_StatusCode(int32) /* 0A000018 */
-    IL_0152:  /* 11   | 05               */ ldloc.s    V_5
-    IL_0154:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
-    IL_0159:  /* 72   | (70)000139       */ ldstr      "text/plain" /* 70000139 */
-    IL_015e:  /* 6F   | (0A)000019       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_ContentType(string) /* 0A000019 */
-    IL_0163:  /* 28   | (0A)00001A       */ call       class [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/ [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/::get_UTF8() /* 0A00001A */
-    IL_0168:  /* 72   | (70)00014F       */ ldstr      "404 Not Found" /* 7000014F */
-    IL_016d:  /* 6F   | (0A)00001B       */ callvirt   instance uint8[] [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/::GetBytes(string) /* 0A00001B */
-    IL_0172:  /* 13   | 11               */ stloc.s    V_17
-    IL_0174:  /* 11   | 05               */ ldloc.s    V_5
-    IL_0176:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
-    IL_017b:  /* 6F   | (0A)00001C       */ callvirt   instance class [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::get_OutputStream() /* 0A00001C */
-    IL_0180:  /* 13   | 10               */ stloc.s    V_16
-    IL_0182:  /* 11   | 10               */ ldloc.s    V_16
-    IL_0184:  /* 11   | 11               */ ldloc.s    V_17
-    IL_0186:  /* 16   |                  */ ldc.i4.0
-    IL_0187:  /* 11   | 11               */ ldloc.s    V_17
-    IL_0189:  /* 8E   |                  */ ldlen
-    IL_018a:  /* 69   |                  */ conv.i4
-    IL_018b:  /* 6F   | (0A)00001D       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/::Write(uint8[],
+    IL_0141:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
+    IL_0146:  /* 72   | (70)000125       */ ldstr      "Not found" /* 70000125 */
+    IL_014b:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
+    IL_0150:  /* 11   | 05               */ ldloc.s    V_5
+    IL_0152:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
+    IL_0157:  /* 20   | 00000194         */ ldc.i4     0x194
+    IL_015c:  /* 6F   | (0A)000018       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_StatusCode(int32) /* 0A000018 */
+    IL_0161:  /* 11   | 05               */ ldloc.s    V_5
+    IL_0163:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
+    IL_0168:  /* 72   | (70)000139       */ ldstr      "text/plain" /* 70000139 */
+    IL_016d:  /* 6F   | (0A)000019       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_ContentType(string) /* 0A000019 */
+    IL_0172:  /* 28   | (0A)00001A       */ call       class [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/ [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/::get_UTF8() /* 0A00001A */
+    IL_0177:  /* 72   | (70)00014F       */ ldstr      "404 Not Found" /* 7000014F */
+    IL_017c:  /* 6F   | (0A)00001B       */ callvirt   instance uint8[] [System.Private.CoreLib/*23000001*/]System.Text.Encoding/*0100000F*/::GetBytes(string) /* 0A00001B */
+    IL_0181:  /* 13   | 11               */ stloc.s    V_17
+    IL_0183:  /* 11   | 05               */ ldloc.s    V_5
+    IL_0185:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
+    IL_018a:  /* 6F   | (0A)00001C       */ callvirt   instance class [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::get_OutputStream() /* 0A00001C */
+    IL_018f:  /* 13   | 10               */ stloc.s    V_16
+    IL_0191:  /* 11   | 10               */ ldloc.s    V_16
+    IL_0193:  /* 11   | 11               */ ldloc.s    V_17
+    IL_0195:  /* 16   |                  */ ldc.i4.0
+    IL_0196:  /* 11   | 11               */ ldloc.s    V_17
+    IL_0198:  /* 8E   |                  */ ldlen
+    IL_0199:  /* 69   |                  */ conv.i4
+    IL_019a:  /* 6F   | (0A)00001D       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/::Write(uint8[],
                                                                                                                                              int32,
                                                                                                                                              int32) /* 0A00001D */
-    IL_0190:  /* 11   | 10               */ ldloc.s    V_16
-    IL_0192:  /* 6F   | (0A)00001E       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/::Close() /* 0A00001E */
-    IL_0197:  /* 38   | 000000B8         */ br         IL_0254
+    IL_019f:  /* 11   | 10               */ ldloc.s    V_16
+    IL_01a1:  /* 6F   | (0A)00001E       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/::Close() /* 0A00001E */
+    IL_01a6:  /* 38   | 000000B8         */ br         IL_0263
 
-    IL_019c:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_01a1:  /* 72   | (70)00016B       */ ldstr      "Found" /* 7000016B */
-    IL_01a6:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
-    IL_01ab:  /* 11   | 0D               */ ldloc.s    V_13
-    IL_01ad:  /* 73   | (0A)00001F       */ newobj     instance void [System.Private.CoreLib/*23000001*/]System.IO.FileInfo/*01000011*/::.ctor(string) /* 0A00001F */
-    IL_01b2:  /* 6F   | (0A)000020       */ callvirt   instance int64 [System.Private.CoreLib/*23000001*/]System.IO.FileInfo/*01000011*/::get_Length() /* 0A000020 */
-    IL_01b7:  /* 13   | 0C               */ stloc.s    V_12
-    IL_01b9:  /* 11   | 05               */ ldloc.s    V_5
-    IL_01bb:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
-    IL_01c0:  /* 11   | 0C               */ ldloc.s    V_12
-    IL_01c2:  /* 6F   | (0A)000021       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_ContentLength64(int64) /* 0A000021 */
-    IL_01c7:  /* 73   | (0A)000022       */ newobj     instance void [Microsoft.AspNetCore.StaticFiles/*23000006*/]Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider/*01000012*/::.ctor() /* 0A000022 */
-    IL_01cc:  /* 13   | 0A               */ stloc.s    V_10
-    IL_01ce:  /* 72   | (70)000177       */ ldstr      "text/html" /* 70000177 */
-    IL_01d3:  /* 13   | 0B               */ stloc.s    V_11
-    IL_01d5:  /* 11   | 0A               */ ldloc.s    V_10
-    IL_01d7:  /* 11   | 0D               */ ldloc.s    V_13
-    IL_01d9:  /* 12   | 0B               */ ldloca.s   V_11
-    IL_01db:  /* 6F   | (0A)000023       */ callvirt   instance bool [Microsoft.AspNetCore.StaticFiles/*23000006*/]Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider/*01000012*/::TryGetContentType(string,
+    IL_01ab:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
+    IL_01b0:  /* 72   | (70)00016B       */ ldstr      "Found" /* 7000016B */
+    IL_01b5:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
+    IL_01ba:  /* 11   | 0D               */ ldloc.s    V_13
+    IL_01bc:  /* 73   | (0A)00001F       */ newobj     instance void [System.Private.CoreLib/*23000001*/]System.IO.FileInfo/*01000011*/::.ctor(string) /* 0A00001F */
+    IL_01c1:  /* 6F   | (0A)000020       */ callvirt   instance int64 [System.Private.CoreLib/*23000001*/]System.IO.FileInfo/*01000011*/::get_Length() /* 0A000020 */
+    IL_01c6:  /* 13   | 0C               */ stloc.s    V_12
+    IL_01c8:  /* 11   | 05               */ ldloc.s    V_5
+    IL_01ca:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
+    IL_01cf:  /* 11   | 0C               */ ldloc.s    V_12
+    IL_01d1:  /* 6F   | (0A)000021       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_ContentLength64(int64) /* 0A000021 */
+    IL_01d6:  /* 73   | (0A)000022       */ newobj     instance void [Microsoft.AspNetCore.StaticFiles/*23000006*/]Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider/*01000012*/::.ctor() /* 0A000022 */
+    IL_01db:  /* 13   | 0A               */ stloc.s    V_10
+    IL_01dd:  /* 72   | (70)000177       */ ldstr      "text/html" /* 70000177 */
+    IL_01e2:  /* 13   | 0B               */ stloc.s    V_11
+    IL_01e4:  /* 11   | 0A               */ ldloc.s    V_10
+    IL_01e6:  /* 11   | 0D               */ ldloc.s    V_13
+    IL_01e8:  /* 12   | 0B               */ ldloca.s   V_11
+    IL_01ea:  /* 6F   | (0A)000023       */ callvirt   instance bool [Microsoft.AspNetCore.StaticFiles/*23000006*/]Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider/*01000012*/::TryGetContentType(string,
                                                                                                                                                                                                                     string&) /* 0A000023 */
-    IL_01e0:  /* 2D   | 07               */ brtrue.s   IL_01e9
+    IL_01ef:  /* 2D   | 07               */ brtrue.s   IL_01f8
 
-    IL_01e2:  /* 72   | (70)00018B       */ ldstr      "application/octet-stream" /* 7000018B */
-    IL_01e7:  /* 13   | 0B               */ stloc.s    V_11
-    IL_01e9:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
-    IL_01ee:  /* 1B   |                  */ ldc.i4.5
-    IL_01ef:  /* 8D   | (01)000004       */ newarr     [System.Private.CoreLib/*23000001*/]System.String/*01000004*/
-    IL_01f4:  /* 25   |                  */ dup
-    IL_01f5:  /* 16   |                  */ ldc.i4.0
-    IL_01f6:  /* 11   | 0D               */ ldloc.s    V_13
-    IL_01f8:  /* A2   |                  */ stelem.ref
-    IL_01f9:  /* 25   |                  */ dup
-    IL_01fa:  /* 17   |                  */ ldc.i4.1
-    IL_01fb:  /* 72   | (70)0001BD       */ ldstr      " > Type: " /* 700001BD */
-    IL_0200:  /* A2   |                  */ stelem.ref
-    IL_0201:  /* 25   |                  */ dup
-    IL_0202:  /* 18   |                  */ ldc.i4.2
-    IL_0203:  /* 11   | 0B               */ ldloc.s    V_11
-    IL_0205:  /* A2   |                  */ stelem.ref
-    IL_0206:  /* 25   |                  */ dup
-    IL_0207:  /* 19   |                  */ ldc.i4.3
-    IL_0208:  /* 72   | (70)0001D1       */ ldstr      " > Bytes: " /* 700001D1 */
-    IL_020d:  /* A2   |                  */ stelem.ref
-    IL_020e:  /* 25   |                  */ dup
-    IL_020f:  /* 1A   |                  */ ldc.i4.4
-    IL_0210:  /* 11   | 0B               */ ldloc.s    V_11
-    IL_0212:  /* A2   |                  */ stelem.ref
-    IL_0213:  /* 28   | (0A)000024       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000004*/::Concat(string[]) /* 0A000024 */
-    IL_0218:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
-    IL_021d:  /* 11   | 05               */ ldloc.s    V_5
-    IL_021f:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
-    IL_0224:  /* 11   | 0B               */ ldloc.s    V_11
-    IL_0226:  /* 6F   | (0A)000019       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_ContentType(string) /* 0A000019 */
-    IL_022b:  /* 11   | 0D               */ ldloc.s    V_13
-    IL_022d:  /* 19   |                  */ ldc.i4.3
-    IL_022e:  /* 17   |                  */ ldc.i4.1
-    IL_022f:  /* 73   | (0A)000025       */ newobj     instance void [System.Private.CoreLib/*23000001*/]System.IO.FileStream/*01000013*/::.ctor(string,
+    IL_01f1:  /* 72   | (70)00018B       */ ldstr      "application/octet-stream" /* 7000018B */
+    IL_01f6:  /* 13   | 0B               */ stloc.s    V_11
+    IL_01f8:  /* 28   | (0A)00000A       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000003*/]System.Console/*01000006*/::get_Out() /* 0A00000A */
+    IL_01fd:  /* 1B   |                  */ ldc.i4.5
+    IL_01fe:  /* 8D   | (01)000002       */ newarr     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_0203:  /* 25   |                  */ dup
+    IL_0204:  /* 16   |                  */ ldc.i4.0
+    IL_0205:  /* 11   | 0D               */ ldloc.s    V_13
+    IL_0207:  /* A2   |                  */ stelem.ref
+    IL_0208:  /* 25   |                  */ dup
+    IL_0209:  /* 17   |                  */ ldc.i4.1
+    IL_020a:  /* 72   | (70)0001BD       */ ldstr      " > Type: " /* 700001BD */
+    IL_020f:  /* A2   |                  */ stelem.ref
+    IL_0210:  /* 25   |                  */ dup
+    IL_0211:  /* 18   |                  */ ldc.i4.2
+    IL_0212:  /* 11   | 0B               */ ldloc.s    V_11
+    IL_0214:  /* A2   |                  */ stelem.ref
+    IL_0215:  /* 25   |                  */ dup
+    IL_0216:  /* 19   |                  */ ldc.i4.3
+    IL_0217:  /* 72   | (70)0001D1       */ ldstr      " > Bytes: " /* 700001D1 */
+    IL_021c:  /* A2   |                  */ stelem.ref
+    IL_021d:  /* 25   |                  */ dup
+    IL_021e:  /* 1A   |                  */ ldc.i4.4
+    IL_021f:  /* 11   | 0B               */ ldloc.s    V_11
+    IL_0221:  /* A2   |                  */ stelem.ref
+    IL_0222:  /* 28   | (0A)000024       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string[]) /* 0A000024 */
+    IL_0227:  /* 6F   | (0A)00000B       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000B */
+    IL_022c:  /* 11   | 05               */ ldloc.s    V_5
+    IL_022e:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
+    IL_0233:  /* 11   | 0B               */ ldloc.s    V_11
+    IL_0235:  /* 6F   | (0A)000019       */ callvirt   instance void [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::set_ContentType(string) /* 0A000019 */
+    IL_023a:  /* 11   | 0D               */ ldloc.s    V_13
+    IL_023c:  /* 19   |                  */ ldc.i4.3
+    IL_023d:  /* 17   |                  */ ldc.i4.1
+    IL_023e:  /* 73   | (0A)000025       */ newobj     instance void [System.Private.CoreLib/*23000001*/]System.IO.FileStream/*01000013*/::.ctor(string,
                                                                                                                                                  valuetype [System.Private.CoreLib/*23000001*/]System.IO.FileMode/*01000014*/,
                                                                                                                                                  valuetype [System.Private.CoreLib/*23000001*/]System.IO.FileAccess/*01000015*/) /* 0A000025 */
-    IL_0234:  /* 13   | 0F               */ stloc.s    V_15
-    IL_0236:  /* 11   | 05               */ ldloc.s    V_5
-    IL_0238:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
-    IL_023d:  /* 6F   | (0A)00001C       */ callvirt   instance class [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::get_OutputStream() /* 0A00001C */
-    IL_0242:  /* 13   | 10               */ stloc.s    V_16
-    IL_0244:  /* 11   | 0F               */ ldloc.s    V_15
-    IL_0246:  /* 11   | 10               */ ldloc.s    V_16
-    IL_0248:  /* 6F   | (0A)000026       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/::CopyTo(class [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/) /* 0A000026 */
-    IL_024d:  /* 11   | 0F               */ ldloc.s    V_15
-    IL_024f:  /* 6F   | (0A)000027       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/::Dispose() /* 0A000027 */
-    IL_0254:  /* 38   | FFFFFE30         */ br         IL_0089
+    IL_0243:  /* 13   | 0F               */ stloc.s    V_15
+    IL_0245:  /* 11   | 05               */ ldloc.s    V_5
+    IL_0247:  /* 6F   | (0A)00000E       */ callvirt   instance class [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerContext/*01000008*/::get_Response() /* 0A00000E */
+    IL_024c:  /* 6F   | (0A)00001C       */ callvirt   instance class [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/ [System.Net.HttpListener/*23000002*/]System.Net.HttpListenerResponse/*0100000A*/::get_OutputStream() /* 0A00001C */
+    IL_0251:  /* 13   | 10               */ stloc.s    V_16
+    IL_0253:  /* 11   | 0F               */ ldloc.s    V_15
+    IL_0255:  /* 11   | 10               */ ldloc.s    V_16
+    IL_0257:  /* 6F   | (0A)000026       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/::CopyTo(class [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/) /* 0A000026 */
+    IL_025c:  /* 11   | 0F               */ ldloc.s    V_15
+    IL_025e:  /* 6F   | (0A)000027       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.Stream/*01000010*/::Dispose() /* 0A000027 */
+    IL_0263:  /* 38   | FFFFFE30         */ br         IL_0098
 
-    IL_0259:  /* 16   |                  */ ldc.i4.0
-    IL_025a:  /* 2A   |                  */ ret
+    IL_0268:  /* 16   |                  */ ldc.i4.0
+    IL_0269:  /* 2A   |                  */ ret
   } // end of method AtLangProgram::Main
 
   .method /*06000002*/ public specialname rtspecialname 
           instance void  .ctor() cil managed
   // SIG: 20 00 01
   {
-    // Method begins at RVA 0x22b7
+    // Method begins at RVA 0x22c6
     // Code size       7 (0x7)
     .maxstack  8
     IL_0000:  /* 02   |                  */ ldarg.0
