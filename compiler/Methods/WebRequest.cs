@@ -96,9 +96,10 @@ internal class WebRequest : IMethodEmitter<WebRequestAssign>
         // 4) Because node.URL is a variable name, we must do a dictionary lookup to get the actual URL string:
         il.Emit(OpCodes.Ldloc, dictLocal);
         il.Emit(OpCodes.Ldstr, node.UrlVar);  // the *name* of the variable
-        System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, string>)
+        System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, object>)
             .GetProperty("Item")!
             .GetGetMethod()!;
+        il.Emit(OpCodes.Isinst, typeof(string));
         il.Emit(OpCodes.Callvirt, dictGetItem); // returns the actual URL string
 
         if (node.Method.Equals(nameof(HttpMethod.Get), StringComparison.OrdinalIgnoreCase))
@@ -127,7 +128,7 @@ internal class WebRequest : IMethodEmitter<WebRequestAssign>
 
         // At this point, the top of the stack is the response string (or error message).
         // 5) Store it in dict[node.VarName]
-        System.Reflection.MethodInfo dictSetItem = typeof(Dictionary<string, string>)
+        System.Reflection.MethodInfo dictSetItem = typeof(Dictionary<string, object>)
             .GetProperty("Item")!
             .GetSetMethod()!;
         il.Emit(OpCodes.Callvirt, dictSetItem);
