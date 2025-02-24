@@ -127,15 +127,88 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Call, concat);
         il.Emit(OpCodes.Callvirt, typeof(TextWriter).GetMethod(nameof(TextWriter.WriteLine), [typeof(string)])!);
 
-        // Start infinite loop to accept requests
+        // Begin infinite loop.
         Label loopStart = il.DefineLabel();
         il.MarkLabel(loopStart);
 
-        // contextLocal = listener.GetContext()
+        // Accept new connection asynchronously: call httpListenerLocal.GetContextAsync()
         il.Emit(OpCodes.Ldloc, httpListenerLocal);
-        il.Emit(OpCodes.Callvirt, typeof(HttpListener).GetMethod("GetContext")!);
+        MethodInfo getContextAsyncMI = typeof(HttpListener).GetMethod("GetContextAsync")!;
+        il.Emit(OpCodes.Callvirt, getContextAsyncMI);
+        LocalBuilder taskLocal = il.DeclareLocal(typeof(Task<HttpListenerContext>));
+        il.Emit(OpCodes.Stloc, taskLocal);
+
+        // Wait for task to complete (busy-wait for simplicity)
+        il.Emit(OpCodes.Ldloc, taskLocal);
+        MethodInfo getAwaiterMI = typeof(Task<HttpListenerContext>).GetMethod("GetAwaiter")!;
+        il.Emit(OpCodes.Callvirt, getAwaiterMI);
+        LocalBuilder awaiterLocal = il.DeclareLocal(typeof(TaskAwaiter<HttpListenerContext>));
+        il.Emit(OpCodes.Stloc, awaiterLocal);
+        il.Emit(OpCodes.Ldloca_S, awaiterLocal);
+        MethodInfo isCompletedMI = typeof(TaskAwaiter<HttpListenerContext>).GetProperty("IsCompleted")!.GetGetMethod()!;
+        il.Emit(OpCodes.Call, isCompletedMI);
+        Label completedLabel = il.DefineLabel();
+        il.Emit(OpCodes.Brtrue_S, completedLabel);
+        Label busyWait = il.DefineLabel();
+        il.MarkLabel(busyWait);
+        il.Emit(OpCodes.Ldloca_S, awaiterLocal);
+        il.Emit(OpCodes.Call, isCompletedMI);
+        il.Emit(OpCodes.Brfalse_S, busyWait);
+        il.MarkLabel(completedLabel);
+        // Get the HttpListenerContext.
+        il.Emit(OpCodes.Ldloca_S, awaiterLocal);
+        MethodInfo getResultMI = typeof(TaskAwaiter<HttpListenerContext>).GetMethod("GetResult")!;
+        il.Emit(OpCodes.Call, getResultMI);
         il.Emit(OpCodes.Stloc, contextLocal);
 
+        // --- Check concurrent count ---
+        Label limitExceededLabel = il.DefineLabel();
+        Label continueProcessingLabel = il.DefineLabel();
+        FieldInfo concurrentCountField = typeof(HttpListenerAsyncILGenerator).GetField("ConcurrentCount", BindingFlags.Public | BindingFlags.Static)!;
+        il.Emit(OpCodes.Ldsfld, concurrentCountField);
+        il.Emit(OpCodes.Ldc_I4, 1000);
+        il.Emit(OpCodes.Bge_S, limitExceededLabel);
+        // Under limit: Increment ConcurrentCount using Interlocked.Increment.
+        MethodInfo interlockedIncrementMI = typeof(Interlocked).GetMethod("Increment", new Type[] { typeof(int).MakeByRefType() })!;
+        il.Emit(OpCodes.Ldsflda, concurrentCountField);
+        il.Emit(OpCodes.Call, interlockedIncrementMI);
+        il.Emit(OpCodes.Pop);
+        il.Emit(OpCodes.Br_S, continueProcessingLabel);
+
+        // Limit exceeded: respond with HTTP 503.
+        il.MarkLabel(limitExceededLabel);
+        il.Emit(OpCodes.Ldloc, contextLocal);
+        MethodInfo getResponseMI = typeof(HttpListenerContext).GetProperty("Response")!.GetGetMethod()!;
+        il.Emit(OpCodes.Callvirt, getResponseMI);
+        il.Emit(OpCodes.Dup);
+        il.Emit(OpCodes.Ldc_I4, 503);
+        MethodInfo setStatusCodeMI = typeof(HttpListenerResponse).GetProperty("StatusCode")!.GetSetMethod()!;
+        il.Emit(OpCodes.Callvirt, setStatusCodeMI);
+        il.Emit(OpCodes.Ldstr, "Service Unavailable");
+        MethodInfo setStatusDescriptionMI = typeof(HttpListenerResponse).GetProperty("StatusDescription")!.GetSetMethod()!;
+        il.Emit(OpCodes.Callvirt, setStatusDescriptionMI);
+        MethodInfo closeMI = typeof(HttpListenerResponse).GetMethod("Close")!;
+        il.Emit(OpCodes.Callvirt, closeMI);
+        il.Emit(OpCodes.Br, loopStart);
+
+        il.MarkLabel(continueProcessingLabel);
+        // --- Spawn async state machine to process the request ---
+        // Create a new async state machine.
+        il.Emit(OpCodes.Newobj, typeof(AsyncStateMachineGenerator).GetConstructor(Type.EmptyTypes)!);
+        MethodInfo genSMMethod = typeof(AsyncStateMachineGenerator).GetMethod("GenerateStateMachine")!;
+        il.Emit(OpCodes.Ldstr, "HttpRequestStateMachine");
+        il.Emit(OpCodes.Callvirt, genSMMethod);
+        MethodInfo createInstanceMI = typeof(Activator).GetMethod("CreateInstance", new Type[] { typeof(Type) })!;
+        il.Emit(OpCodes.Call, createInstanceMI);
+        il.Emit(OpCodes.Castclass, typeof(IAsyncStateMachine));
+        LocalBuilder stateMachineLocal = il.DeclareLocal(typeof(IAsyncStateMachine));
+        il.Emit(OpCodes.Stloc, stateMachineLocal);
+
+        // Create a dynamic method that processes the request and then decrements ConcurrentCount.
+        DynamicMethod dm = new DynamicMethod("ProcessRequest", typeof(Task<int>), new Type[] { typeof(HttpListenerContext) }, typeof(HttpListenerAsyncILGenerator).Module, true);
+        ILGenerator dmIL = dm.GetILGenerator();
+        dmIL.Emit(OpCodes.Ldarg_0);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // requestLocal = contextLocal.Request
         il.Emit(OpCodes.Ldloc, contextLocal);
         il.Emit(OpCodes.Callvirt, typeof(HttpListenerContext).GetProperty("Request")!.GetGetMethod()!);
