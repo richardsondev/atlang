@@ -51,10 +51,11 @@ internal class Expression : IMethodEmitter<ASTNode>
             il.Emit(OpCodes.Ldloc, dictLocal);
             il.Emit(OpCodes.Ldstr, vr.Name);
 
-            System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, string>)
+            System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, object>)
                 .GetProperty("Item")!
                 .GetGetMethod()!;
             il.Emit(OpCodes.Callvirt, dictGetItem);
+            il.Emit(OpCodes.Isinst, typeof(string));
 
             // if null => ""
             Label labelNotNull = il.DefineLabel();
