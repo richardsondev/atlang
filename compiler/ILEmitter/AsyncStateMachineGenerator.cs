@@ -1,10 +1,8 @@
-using System;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
-namespace AtLangCompiler.ILEmitter
+namespace AtLangCompiler.ILEmitter;
 
 /// <summary>
 /// Generates an asynchronous state machine for handling async requests.
