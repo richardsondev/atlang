@@ -7,6 +7,10 @@ updates:
       day: "saturday"
       time: "02:00"
     open-pull-requests-limit: 10
+    groups:
+      github-actions-updates:
+        patterns:
+        - "*"
 
   - package-ecosystem: "nuget"
     directory: "/"
@@ -15,6 +19,10 @@ updates:
       day: "saturday"
       time: "02:00"
     open-pull-requests-limit: 10
+    groups:
+      nuget-updates:
+        patterns:
+        - "*"
 
   - package-ecosystem: "dotnet-sdk"
     directory: "/"
@@ -23,3 +31,7 @@ updates:
       day: "saturday"
       time: "02:00"
     open-pull-requests-limit: 10
+    groups:
+      dotnet-sdk-updates:
+        patterns:
+        - "*"
