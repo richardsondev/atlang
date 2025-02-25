@@ -87,6 +87,23 @@ internal class Lexer
                 return new Token(TokenType.STRING, strVal);
         }
 
+        if (char.IsDigit(Current))
+        {
+            int start = pos;
+            while (pos < text.Length && char.IsDigit(text[pos]))
+            {
+                pos++;
+            }
+
+            string numberString = text.Substring(start, pos - start);
+            if (!long.TryParse(numberString, out long value))
+            {
+                throw new Exception($"Unable to parse '{numberString}' as a long.");
+            }
+
+            return new Token(TokenType.NUMBER, value);
+        }
+
         // identifier?
         if (Regex.IsMatch(Current.ToString(), "[A-Za-z_]"))
         {
