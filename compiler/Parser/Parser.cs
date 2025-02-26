@@ -112,16 +112,15 @@ internal class Parser
     {
         if (current.Type == TokenType.AT)
         {
-            Eat(TokenType.AT);
-            string name = current.Text;
-            Eat(TokenType.IDENT);
-            return new VarReference(name);
+            return new VarParser().ParseStatement(this);
         }
         else if (current.Type == TokenType.STRING)
         {
-            string val = current.Text;
-            Eat(TokenType.STRING);
-            return new StringLiteral(val);
+            return new StringParser().ParseStatement(this);
+        }
+        else if (current.Type == TokenType.NUMBER)
+        {
+            return new NumberParser().ParseStatement(this);
         }
         else
         {

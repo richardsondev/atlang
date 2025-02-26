@@ -75,6 +75,16 @@ namespace AtLangCompiler.Tests
         }
 
         [TestMethod]
+        [Description("Test for number literals")]
+        public void NextToken_NumberLiteral_ReturnsExpectedToken()
+        {
+            var lexer = new Lexer("2147483648");
+            var token = lexer.NextToken();
+            Assert.AreEqual(TokenType.NUMBER, token.Type);
+            Assert.AreEqual(2147483648, token.Number);
+        }
+
+        [TestMethod]
         [DataRow("identifier", "identifier")]
         [DataRow("_id123", "_id123")]
         [Description("Test for identifiers")]

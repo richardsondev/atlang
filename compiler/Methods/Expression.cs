@@ -1,4 +1,5 @@
 ﻿using AtLangCompiler.ILEmitter;
+using System.Reflection;
 using System.Reflection.Emit;
 
 namespace AtLangCompiler.Methods;
@@ -26,8 +27,15 @@ internal class StringLiteral : ASTNode
     public StringLiteral(string value) { Value = value; }
 }
 
+internal class NumberLiteral : ASTNode
+{
+    public long Value { get; }
+    public NumberLiteral(long value) { Value = value; }
+}
+
 [EmitterFor(typeof(VarReference))]
 [EmitterFor(typeof(StringLiteral))]
+[EmitterFor(typeof(NumberLiteral))]
 [EmitterFor(typeof(BinaryExpression))]
 internal class Expression : IMethodEmitter<ASTNode>
 {
@@ -44,32 +52,61 @@ internal class Expression : IMethodEmitter<ASTNode>
 
     public void EmitIL(ASTNode expr)
     {
-        // Evaluate VarReference, StringLiteral, or BinaryExpression
         if (expr is VarReference vr)
         {
-            // dict[varName]
+            // Load the dictionary and key
             il.Emit(OpCodes.Ldloc, dictLocal);
             il.Emit(OpCodes.Ldstr, vr.Name);
 
-            System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, object>)
+            // Get dictionary value
+            MethodInfo dictGetItem = typeof(Dictionary<string, object>)
                 .GetProperty("Item")!
                 .GetGetMethod()!;
             il.Emit(OpCodes.Callvirt, dictGetItem);
-            il.Emit(OpCodes.Isinst, typeof(string));
 
-            // if null => ""
+            // Duplicate the retrieved value for type checking
+            il.Emit(OpCodes.Dup);
+
+            Label labelIsLong = il.DefineLabel();
+            Label labelIsString = il.DefineLabel();
             Label labelNotNull = il.DefineLabel();
             Label labelEnd = il.DefineLabel();
+
+            // Check if the value is a long (Int64)
+            il.Emit(OpCodes.Isinst, typeof(long));
             il.Emit(OpCodes.Dup);
-            il.Emit(OpCodes.Brtrue_S, labelNotNull);
+            il.Emit(OpCodes.Brtrue_S, labelIsLong); // If it's a long, jump to long handling
+
+            // Check if the value is a string
+            il.Emit(OpCodes.Pop); // Remove the failed `long` check result
+            il.Emit(OpCodes.Dup);
+            il.Emit(OpCodes.Isinst, typeof(string));
+            il.Emit(OpCodes.Dup);
+            il.Emit(OpCodes.Brtrue_S, labelIsString); // If it's a string, jump to string handling
+
+            // If null, replace with an empty string
             il.Emit(OpCodes.Pop);
             il.Emit(OpCodes.Ldstr, string.Empty);
-            il.MarkLabel(labelNotNull);
+            il.Emit(OpCodes.Br_S, labelEnd); // Jump to end
+
+            // Handle long case
+            il.MarkLabel(labelIsLong);
+            il.Emit(OpCodes.Unbox_Any, typeof(long)); // Extract long value
+            il.Emit(OpCodes.Br_S, labelEnd);
+
+            // Handle string case
+            il.MarkLabel(labelIsString);
+            il.Emit(OpCodes.Br_S, labelEnd);
+
             il.MarkLabel(labelEnd);
         }
         else if (expr is StringLiteral sl)
         {
             il.Emit(OpCodes.Ldstr, sl.Value);
+        }
+        else if (expr is NumberLiteral nl)
+        {
+            il.Emit(OpCodes.Ldc_I8, nl.Value);
         }
         else if (expr is BinaryExpression be)
         {
@@ -78,8 +115,23 @@ internal class Expression : IMethodEmitter<ASTNode>
             EmitIL(be.Right);
             if (be.Op == "+")
             {
-                System.Reflection.MethodInfo concat = typeof(string).GetMethod(nameof(string.Concat), [typeof(string), typeof(string)])!;
-                il.Emit(OpCodes.Call, concat);
+                // TODO: handle number varreference
+                if ((be.Left is StringLiteral && be.Right is StringLiteral) ||
+                    (be.Left is StringLiteral && be.Right is VarReference) ||
+                    (be.Left is VarReference && be.Right is StringLiteral) ||
+                    (be.Left is VarReference && be.Right is VarReference))
+                {
+                    MethodInfo concat = typeof(string).GetMethod(nameof(string.Concat), [typeof(string), typeof(string)])!;
+                    il.Emit(OpCodes.Call, concat);
+                }
+                else if (be.Left is NumberLiteral && be.Right is NumberLiteral)
+                {
+                    il.Emit(OpCodes.Add);
+                }
+                else
+                {
+                    throw new InvalidOperationException($"Unable to add variables of different types. Type 1: {be.Left.GetType()}, Type 2: {be.Right.GetType()}");
+                }
             }
             else
             {

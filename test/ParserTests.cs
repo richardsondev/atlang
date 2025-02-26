@@ -45,7 +45,7 @@ namespace AtLangCompiler.Tests
             var program = parser.ParseProgram();
             Assert.AreEqual(3, program.Count);
             Assert.AreEqual(typeof(EnvVarAssignment), program[0].GetType());
-            Assert.AreEqual(typeof(EnvVarAssignment), program[1].GetType());
+            Assert.AreEqual(typeof(VarAssignment), program[1].GetType());
             Assert.AreEqual(typeof(PrintStatement), program[2].GetType());
         }
 
@@ -102,6 +102,17 @@ namespace AtLangCompiler.Tests
 
             var result = parser.ParseExpression();
             Assert.IsInstanceOfType(result, typeof(StringLiteral));
+        }
+
+        [TestMethod]
+        [Description("Test ParseSimpleExpr handles number literals")]
+        public void ParseSimpleExpr_NumberLiteral_ReturnsNumberLiteralNode()
+        {
+            var lexer = new Lexer("123");
+            var parser = new Parser(lexer);
+
+            var result = parser.ParseExpression();
+            Assert.IsInstanceOfType(result, typeof(NumberLiteral));
         }
 
         public static IEnumerable<object[]> GetParserStatementData()

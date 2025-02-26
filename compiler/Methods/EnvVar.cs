@@ -16,13 +16,11 @@ internal class EnvVarAssignment : ASTNode
 {
     public string VarName { get; }
     public string? EnvVarName { get; }
-    public string? StrValue { get; }
 
-    public EnvVarAssignment(string varName, string? envVarName, string? strValue)
+    public EnvVarAssignment(string varName, string? envVarName)
     {
         VarName = varName;
         EnvVarName = envVarName;
-        StrValue = strValue;
     }
 }
 
@@ -37,7 +35,7 @@ internal class EnvironmentStatementParser : IStatementParser
         string envName = parser.current.Text;
         parser.Eat(TokenType.IDENT);
         parser.Eat(TokenType.RPAREN);
-        return new EnvVarAssignment(parser.varName, envName, null);
+        return new EnvVarAssignment(parser.varName, envName);
     }
 }
 
@@ -62,7 +60,7 @@ internal class EnvVar : IMethodEmitter<EnvVarAssignment>
         if (node.EnvVarName != null)
         {
             // Environment.GetEnvironmentVariable(...) ?? ""
-            System.Reflection.MethodInfo getEnvMI = typeof(Environment).GetMethod(nameof(Environment.GetEnvironmentVariable), [typeof(string)])!;
+            MethodInfo getEnvMI = typeof(Environment).GetMethod(nameof(Environment.GetEnvironmentVariable), [typeof(string)])!;
             il.Emit(OpCodes.Ldstr, node.EnvVarName);
             il.Emit(OpCodes.Call, getEnvMI);
 
@@ -75,10 +73,6 @@ internal class EnvVar : IMethodEmitter<EnvVarAssignment>
             il.Emit(OpCodes.Ldstr, string.Empty);
             il.MarkLabel(labelNotNull);
             il.MarkLabel(labelEnd);
-        }
-        else
-        {
-            il.Emit(OpCodes.Ldstr, node.StrValue ?? string.Empty);
         }
 
         MethodInfo dictSetItem = typeof(Dictionary<string, object>)
