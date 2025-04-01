@@ -1,7 +1,7 @@
 <Project>
     <ItemGroup>
         <PackageVersion Include="Microsoft.AspNetCore.StaticFiles" Version="2.3.0" />
-        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
+        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
         <PackageVersion Include="Microsoft.NETCore.ILDAsm" Version="9.0.0" />
         <PackageVersion Include="runtime.win-x64.Microsoft.NETCore.ILDAsm" Version="9.0.0" />
         <PackageVersion Include="runtime.linux-x64.Microsoft.NETCore.ILDAsm" Version="9.0.0" />
