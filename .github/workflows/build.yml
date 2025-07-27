@@ -47,8 +47,119 @@ jobs:
         echo "Tests failed. Failing pipeline."
         exit 1
 
-    - name: Upload compiler artifact
+    - name: Publish self-contained compiler for all RIDs
+      run: bash build/publish.sh
+
+    - name: Upload compiler artifact (win-x64)
       uses: actions/upload-artifact@v4
       with:
-        name: compiler-artifact
-        path: compiler/bin/Release/net9.0/
+        name: compiler-win-x64
+        path: published/win-x64
+
+    - name: Upload compiler artifact (win-x86)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-win-x86
+        path: published/win-x86
+
+    - name: Upload compiler artifact (win-arm64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-win-arm64
+        path: published/win-arm64
+
+    - name: Upload compiler artifact (linux-x64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-linux-x64
+        path: published/linux-x64
+
+    - name: Upload compiler artifact (linux-musl-x64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-linux-musl-x64
+        path: published/linux-musl-x64
+
+    - name: Upload compiler artifact (linux-musl-arm64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-linux-musl-arm64
+        path: published/linux-musl-arm64
+
+    - name: Upload compiler artifact (linux-arm)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-linux-arm
+        path: published/linux-arm
+
+    - name: Upload compiler artifact (linux-arm64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-linux-arm64
+        path: published/linux-arm64
+
+    - name: Upload compiler artifact (linux-bionic-arm64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-linux-bionic-arm64
+        path: published/linux-bionic-arm64
+
+    - name: Upload compiler artifact (linux-loongarch64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-linux-loongarch64
+        path: published/linux-loongarch64
+
+    - name: Upload compiler artifact (osx-x64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-osx-x64
+        path: published/osx-x64
+
+    - name: Upload compiler artifact (osx-arm64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-osx-arm64
+        path: published/osx-arm64
+
+    - name: Upload compiler artifact (ios-arm64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-ios-arm64
+        path: published/ios-arm64
+
+    - name: Upload compiler artifact (iossimulator-arm64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-iossimulator-arm64
+        path: published/iossimulator-arm64
+
+    - name: Upload compiler artifact (iossimulator-x64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-iossimulator-x64
+        path: published/iossimulator-x64
+
+    - name: Upload compiler artifact (android-arm64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-android-arm64
+        path: published/android-arm64
+
+    - name: Upload compiler artifact (android-arm)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-android-arm
+        path: published/android-arm
+
+    - name: Upload compiler artifact (android-x64)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-android-x64
+        path: published/android-x64
+
+    - name: Upload compiler artifact (android-x86)
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiler-android-x86
+        path: published/android-x86

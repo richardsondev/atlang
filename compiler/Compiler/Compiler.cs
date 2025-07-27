@@ -4,12 +4,15 @@ using System.Reflection.Emit;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
 using System.Reflection.PortableExecutable;
+using Microsoft.NET.HostModel.Bundle;
+using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace AtLangCompiler;
 
 public static class Compiler
 {
-    public static void CompileToIL(string source, string outputPath)
+    public static void CompileToIL(string source, string outputPath, OSPlatform targetOS, bool selfContained = true)
     {
         if (Directory.Exists(outputPath))
         {
@@ -80,10 +83,82 @@ public static class Compiler
         BlobBuilder peBlob = new BlobBuilder();
         peBuilder.Serialize(peBlob);
 
-        using FileStream fileStream = new FileStream(outputPath, FileMode.Create, FileAccess.Write);
-        peBlob.WriteContentTo(fileStream);
+        string tempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+        Directory.CreateDirectory(tempDir);
+        try
+        {
+            string tempAssembly = Path.Combine(tempDir, Path.GetFileName(outputPath));
+            using (FileStream fileStream = new FileStream(tempAssembly, FileMode.Create, FileAccess.Write))
+            {
+                peBlob.WriteContentTo(fileStream);
+            }
 
-        // Required until this is self-contained
-        File.Copy("AtLangCompiler.runtimeconfig.json", $"{assemblyName}.runtimeconfig.json", true);
+            string runtimeConfig = Path.Combine(tempDir, $"{assemblyName}.runtimeconfig.json");
+            File.Copy("AtLangCompiler.runtimeconfig.json", runtimeConfig, true);
+
+            List<FileSpec> bundleFiles = new List<FileSpec>
+            {
+                new FileSpec(tempAssembly, Path.GetFileName(tempAssembly)),
+                new FileSpec(runtimeConfig, Path.GetFileName(runtimeConfig))
+            };
+
+            foreach (string requiredAssembly in ilEmitter.GetRequiredAssemblies())
+            {
+                string dest = Path.Combine(tempDir, Path.GetFileName(requiredAssembly));
+                File.Copy(requiredAssembly, dest, true);
+                bundleFiles.Add(new FileSpec(dest, Path.GetFileName(dest)));
+            }
+
+            if (selfContained)
+            {
+                Bundler bundler = new Bundler(
+                    Path.GetFileName(outputPath),
+                    tempDir,
+                    BundleOptions.BundleAllContent,
+                    targetOS,
+                    RuntimeInformation.ProcessArchitecture,
+                    new Version(9, 0),
+                    true,
+                    null,
+                    false);
+
+                bundler.GenerateBundle(bundleFiles);
+
+                string bundled = Path.Combine(tempDir, Path.GetFileName(outputPath));
+                FileUtil.CopyWithRetries(bundled, outputPath);
+            }
+            else
+            {
+                foreach (FileSpec file in bundleFiles)
+                {
+                    string destName = Path.GetFileName(file.SourcePath);
+                    string dest = destName == Path.GetFileName(outputPath)
+                        ? outputPath
+                        : Path.Combine(Path.GetDirectoryName(outputPath)!, destName);
+
+                    FileUtil.CopyWithRetries(file.SourcePath, dest);
+                }
+            }
+        }
+        finally
+        {
+            try
+            {
+                Directory.Delete(tempDir, true);
+            }
+            catch (IOException ex)
+            {
+                Console.Error.WriteLine($"Failed to delete temporary directory '{tempDir}': {ex.Message}");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Console.Error.WriteLine($"Access denied while deleting temporary directory '{tempDir}': {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Unexpected error during cleanup of temporary directory '{tempDir}': {ex.Message}");
+            }
+        }
     }
+
 }
