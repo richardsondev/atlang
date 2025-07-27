@@ -67,7 +67,6 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         il.Emit(OpCodes.Ldloc, dictLocal);                    // push local dictionary
         il.Emit(OpCodes.Ldstr, node.ServerRootPath);          // push the variable name (e.g. "ROOT_PATH")
         MethodInfo dictGetItem = typeof(Dictionary<string, object>)
-        MethodInfo dictGetItem = typeof(Dictionary<string, object>)
             .GetProperty("Item")!
             .GetGetMethod()!;
         il.Emit(OpCodes.Callvirt, dictGetItem);               // calls dict[varName]
