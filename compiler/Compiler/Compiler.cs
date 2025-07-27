@@ -4,12 +4,15 @@ using System.Reflection.Emit;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
 using System.Reflection.PortableExecutable;
+using Microsoft.NET.HostModel.Bundle;
+using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace AtLangCompiler;
 
 public static class Compiler
 {
-    public static void CompileToIL(string source, string outputPath)
+    public static void CompileToIL(string source, string outputPath, OSPlatform targetOS)
     {
         if (Directory.Exists(outputPath))
         {
@@ -80,17 +83,48 @@ public static class Compiler
         BlobBuilder peBlob = new BlobBuilder();
         peBuilder.Serialize(peBlob);
 
-        using FileStream fileStream = new FileStream(outputPath, FileMode.Create, FileAccess.Write);
-        peBlob.WriteContentTo(fileStream);
-
-        // Required until this is self-contained
-        var outputFolder = Path.GetDirectoryName(outputPath);
-        File.Copy("AtLangCompiler.runtimeconfig.json", Path.Join(outputFolder, $"{assemblyName}.runtimeconfig.json"), true);
-        
-        var requiredAssemblies = ilEmitter.GetRequiredAssemblies();
-        foreach (var requiredAssembly in requiredAssemblies)
+        string tempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+        Directory.CreateDirectory(tempDir);
+        try
         {
-            File.Copy(requiredAssembly, Path.Join(outputFolder, Path.GetFileName(requiredAssembly)), true);
+            string tempAssembly = Path.Combine(tempDir, Path.GetFileName(outputPath));
+            using (FileStream fileStream = new FileStream(tempAssembly, FileMode.Create, FileAccess.Write))
+            {
+                peBlob.WriteContentTo(fileStream);
+            }
+
+            string runtimeConfig = Path.Combine(tempDir, $"{assemblyName}.runtimeconfig.json");
+            File.Copy("AtLangCompiler.runtimeconfig.json", runtimeConfig, true);
+
+            List<FileSpec> bundleFiles = new List<FileSpec>
+            {
+                new FileSpec(tempAssembly, Path.GetFileName(tempAssembly)),
+                new FileSpec(runtimeConfig, Path.GetFileName(runtimeConfig))
+            };
+
+            foreach (string requiredAssembly in ilEmitter.GetRequiredAssemblies())
+            {
+                string dest = Path.Combine(tempDir, Path.GetFileName(requiredAssembly));
+                File.Copy(requiredAssembly, dest, true);
+                bundleFiles.Add(new FileSpec(dest, Path.GetFileName(dest)));
+            }
+
+            Bundler bundler = new Bundler(
+                Path.GetFileName(outputPath),
+                Path.GetDirectoryName(outputPath)!,
+                BundleOptions.BundleAllContent,
+                targetOS,
+                RuntimeInformation.ProcessArchitecture,
+                new Version(9, 0),
+                true,
+                null,
+                false);
+
+            bundler.GenerateBundle(bundleFiles);
+        }
+        finally
+        {
+            try { Directory.Delete(tempDir, true); } catch { }
         }
     }
 }

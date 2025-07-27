@@ -1,14 +1,22 @@
-﻿using AtLangCompiler;
+﻿using System.Runtime.InteropServices;
+using AtLangCompiler;
 using System.Diagnostics;
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        if (args.Length != 1 || string.IsNullOrWhiteSpace(args[0]))
+        if (args.Length < 1 || args.Length > 2 || string.IsNullOrWhiteSpace(args[0]))
         {
             Console.WriteLine("Incorrect arguments!");
-            Console.WriteLine("Usage: AtLangCompiler.dll <source file path>");
+            Console.WriteLine("Usage: AtLangCompiler.dll <source file path> [targetOS]");
+            return;
+        }
+
+        OSPlatform targetOS = OSPlatform.Linux;
+        if (args.Length == 2)
+        {
+            targetOS = OSPlatform.Create(args[1]);
         }
 
         string atPath = Path.GetFullPath(args[0]);
@@ -19,7 +27,8 @@ public class Program
 
         string code = File.ReadAllText(atPath);
         string sourceName = Path.GetFileNameWithoutExtension(atPath);
-        string outputFileName = $"{sourceName}.exe";
+        string extension = targetOS == OSPlatform.Windows ? ".exe" : string.Empty;
+        string outputFileName = sourceName + extension;
         string outputPath = Path.GetFullPath(outputFileName);
 
         Console.WriteLine($"Building {Path.GetFileName(atPath)}");
@@ -27,7 +36,7 @@ public class Program
 
         try
         {
-            Compiler.CompileToIL(code, outputPath);
+            Compiler.CompileToIL(code, outputPath, targetOS);
             sw.Stop();
         }
         catch (Exception ex)
