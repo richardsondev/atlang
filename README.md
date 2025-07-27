@@ -20,13 +20,15 @@ The compiler is developed in C# using .NET 9's IL assembly writing capabilities.
 2. **Move to the Output Directory**  
    After building, switch to the folder containing the compiled artifacts.
 
-3. **Compile Your AtLang Program**  
+3. **Compile Your AtLang Program**
    ```bash
-   dotnet AtLangCompiler.dll your_program.at
+   dotnet AtLangCompiler.dll your_program.at [targetOS] [--no-self-contained]
    ```
-4. **Run the Generated Program**  
+   - `targetOS` defaults to `Windows` if omitted. Use values like `Linux` or `OSX` to target other platforms.
+   - Use `--no-self-contained` to produce a framework-dependent executable.
+4. **Run the Generated Program**
    ```bash
-   dotnet your_program.exe
+   ./your_program.exe
    ```
 
 ---

@@ -7,12 +7,14 @@ using System.Reflection.PortableExecutable;
 using Microsoft.NET.HostModel.Bundle;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using Polly;
+using Polly.Retry;
 
 namespace AtLangCompiler;
 
 public static class Compiler
 {
-    public static void CompileToIL(string source, string outputPath, OSPlatform targetOS)
+    public static void CompileToIL(string source, string outputPath, OSPlatform targetOS, bool selfContained = true)
     {
         if (Directory.Exists(outputPath))
         {
@@ -109,18 +111,36 @@ public static class Compiler
                 bundleFiles.Add(new FileSpec(dest, Path.GetFileName(dest)));
             }
 
-            Bundler bundler = new Bundler(
-                Path.GetFileName(outputPath),
-                Path.GetDirectoryName(outputPath)!,
-                BundleOptions.BundleAllContent,
-                targetOS,
-                RuntimeInformation.ProcessArchitecture,
-                new Version(9, 0),
-                true,
-                null,
-                false);
+            if (selfContained)
+            {
+                Bundler bundler = new Bundler(
+                    Path.GetFileName(outputPath),
+                    tempDir,
+                    BundleOptions.BundleAllContent,
+                    targetOS,
+                    RuntimeInformation.ProcessArchitecture,
+                    new Version(9, 0),
+                    true,
+                    null,
+                    false);
 
-            bundler.GenerateBundle(bundleFiles);
+                bundler.GenerateBundle(bundleFiles);
+
+                string bundled = Path.Combine(tempDir, Path.GetFileName(outputPath));
+                CopyWithRetries(bundled, outputPath);
+            }
+            else
+            {
+                foreach (FileSpec file in bundleFiles)
+                {
+                    string destName = Path.GetFileName(file.SourcePath);
+                    string dest = destName == Path.GetFileName(outputPath)
+                        ? outputPath
+                        : Path.Combine(Path.GetDirectoryName(outputPath)!, destName);
+
+                    CopyWithRetries(file.SourcePath, dest);
+                }
+            }
         }
         finally
         {
@@ -141,5 +161,25 @@ public static class Compiler
                 Console.Error.WriteLine($"Unexpected error during cleanup of temporary directory '{tempDir}': {ex.Message}");
             }
         }
+    }
+
+    private static void CopyWithRetries(string source, string destination)
+    {
+        var options = new RetryStrategyOptions
+        {
+            ShouldHandle = new PredicateBuilder().Handle<Exception>(),
+            BackoffType = DelayBackoffType.Exponential,
+            UseJitter = true,
+            MaxRetryAttempts = 10,
+            Delay = TimeSpan.FromMilliseconds(100),
+            OnRetry = args =>
+            {
+                Console.WriteLine($"Retrying copy in {args.RetryDelay.TotalMilliseconds}ms...");
+                return default;
+            }
+        };
+
+        var pipeline = new ResiliencePipelineBuilder().AddRetry(options).Build();
+        pipeline.Execute(() => File.Copy(source, destination, true));
     }
 }
