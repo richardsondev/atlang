@@ -1,14 +1,19 @@
 <Project>
-    <ItemGroup>
-        <PackageVersion Include="Microsoft.AspNetCore.StaticFiles" Version="2.3.0" />
-        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
-        <PackageVersion Include="Microsoft.NETCore.ILDAsm" Version="9.0.0" />
-        <PackageVersion Include="runtime.win-x64.Microsoft.NETCore.ILDAsm" Version="9.0.0" />
-        <PackageVersion Include="runtime.linux-x64.Microsoft.NETCore.ILDAsm" Version="9.0.0" />
-        <PackageVersion Include="runtime.osx-x64.Microsoft.NETCore.ILDAsm" Version="9.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <GlobalPackageReference Include="AsyncFixer" Version="1.6.0" />
-    </ItemGroup>
+  <!--Runtime-->
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.AspNetCore.StaticFiles" Version="2.3.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
+  </ItemGroup>
+  <!--Test-->
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
+    <PackageVersion Include="Microsoft.NETCore.ILDAsm" Version="9.0.6" />
+    <PackageVersion Include="runtime.win-x64.Microsoft.NETCore.ILDAsm" Version="9.0.6" />
+    <PackageVersion Include="runtime.linux-x64.Microsoft.NETCore.ILDAsm" Version="9.0.6" />
+    <PackageVersion Include="runtime.osx-x64.Microsoft.NETCore.ILDAsm" Version="9.0.6" />
+  </ItemGroup>
+  <!--Build-->
+  <ItemGroup>
+    <GlobalPackageReference Include="AsyncFixer" Version="1.6.0" />
+  </ItemGroup>
 </Project>

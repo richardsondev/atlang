@@ -1,4 +1,5 @@
 ﻿using AtLangCompiler.ILEmitter;
+using System.Reflection;
 using System.Reflection.Emit;
 
 namespace AtLangCompiler.Methods;
@@ -80,9 +81,10 @@ internal class EnvVar : IMethodEmitter<EnvVarAssignment>
             il.Emit(OpCodes.Ldstr, node.StrValue ?? string.Empty);
         }
 
-        System.Reflection.MethodInfo dictSetItem = typeof(Dictionary<string, string>)
+        MethodInfo dictSetItem = typeof(Dictionary<string, object>)
             .GetProperty("Item")!
             .GetSetMethod()!;
+        il.Emit(OpCodes.Isinst, typeof(string));
         il.Emit(OpCodes.Callvirt, dictSetItem);
     }
 }

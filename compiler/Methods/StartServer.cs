@@ -1,4 +1,4 @@
-﻿using AtLangCompiler.ILEmitter;
+using AtLangCompiler.ILEmitter;
 using Microsoft.AspNetCore.StaticFiles;
 using System.Net;
 using System.Reflection;
@@ -64,12 +64,14 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         LocalBuilder portStrLocal = il.DeclareLocal(typeof(string)); // local for the port string
         LocalBuilder listener = il.DeclareLocal(typeof(string)); // local for listener
 
-        il.Emit(OpCodes.Ldloc, dictLocal);                    // push Dictionary<string,string>
+        il.Emit(OpCodes.Ldloc, dictLocal);                    // push local dictionary
         il.Emit(OpCodes.Ldstr, node.ServerRootPath);          // push the variable name (e.g. "ROOT_PATH")
-        MethodInfo dictGetItem = typeof(Dictionary<string, string>)
+        MethodInfo dictGetItem = typeof(Dictionary<string, object>)
+        MethodInfo dictGetItem = typeof(Dictionary<string, object>)
             .GetProperty("Item")!
             .GetGetMethod()!;
         il.Emit(OpCodes.Callvirt, dictGetItem);               // calls dict[varName]
+        il.Emit(OpCodes.Isinst, typeof(string));
         il.Emit(OpCodes.Call, typeof(Path).GetMethod("GetFullPath", [typeof(string)])!);
         il.Emit(OpCodes.Stloc, serverRootStrLocal);           // store in serverRootStrLocal
 

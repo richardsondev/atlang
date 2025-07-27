@@ -47,11 +47,11 @@ public static class Compiler
         );
 
         ILGenerator il = entryPoint.GetILGenerator();
-        LocalBuilder dictLocal = il.DeclareLocal(typeof(Dictionary<string, string>));
+        LocalBuilder dictLocal = il.DeclareLocal(typeof(Dictionary<string, object>));
         ILMethodEmitterManager ilEmitter = new ILMethodEmitterManager(il, dictLocal);
 
-        // We'll store variables in a Dictionary<string,string>
-        il.Emit(OpCodes.Newobj, typeof(Dictionary<string, string>).GetConstructor(Type.EmptyTypes)!);
+        // We'll store variables in a Dictionary<string,object>
+        il.Emit(OpCodes.Newobj, typeof(Dictionary<string, object>).GetConstructor(Type.EmptyTypes)!);
         il.Emit(OpCodes.Stloc, dictLocal);
 
         // Emit IL for each statement

@@ -137,6 +137,7 @@ namespace AtLangCompiler.Tests
         {
             IReadOnlyCollection<string> ignoredLinePrefixes =
             [
+                "//  .NET IL Disassembler.  Version",
                 "// Time-date stamp:",
                 "// MVID:",
                 "// Image base:",
