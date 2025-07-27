@@ -124,7 +124,22 @@ public static class Compiler
         }
         finally
         {
-            try { Directory.Delete(tempDir, true); } catch { }
+            try
+            {
+                Directory.Delete(tempDir, true);
+            }
+            catch (IOException ex)
+            {
+                Console.Error.WriteLine($"Failed to delete temporary directory '{tempDir}': {ex.Message}");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Console.Error.WriteLine($"Access denied while deleting temporary directory '{tempDir}': {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Unexpected error during cleanup of temporary directory '{tempDir}': {ex.Message}");
+            }
         }
     }
 }
