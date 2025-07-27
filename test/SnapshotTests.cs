@@ -24,7 +24,7 @@ namespace AtLangCompiler.Tests
             {
                 // Compile the .at file to IL
                 string atFileContents = File.ReadAllText(atFilePath);
-                Compiler.CompileToIL(atFileContents, tempAssembly);
+                Compiler.CompileToIL(atFileContents, tempAssembly, OSPlatform.Linux);
 
                 Assert.IsTrue(File.Exists(tempAssembly), $"Compilation failed: {tempAssembly} was not generated.");
 
