@@ -6,17 +6,26 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        if (args.Length < 1 || args.Length > 2 || string.IsNullOrWhiteSpace(args[0]))
+        if (args.Length < 1 || args.Length > 3 || string.IsNullOrWhiteSpace(args[0]))
         {
             Console.WriteLine("Incorrect arguments!");
-            Console.WriteLine("Usage: AtLangCompiler.dll <source file path> [targetOS]");
+            Console.WriteLine("Usage: AtLangCompiler.dll <source file path> [targetOS] [--no-self-contained]");
             return;
         }
 
-        OSPlatform targetOS = OSPlatform.Linux;
-        if (args.Length == 2)
+        OSPlatform targetOS = OSPlatform.Windows;
+        bool selfContained = true;
+
+        for (int i = 1; i < args.Length; i++)
         {
-            targetOS = OSPlatform.Create(args[1]);
+            if (string.Equals(args[i], "--no-self-contained", StringComparison.OrdinalIgnoreCase))
+            {
+                selfContained = false;
+            }
+            else
+            {
+                targetOS = OSPlatform.Create(args[i]);
+            }
         }
 
         string atPath = Path.GetFullPath(args[0]);
@@ -36,7 +45,7 @@ public class Program
 
         try
         {
-            Compiler.CompileToIL(code, outputPath, targetOS);
+            Compiler.CompileToIL(code, outputPath, targetOS, selfContained);
             sw.Stop();
         }
         catch (Exception ex)

@@ -12,7 +12,7 @@ namespace AtLangCompiler;
 
 public static class Compiler
 {
-    public static void CompileToIL(string source, string outputPath, OSPlatform targetOS)
+    public static void CompileToIL(string source, string outputPath, OSPlatform targetOS, bool selfContained = true)
     {
         if (Directory.Exists(outputPath))
         {
@@ -109,18 +109,36 @@ public static class Compiler
                 bundleFiles.Add(new FileSpec(dest, Path.GetFileName(dest)));
             }
 
-            Bundler bundler = new Bundler(
-                Path.GetFileName(outputPath),
-                Path.GetDirectoryName(outputPath)!,
-                BundleOptions.BundleAllContent,
-                targetOS,
-                RuntimeInformation.ProcessArchitecture,
-                new Version(9, 0),
-                true,
-                null,
-                false);
+            if (selfContained)
+            {
+                Bundler bundler = new Bundler(
+                    Path.GetFileName(outputPath),
+                    tempDir,
+                    BundleOptions.BundleAllContent,
+                    targetOS,
+                    RuntimeInformation.ProcessArchitecture,
+                    new Version(9, 0),
+                    true,
+                    null,
+                    false);
 
-            bundler.GenerateBundle(bundleFiles);
+                bundler.GenerateBundle(bundleFiles);
+
+                string bundled = Path.Combine(tempDir, Path.GetFileName(outputPath));
+                FileUtil.CopyWithRetries(bundled, outputPath);
+            }
+            else
+            {
+                foreach (FileSpec file in bundleFiles)
+                {
+                    string destName = Path.GetFileName(file.SourcePath);
+                    string dest = destName == Path.GetFileName(outputPath)
+                        ? outputPath
+                        : Path.Combine(Path.GetDirectoryName(outputPath)!, destName);
+
+                    FileUtil.CopyWithRetries(file.SourcePath, dest);
+                }
+            }
         }
         finally
         {
@@ -142,4 +160,5 @@ public static class Compiler
             }
         }
     }
+
 }
