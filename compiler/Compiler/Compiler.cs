@@ -7,8 +7,6 @@ using System.Reflection.PortableExecutable;
 using Microsoft.NET.HostModel.Bundle;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
-using Polly;
-using Polly.Retry;
 
 namespace AtLangCompiler;
 
@@ -127,7 +125,7 @@ public static class Compiler
                 bundler.GenerateBundle(bundleFiles);
 
                 string bundled = Path.Combine(tempDir, Path.GetFileName(outputPath));
-                CopyWithRetries(bundled, outputPath);
+                FileUtil.CopyWithRetries(bundled, outputPath);
             }
             else
             {
@@ -138,7 +136,7 @@ public static class Compiler
                         ? outputPath
                         : Path.Combine(Path.GetDirectoryName(outputPath)!, destName);
 
-                    CopyWithRetries(file.SourcePath, dest);
+                    FileUtil.CopyWithRetries(file.SourcePath, dest);
                 }
             }
         }
@@ -163,23 +161,4 @@ public static class Compiler
         }
     }
 
-    private static void CopyWithRetries(string source, string destination)
-    {
-        var options = new RetryStrategyOptions
-        {
-            ShouldHandle = new PredicateBuilder().Handle<Exception>(),
-            BackoffType = DelayBackoffType.Exponential,
-            UseJitter = true,
-            MaxRetryAttempts = 10,
-            Delay = TimeSpan.FromMilliseconds(100),
-            OnRetry = args =>
-            {
-                Console.WriteLine($"Retrying copy in {args.RetryDelay.TotalMilliseconds}ms...");
-                return default;
-            }
-        };
-
-        var pipeline = new ResiliencePipelineBuilder().AddRetry(options).Build();
-        pipeline.Execute(() => File.Copy(source, destination, true));
-    }
 }
