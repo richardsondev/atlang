@@ -9,9 +9,7 @@
         <PackageReference Include="Microsoft.AspNetCore.StaticFiles" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
         <PackageReference Include="Polly" />
-        <Reference Include="Microsoft.NET.HostModel">
-            <HintPath>$(MSBuildSDKsPath)/../Microsoft.NET.HostModel.dll</HintPath>
-        </Reference>
+        <PackageReference Include="Microsoft.NET.HostModel" />
     </ItemGroup>
 
 </Project>
