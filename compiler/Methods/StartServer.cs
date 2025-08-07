@@ -48,12 +48,12 @@ internal class ServerStatementParser : IStatementParser
 internal class StartServer : IMethodEmitter<StartServerAssign>
 {
     private readonly ILGenerator il;
-    private readonly LocalBuilder dictLocal;
+    private readonly ILMethodEmitterManager emitter;
 
-    public StartServer(ILGenerator il, LocalBuilder dictLocal)
+    public StartServer(ILGenerator il, ILMethodEmitterManager emitter)
     {
         this.il = il ?? throw new ArgumentNullException(nameof(il));
-        this.dictLocal = dictLocal ?? throw new ArgumentNullException(nameof(dictLocal));
+        this.emitter = emitter ?? throw new ArgumentNullException(nameof(emitter));
     }
 
     public void EmitIL(StartServerAssign node)
@@ -62,19 +62,11 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
         LocalBuilder portStrLocal = il.DeclareLocal(typeof(string)); // local for the port string
         LocalBuilder listener = il.DeclareLocal(typeof(string)); // local for listener
 
-        il.Emit(OpCodes.Ldloc, dictLocal);                    // push local dictionary
-        il.Emit(OpCodes.Ldstr, node.ServerRootPath);          // push the variable name (e.g. "ROOT_PATH")
-        System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, object>)
-            .GetProperty("Item")!
-            .GetGetMethod()!;
-        il.Emit(OpCodes.Callvirt, dictGetItem);               // calls dict[varName]
-        il.Emit(OpCodes.Isinst, typeof(string));
+        il.Emit(OpCodes.Ldloc, emitter.GetLocal(node.ServerRootPath));
         il.Emit(OpCodes.Call, typeof(Path).GetMethod("GetFullPath", [typeof(string)])!);
         il.Emit(OpCodes.Stloc, serverRootStrLocal);           // store in serverRootStrLocal
 
-        il.Emit(OpCodes.Ldloc, dictLocal);                    // push Dictionary<string,string>
-        il.Emit(OpCodes.Ldstr, node.Port);                    // push the variable name (e.g. "PORT")
-        il.Emit(OpCodes.Callvirt, dictGetItem);               // calls dict[varName]
+        il.Emit(OpCodes.Ldloc, emitter.GetLocal(node.Port));
         il.Emit(OpCodes.Stloc, portStrLocal);                 // store in serverRootStrLocal
 
         // Locals needed for the server loop:
