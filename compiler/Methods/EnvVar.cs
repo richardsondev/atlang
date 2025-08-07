@@ -45,19 +45,16 @@ internal class EnvironmentStatementParser : IStatementParser
 internal class EnvVar : IMethodEmitter<EnvVarAssignment>
 {
     private readonly ILGenerator il;
-    private readonly LocalBuilder dictLocal;
-
-    public EnvVar(ILGenerator il, LocalBuilder dictLocal)
+    private readonly ILMethodEmitterManager emitter;
+    public EnvVar(ILGenerator il, ILMethodEmitterManager emitter)
     {
         this.il = il ?? throw new ArgumentNullException(nameof(il));
-        this.dictLocal = dictLocal ?? throw new ArgumentNullException(nameof(dictLocal));
+        this.emitter = emitter ?? throw new ArgumentNullException(nameof(emitter));
     }
 
     public void EmitIL(EnvVarAssignment node)
     {
-        // dict[varName] = ...
-        il.Emit(OpCodes.Ldloc, dictLocal);
-        il.Emit(OpCodes.Ldstr, node.VarName);
+        LocalBuilder varLocal = emitter.GetOrDeclareLocal(node.VarName, typeof(string));
 
         if (node.EnvVarName != null)
         {
@@ -81,10 +78,6 @@ internal class EnvVar : IMethodEmitter<EnvVarAssignment>
             il.Emit(OpCodes.Ldstr, node.StrValue ?? string.Empty);
         }
 
-        MethodInfo dictSetItem = typeof(Dictionary<string, object>)
-            .GetProperty("Item")!
-            .GetSetMethod()!;
-        il.Emit(OpCodes.Isinst, typeof(string));
-        il.Emit(OpCodes.Callvirt, dictSetItem);
+        il.Emit(OpCodes.Stloc, varLocal);
     }
 }

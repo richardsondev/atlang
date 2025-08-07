@@ -34,13 +34,11 @@ internal class PrintStatementParser : IStatementParser
 internal class Print : IMethodEmitter<PrintStatement>
 {
     private readonly ILGenerator il;
-    private readonly LocalBuilder dictLocal;
     private readonly ILMethodEmitterManager emitter;
 
-    public Print(ILGenerator il, LocalBuilder dictLocal, ILMethodEmitterManager emitter)
+    public Print(ILGenerator il, ILMethodEmitterManager emitter)
     {
         this.il = il ?? throw new ArgumentNullException(nameof(il));
-        this.dictLocal = dictLocal ?? throw new ArgumentNullException(nameof(dictLocal));
         this.emitter = emitter ?? throw new ArgumentNullException(nameof(emitter));
     }
 
