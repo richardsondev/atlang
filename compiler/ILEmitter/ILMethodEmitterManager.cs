@@ -7,6 +7,7 @@ internal class ILMethodEmitterManager
 {
     private readonly MethodEmitterFactory factory;
     private readonly ILGenerator il;
+    private readonly HashSet<string> requiredAssemblies = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
     public ILMethodEmitterManager(ILGenerator il, LocalBuilder dictLocal)
     {
@@ -15,6 +16,11 @@ internal class ILMethodEmitterManager
 
         IServiceProvider serviceProvider = DIConfiguration.ConfigureServices(il, dictLocal, this);
         this.factory = new MethodEmitterFactory(serviceProvider);
+    }
+
+    public IReadOnlyCollection<string> GetRequiredAssemblies()
+    {
+        return this.requiredAssemblies;
     }
 
     internal void EmitStatement(ASTNode node)
@@ -30,6 +36,15 @@ internal class ILMethodEmitterManager
         }
 
         MethodInfo emitMethod = emitterType.GetMethod(nameof(IMethodEmitter<ASTNode>.EmitIL))!;
+
         emitMethod.Invoke(emitter, [node]);
+
+        // Capture required assemblies for the generated non-self-contained binary
+        var emitterRequiredAssemblies = emitter.GetType()
+            .GetCustomAttributes(typeof(RequiredAssemblyAttribute), inherit: true)
+            .OfType<RequiredAssemblyAttribute>()
+            .Select(attr => attr.RequiredAssembly)
+            .ToList();
+        requiredAssemblies.UnionWith(emitterRequiredAssemblies);
     }
 }

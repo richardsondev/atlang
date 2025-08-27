@@ -17,14 +17,14 @@ namespace AtLangCompiler.Tests
 
             string assemblyName = Path.GetFileNameWithoutExtension(atFilePath);
             string tempFolder = Path.Combine(Path.GetTempPath(), nameof(SnapshotTests), Guid.NewGuid().ToString());
-            string tempAssembly = Path.Combine(tempFolder, assemblyName + ".dll");
+            string tempAssembly = Path.Combine(tempFolder, assemblyName + ".exe");
             Directory.CreateDirectory(tempFolder);
 
             try
             {
                 // Compile the .at file to IL
                 string atFileContents = File.ReadAllText(atFilePath);
-                Compiler.CompileToIL(atFileContents, tempAssembly);
+                Compiler.CompileToIL(atFileContents, tempAssembly, OSPlatform.Linux, selfContained: false);
 
                 Assert.IsTrue(File.Exists(tempAssembly), $"Compilation failed: {tempAssembly} was not generated.");
 
