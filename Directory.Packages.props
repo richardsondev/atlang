@@ -1,4 +1,8 @@
 <Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
   <!--Runtime-->
   <ItemGroup>
     <PackageVersion Include="Microsoft.AspNetCore.StaticFiles" Version="2.3.0" />
