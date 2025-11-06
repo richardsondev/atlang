@@ -1,6 +1,5 @@
 using AtLangCompiler.ILEmitter;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -65,19 +64,16 @@ internal class ExitCodeStatementParser : IStatementParser
 internal class Exit : IMethodEmitter<ExitCodeStatement>
 {
     private readonly ILGenerator il;
-    private readonly LocalBuilder dictLocal;
     private readonly ILMethodEmitterManager emitter;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Exit"/> class.
     /// </summary>
     /// <param name="il">The <see cref="ILGenerator"/> instance used for emitting IL code.</param>
-    /// <param name="dictLocal">The local variable holding the runtime dictionary.</param>
     /// <param name="emitter">The <see cref="ILMethodEmitterManager"/> used to emit sub-expressions.</param>
-    public Exit(ILGenerator il, LocalBuilder dictLocal, ILMethodEmitterManager emitter)
+    public Exit(ILGenerator il, ILMethodEmitterManager emitter)
     {
         this.il = il ?? throw new ArgumentNullException(nameof(il));
-        this.dictLocal = dictLocal ?? throw new ArgumentNullException(nameof(dictLocal));
         this.emitter = emitter ?? throw new ArgumentNullException(nameof(emitter));
     }
 
