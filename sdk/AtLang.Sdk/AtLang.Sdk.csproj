@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <PackageId>AtLang.Sdk</PackageId>
+    <Version>0.1.0</Version>
+    <PackageVersion>0.1.0</PackageVersion>
+    <Authors>AtLang</Authors>
+    <Description>MSBuild SDK that wires the AtLang compiler into dotnet build.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Sdk\**\*" Pack="true" PackagePath="Sdk\" />
+    <None Include="..\..\compiler\bin\$(Configuration)\net9.0\AtLangCompiler.dll" Pack="true" PackagePath="tools/net9.0/any/" />
+    <None Include="..\..\compiler\bin\$(Configuration)\net9.0\AtLangCompiler.deps.json" Pack="true" PackagePath="tools/net9.0/any/" />
+    <None Include="..\..\compiler\bin\$(Configuration)\net9.0\AtLangCompiler.runtimeconfig.json" Pack="true" PackagePath="tools/net9.0/any/" />
+  </ItemGroup>
+</Project>
