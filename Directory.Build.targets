@@ -1,0 +1,29 @@
+<Project>
+  <Target Name="GenerateRepoInfoSource"
+          BeforeTargets="CoreCompile"
+          Condition="'$(BASEDIR)' != ''">
+    <PropertyGroup>
+      <_RepoInfoFile>$(IntermediateOutputPath)Generated.BuildEnvironment.g.cs</_RepoInfoFile>
+    </PropertyGroup>
+
+    <MakeDir Directories="$(IntermediateOutputPath)" />
+
+    <ItemGroup>
+      <_RepoInfoLines Include="namespace AtLang.Build;" />
+      <_RepoInfoLines Include="internal static class BuildEnvironment" />
+      <_RepoInfoLines Include="{" />
+      <_RepoInfoLines Include="    internal const string BASEDIR = @&quot;$(BASEDIR)&quot;;" />
+      <_RepoInfoLines Include="    internal const string RepoRoot = BASEDIR;" />
+      <_RepoInfoLines Include="}" />
+    </ItemGroup>
+
+    <WriteLinesToFile File="$(_RepoInfoFile)"
+                      Overwrite="true"
+                      Lines="@(_RepoInfoLines)"
+                      Encoding="UTF-8" />
+
+    <ItemGroup>
+      <Compile Include="$(_RepoInfoFile)" />
+    </ItemGroup>
+  </Target>
+</Project>

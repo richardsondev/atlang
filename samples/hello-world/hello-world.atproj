@@ -1,0 +1,11 @@
+<Project Sdk="AtLang.Sdk">
+  <PropertyGroup>
+    <AssemblyName>HelloWorldSample</AssemblyName>
+    <TargetFramework>net9.0</TargetFramework>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AtLangSource Include="Program.at" />
+  </ItemGroup>
+</Project>
