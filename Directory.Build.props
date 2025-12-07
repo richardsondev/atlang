@@ -11,5 +11,6 @@
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisLevel>latest</AnalysisLevel>
+        <BASEDIR>$(MSBuildThisFileDirectory)</BASEDIR>
     </PropertyGroup>
 </Project>
