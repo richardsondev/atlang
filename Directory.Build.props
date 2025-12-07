@@ -11,6 +11,6 @@
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisLevel>latest</AnalysisLevel>
-        <BASEDIR>$([System.String]::Copy('$(MSBuildThisFileDirectory)').TrimEnd('/', '\\'))</BASEDIR>
+        <BASEDIR>$(MSBuildThisFileDirectory)</BASEDIR>
     </PropertyGroup>
 </Project>
