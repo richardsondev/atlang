@@ -44,12 +44,7 @@ public static class Compiler
         );
 
         ILGenerator il = entryPoint.GetILGenerator();
-        LocalBuilder dictLocal = il.DeclareLocal(typeof(Dictionary<string, object>));
-        ILMethodEmitterManager ilEmitter = new ILMethodEmitterManager(il, dictLocal);
-
-        // We'll store variables in a Dictionary<string,object>
-        il.Emit(OpCodes.Newobj, typeof(Dictionary<string, object>).GetConstructor(Type.EmptyTypes)!);
-        il.Emit(OpCodes.Stloc, dictLocal);
+        ILMethodEmitterManager ilEmitter = new ILMethodEmitterManager(il);
 
         // Emit IL for each statement
         foreach (ASTNode node in ast)

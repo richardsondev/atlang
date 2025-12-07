@@ -71,36 +71,22 @@ internal class WebRequestParser : IStatementParser
 internal class WebRequest : IMethodEmitter<WebRequestAssign>
 {
     private readonly ILGenerator il;
-    private readonly LocalBuilder dictLocal;
+    private readonly ILMethodEmitterManager emitter;
 
-    public WebRequest(ILGenerator il, LocalBuilder dictLocal)
+    public WebRequest(ILGenerator il, ILMethodEmitterManager emitter)
     {
         this.il = il ?? throw new ArgumentNullException(nameof(il));
-        this.dictLocal = dictLocal ?? throw new ArgumentNullException(nameof(dictLocal));
+        this.emitter = emitter ?? throw new ArgumentNullException(nameof(emitter));
     }
 
     public void EmitIL(WebRequestAssign node)
     {
-        // dict[node.VarName] = new WebClient().DownloadString( dict[node.URL] )  (for GET)
-        // or dict[node.VarName] = new WebClient().UploadString( dict[node.URL], dict[node.BodyVar] )  (for POST, if body is also a variable)
+        // varName = new WebClient().DownloadString(url) or UploadString(url, body)
+        LocalBuilder resultLocal = emitter.GetOrDeclareLocal(node.VarName, typeof(string));
 
-        // 1) Load dictLocal
-        il.Emit(OpCodes.Ldloc, dictLocal);
-
-        // 2) Push node.VarName (the key in the dictionary where we store the response)
-        il.Emit(OpCodes.Ldstr, node.VarName);
-
-        // 3) Create new WebClient
+        // 1) Create new WebClient
         il.Emit(OpCodes.Newobj, typeof(WebClient).GetConstructor(Type.EmptyTypes)!);
-
-        // 4) Because node.URL is a variable name, we must do a dictionary lookup to get the actual URL string:
-        il.Emit(OpCodes.Ldloc, dictLocal);
-        il.Emit(OpCodes.Ldstr, node.UrlVar);  // the *name* of the variable
-        System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, object>)
-            .GetProperty("Item")!
-            .GetGetMethod()!;
-        il.Emit(OpCodes.Isinst, typeof(string));
-        il.Emit(OpCodes.Callvirt, dictGetItem); // returns the actual URL string
+        il.Emit(OpCodes.Ldloc, emitter.GetLocal(node.UrlVar));
 
         if (node.Method.Equals(nameof(HttpMethod.Get), StringComparison.OrdinalIgnoreCase))
         {
@@ -110,9 +96,7 @@ internal class WebRequest : IMethodEmitter<WebRequestAssign>
         }
         else if (node.Method.Equals(nameof(HttpMethod.Post), StringComparison.OrdinalIgnoreCase))
         {
-            il.Emit(OpCodes.Ldloc, dictLocal);
-            il.Emit(OpCodes.Ldstr, node.PostVar!);
-            il.Emit(OpCodes.Callvirt, dictGetItem);  // now the stack has: [webClient, urlString, bodyString]
+            il.Emit(OpCodes.Ldloc, emitter.GetLocal(node.PostVar!));
 
             // WebClient.UploadString(string url, string data)
             System.Reflection.MethodInfo uploadString = typeof(WebClient)
@@ -127,11 +111,6 @@ internal class WebRequest : IMethodEmitter<WebRequestAssign>
         }
 
         // At this point, the top of the stack is the response string (or error message).
-        // 5) Store it in dict[node.VarName]
-        System.Reflection.MethodInfo dictSetItem = typeof(Dictionary<string, object>)
-            .GetProperty("Item")!
-            .GetSetMethod()!;
-        il.Emit(OpCodes.Isinst, typeof(string));
-        il.Emit(OpCodes.Callvirt, dictSetItem);
+        il.Emit(OpCodes.Stloc, resultLocal);
     }
 }
