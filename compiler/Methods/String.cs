@@ -7,7 +7,13 @@
         {
             var s = parser.current.Text;
             parser.Eat(TokenType.STRING);
-            return new EnvVarAssignment(parser.varName, null, s);
+
+            if (!string.IsNullOrEmpty(parser.varName))
+            {
+                return new VarAssignment(parser.varName, s);
+            }
+
+            return new StringLiteral(s);
         }
     }
 }

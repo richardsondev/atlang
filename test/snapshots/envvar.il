@@ -25,7 +25,7 @@
 // ----- COFF Header:
 // Machine:                    0x014c
 // Number of sections:         0x0002
-// Time-date stamp:            0x67bc6905
+// Time-date stamp:            0x67bda610
 // Ptr to symbol table:        0x00000000
 // Number of symbols:          0x00000000
 // Size of optional header:    0x00e0
@@ -37,7 +37,7 @@
 // Size of code:                   0x00000800
 // Size of init.data:              0x00000200
 // Size of uninit.data:            0x00000000
-// Addr. of entry point:           0x000026aa
+// Addr. of entry point:           0x0000270a
 // Base of code:                   0x00002000
 // Base of data:                   0x00004000
 // Image base:                     0x00400000
@@ -61,7 +61,7 @@
 // Loader flags:                   0x00000000
 // Directories:                    0x00000010
 // 0x00000000 [0x00000000] address [size] of Export Directory:          
-// 0x00002658 [0x0000004f] address [size] of Import Directory:          
+// 0x000026b8 [0x0000004f] address [size] of Import Directory:          
 // 0x00000000 [0x00000000] address [size] of Resource Directory:        
 // 0x00000000 [0x00000000] address [size] of Exception Directory:       
 // 0x00000000 [0x00000000] address [size] of Security Directory:        
@@ -79,7 +79,7 @@
 
 // Image sections:
 //              .text
-//              0x000006b0 Virtual Size
+//              0x00000710 Virtual Size
 //              0x00002000 Virtual Address
 //              0x00000800 Size of Raw Data
 //              0x00000200 Pointer to Raw Data
@@ -110,13 +110,13 @@
 //              0x00002000 Page RVA
 //              0x0000000c Block Size
 //              0x00000002 Number of Entries
-//              Entry 1: Type 0x3 Offset 0x000006ac
+//              Entry 1: Type 0x3 Offset 0x0000070c
 //              Entry 2: Type 0x0 Offset 0x00000000
 
 // Import Address Table
 //     DLL : mscoree.dll
 //              0x00002000 Import Address Table
-//              0x0000269a Import Name Table
+//              0x000026fa Import Name Table
 //              0          Time Date Stamp
 //              0          Index of First Forwarder Reference
 //
@@ -133,11 +133,11 @@
 // Header size:                        0x00000048
 // Major runtime version:              0x0002
 // Minor runtime version:              0x0005
-// 0x00002124 [0x000004b4] address [size] of Metadata Directory:        
+// 0x00002178 [0x000004c0] address [size] of Metadata Directory:        
 // Flags:                              0x00000001
 // Entry point token:                  0x06000001
 // 0x00000000 [0x00000000] address [size] of Resources Directory:       
-// 0x000025d8 [0x00000080] address [size] of Strong Name Signature:     
+// 0x00002638 [0x00000080] address [size] of Strong Name Signature:     
 // 0x00000000 [0x00000000] address [size] of CodeManager Table:         
 // 0x00000000 [0x00000000] address [size] of VTableFixups Directory:    
 // 0x00000000 [0x00000000] address [size] of Export Address Table:      
@@ -156,22 +156,22 @@
 //                  0x0005 Number of Streams
 //    Stream 1:
 //              0x0000006c Offset
-//              0x00000124 Size
+//              0x00000128 Size
 //              '#~' Name
 //    Stream 2:
-//              0x00000190 Offset
-//              0x00000114 Size
+//              0x00000194 Offset
+//              0x0000011c Size
 //              '#Strings' Name
 //    Stream 3:
-//              0x000002a4 Offset
+//              0x000002b0 Offset
 //              0x00000078 Size
 //              '#US' Name
 //    Stream 4:
-//              0x0000031c Offset
+//              0x00000328 Offset
 //              0x00000010 Size
 //              '#GUID' Name
 //    Stream 5:
-//              0x0000032c Offset
+//              0x00000338 Offset
 //              0x00000188 Size
 //              '#Blob' Name
 
@@ -196,28 +196,28 @@
 // PE additional info   : 171               ( 5.57%)
 // Num.of PE sections   : 2
 // CLR header size     : 72                 ( 2.34%)
-// CLR meta-data size  : 1204               (39.19%)
+// CLR meta-data size  : 1216               (39.58%)
 // CLR additional info : 128                ( 4.17%)
 // CLR method headers  : 13                 ( 0.42%)
-// Managed code         : 197               ( 6.41%)
+// Managed code         : 280               ( 9.11%)
 // Data                 : 512               (16.67%)
-// Unaccounted          : 263               ( 8.56%)
+// Unaccounted          : 168               ( 5.47%)
 
 // Num.of PE sections   : 2
 //   .text    - 2048
 //   .reloc   - 512
 
-// CLR meta-data size  : 1204
+// CLR meta-data size  : 1216
 //   Module        -    1 (10 bytes)
 //   TypeDef       -    2 (28 bytes)      0 interfaces, 0 explicit layout
-//   TypeRef       -    7 (42 bytes)
+//   TypeRef       -    8 (48 bytes)
 //   MethodDef     -    2 (28 bytes)      0 abstract, 0 native, 2 bodies
 //   MemberRef     -    9 (54 bytes)
 //   StandAloneSig -    1 (2 bytes)
 //   TypeSpec      -    1 (2 bytes)
 //   Assembly      -    1 (22 bytes)
 //   AssemblyRef   -    2 (40 bytes)
-//   Strings       -   275 bytes
+//   Strings       -   281 bytes
 //   Blobs         -   392 bytes
 //   UserStrings   -   120 bytes
 //   Guids         -    16 bytes
@@ -230,8 +230,8 @@
 //   Num.of fat headers    - 1
 //   Num.of tiny headers   - 1
 
-// Managed code : 197
-//   Ave method size - 98
+// Managed code : 280
+//   Ave method size - 140
 // Classes defined in this module:
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Class AtLangProgram                  (public) (auto) (ansi) 
@@ -242,14 +242,14 @@
 // ===========================================================
 // Metadata section: 0x424a5342, version: 1.1, extra: 0, version len: 12, version: v4.0.30319
 //            flags: 0x00, streams: 5
-// Stream 0: name: #~, size 292
-// Stream 1: name: #Strings, size 276
+// Stream 0: name: #~, size 296
+// Stream 1: name: #Strings, size 284
 // Stream 2: name: #US, size 120
 // Stream 3: name: #GUID, size 16
 // Stream 4: name: #Blob, size 392
 // Metadata header: 2.0, heaps: 0x00, rid: 0x01, valid: 0x0000000908020447, sorted: 0x000016003301fa00
 // 
-// Strings: 275(0x113), Blobs: 392(0x188), Guids: 16(0x10), User strings: 120(0x78)
+// Strings: 281(0x119), Blobs: 392(0x188), Guids: 16(0x10), User strings: 120(0x78)
 // =================================================
 //  0(0): Module               cRecs:    1(0x1), cbRec: 10(0xa), cbTable:    10(0xa)
 //   col  0:  Generation   oCol: 0, cbCol:2, USHORT 
@@ -258,20 +258,21 @@
 //   col  3:  EncId        oCol: 6, cbCol:2, GUID   
 //   col  4:  EncBaseId    oCol: 8, cbCol:2, GUID   
 // -------------------------------------------------
-//    1 == 0:0000, 1:string#79, 2:guid#1, 3:guid#0, 4:guid#0
+//    1 == 0:0000, 1:string#7f, 2:guid#1, 3:guid#0, 4:guid#0
 // =================================================
-//  1(0x1): TypeRef              cRecs:    7(0x7), cbRec:  6(0x6), cbTable:    42(0x2a)
+//  1(0x1): TypeRef              cRecs:    8(0x8), cbRec:  6(0x6), cbTable:    48(0x30)
 //   col  0:  ResolutionScope oCol: 0, cbCol:2, ResolutionScope
 //   col  1:  Name         oCol: 2, cbCol:2, string 
 //   col  2:  Namespace    oCol: 4, cbCol:2, string 
 // -------------------------------------------------
-//    1 == 0:ResolutionScope[23000001], 1:string#1, 2:string#38
-//    2 == 0:ResolutionScope[23000001], 1:string#ff, 2:string#b5
-//    3 == 0:ResolutionScope[23000001], 1:string#8e, 2:string#b5
-//    4 == 0:ResolutionScope[23000001], 1:string#c1, 2:string#b5
-//    5 == 0:ResolutionScope[23000002], 1:string#71, 2:string#b5
-//    6 == 0:ResolutionScope[23000001], 1:string#d9, 2:string#17
-//    7 == 0:ResolutionScope[23000001], 1:string#f8, 2:string#b5
+//    1 == 0:ResolutionScope[23000001], 1:string#1, 2:string#3e
+//    2 == 0:ResolutionScope[23000001], 1:string#105, 2:string#bb
+//    3 == 0:ResolutionScope[23000001], 1:string#94, 2:string#bb
+//    4 == 0:ResolutionScope[23000001], 1:string#e, 2:string#bb
+//    5 == 0:ResolutionScope[23000001], 1:string#c7, 2:string#bb
+//    6 == 0:ResolutionScope[23000002], 1:string#77, 2:string#bb
+//    7 == 0:ResolutionScope[23000001], 1:string#df, 2:string#1d
+//    8 == 0:ResolutionScope[23000001], 1:string#fe, 2:string#bb
 // =================================================
 //  2(0x2): TypeDef              cRecs:    2(0x2), cbRec: 14(0xe), cbTable:    28(0x1c)
 //   col  0:  Flags        oCol: 0, cbCol:4, ULONG  
@@ -281,8 +282,8 @@
 //   col  4:  FieldList    oCol: a, cbCol:2, Field  
 //   col  5:  MethodList   oCol: c, cbCol:2, Method 
 // -------------------------------------------------
-//    1 == 0:00000000, 1:string#e, 2:string#0, 3:TypeDefOrRef[02000000], 4:Field[4000001], 5:Method[6000001]
-//    2 == 0:00000001, 1:string#95, 2:string#0, 3:TypeDefOrRef[01000007], 4:Field[4000001], 5:Method[6000001]
+//    1 == 0:00000000, 1:string#14, 2:string#0, 3:TypeDefOrRef[02000000], 4:Field[4000001], 5:Method[6000001]
+//    2 == 0:00000001, 1:string#9b, 2:string#0, 3:TypeDefOrRef[01000008], 4:Field[4000001], 5:Method[6000001]
 // =================================================
 //  3(0x3): FieldPtr             cRecs:    0(0), cbRec:  2(0x2), cbTable:     0(0)
 //   col  0:  Field        oCol: 0, cbCol:2, Field  
@@ -303,8 +304,8 @@
 //   col  4:  Signature    oCol: a, cbCol:2, blob   
 //   col  5:  ParamList    oCol: c, cbCol:2, Param  
 // -------------------------------------------------
-//    1 == 0:00002050, 1:0000, 2:0096, 3:string#bc, 4:blob#184, 5:Param[8000001]
-//    2 == 0:0000211a, 1:0000, 2:1806, 3:string#e4, 4:blob#aa, 5:Param[8000001]
+//    1 == 0:00002050, 1:0000, 2:0096, 3:string#c2, 4:blob#184, 5:Param[8000001]
+//    2 == 0:0000216d, 1:0000, 2:1806, 3:string#ea, 4:blob#aa, 5:Param[8000001]
 // =================================================
 //  7(0x7): ParamPtr             cRecs:    0(0), cbRec:  2(0x2), cbTable:     0(0)
 //   col  0:  Param        oCol: 0, cbCol:2, Param  
@@ -323,15 +324,15 @@
 //   col  1:  Name         oCol: 2, cbCol:2, string 
 //   col  2:  Signature    oCol: 4, cbCol:2, blob   
 // -------------------------------------------------
-//    1 == 0:MemberRefParent[1b000001], 1:string#e4, 2:blob#aa
-//    2 == 0:MemberRefParent[01000002], 1:string#53, 2:blob#ae
-//    3 == 0:MemberRefParent[1b000001], 1:string#ac, 2:blob#b3
-//    4 == 0:MemberRefParent[1b000001], 1:string#a3, 2:blob#bb
-//    5 == 0:MemberRefParent[01000003], 1:string#ea, 2:blob#c2
-//    6 == 0:MemberRefParent[01000005], 1:string#10b, 2:blob#16b
-//    7 == 0:MemberRefParent[01000006], 1:string#84, 2:blob#170
-//    8 == 0:MemberRefParent[01000003], 1:string#f1, 2:blob#175
-//    9 == 0:MemberRefParent[01000007], 1:string#e4, 2:blob#aa
+//    1 == 0:MemberRefParent[1b000001], 1:string#ea, 2:blob#aa
+//    2 == 0:MemberRefParent[01000002], 1:string#59, 2:blob#ae
+//    3 == 0:MemberRefParent[1b000001], 1:string#b2, 2:blob#b3
+//    4 == 0:MemberRefParent[1b000001], 1:string#a9, 2:blob#bb
+//    5 == 0:MemberRefParent[01000003], 1:string#f0, 2:blob#c2
+//    6 == 0:MemberRefParent[01000006], 1:string#111, 2:blob#16b
+//    7 == 0:MemberRefParent[01000007], 1:string#8a, 2:blob#170
+//    8 == 0:MemberRefParent[01000003], 1:string#f7, 2:blob#175
+//    9 == 0:MemberRefParent[01000008], 1:string#ea, 2:blob#aa
 // =================================================
 // 11(0xb): Constant             cRecs:    0(0), cbRec:  6(0x6), cbTable:     0(0)
 //   col  0:  Type         oCol: 0, cbCol:1, BYTE   
@@ -436,7 +437,7 @@
 //   col  7:  Name         oCol:12, cbCol:2, string 
 //   col  8:  Locale       oCol:14, cbCol:2, string 
 // -------------------------------------------------
-//    1 == 0:00000000, 1:0000, 2:0000, 3:0000, 4:0000, 5:00000000, 6:blob#0, 7:string#d2, 8:string#0
+//    1 == 0:00000000, 1:0000, 2:0000, 3:0000, 4:0000, 5:00000000, 6:blob#0, 7:string#d8, 8:string#0
 // =================================================
 // 33(0x21): AssemblyProcessor    cRecs:    0(0), cbRec:  4(0x4), cbTable:     0(0)
 //   col  0:  Processor    oCol: 0, cbCol:4, ULONG  
@@ -457,8 +458,8 @@
 //   col  7:  Locale       oCol:10, cbCol:2, string 
 //   col  8:  HashValue    oCol:12, cbCol:2, blob   
 // -------------------------------------------------
-//    1 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#1, 6:string#21, 7:string#0, 8:blob#0
-//    2 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#c9, 6:string#6a, 7:string#0, 8:blob#0
+//    1 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#1, 6:string#27, 7:string#0, 8:blob#0
+//    2 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#c9, 6:string#70, 7:string#0, 8:blob#0
 // =================================================
 // 36(0x24): AssemblyRefProcessor cRecs:    0(0), cbRec:  6(0x6), cbTable:     0(0)
 //   col  0:  Processor    oCol: 0, cbCol:4, ULONG  
@@ -544,19 +545,19 @@
   .ver 0:0:0:0
 }
 .module MainModule
-// MVID: {ec4950df-3ca0-4e24-a7db-bf060d27c4cc}
+// MVID: {fb8b8b22-a65c-4959-9151-accac8409a11}
 .imagebase 0x00400000
 .file alignment 0x00000200
 .stackreserve 0x00100000
 .subsystem 0x0003       // WINDOWS_CUI
 .corflags 0x00000001    //  ILONLY
-// Image base: 0x000002D3670F0000
+// Image base: 0x000001CDB3400000
 
 
 // =============== CLASS MEMBERS DECLARATION ===================
 
 .class /*02000002*/ public auto ansi AtLangProgram
-       extends [System.Private.CoreLib/*23000001*/]System.Object/*01000007*/
+       extends [System.Private.CoreLib/*23000001*/]System.Object/*01000008*/
 {
   .method /*06000001*/ public hidebysig static 
           int32  Main() cil managed
@@ -564,8 +565,8 @@
   {
     .entrypoint
     // Method begins at RVA 0x2050
-    // Code size       190 (0xbe)
-    .maxstack  4
+    // Code size       273 (0x111)
+    .maxstack  6
     .locals /*11000001*/ init (class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object> V_0)
     IL_0000:  /* 73   | (0A)000001       */ newobj     instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::.ctor() /* 0A000001 */
     IL_0005:  /* 0A   |                  */ stloc.0
@@ -584,64 +585,113 @@
     IL_0029:  /* 06   |                  */ ldloc.0
     IL_002a:  /* 72   | (70)00001F       */ ldstr      "GREETING" /* 7000001F */
     IL_002f:  /* 72   | (70)000031       */ ldstr      "Hello, " /* 70000031 */
-    IL_0034:  /* 75   | (01)000003       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000003*/
-    IL_0039:  /* 6F   | (0A)000003       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
+    IL_0034:  /* 6F   | (0A)000003       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
                                                                                                                                                                                                         !1) /* 0A000003 */
-    IL_003e:  /* 06   |                  */ ldloc.0
-    IL_003f:  /* 72   | (70)000001       */ ldstr      "NAME" /* 70000001 */
-    IL_0044:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_0049:  /* 75   | (01)000003       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000003*/
+    IL_0039:  /* 06   |                  */ ldloc.0
+    IL_003a:  /* 72   | (70)000001       */ ldstr      "NAME" /* 70000001 */
+    IL_003f:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_0044:  /* 25   |                  */ dup
+    IL_0045:  /* 75   | (01)000004       */ isinst     [System.Private.CoreLib/*23000001*/]System.Int64/*01000004*/
+    IL_004a:  /* 25   |                  */ dup
+    IL_004b:  /* 2D   | 12               */ brtrue.s   IL_005f
+
+    IL_004d:  /* 26   |                  */ pop
     IL_004e:  /* 25   |                  */ dup
-    IL_004f:  /* 2D   | 06               */ brtrue.s   IL_0057
+    IL_004f:  /* 75   | (01)000003       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000003*/
+    IL_0054:  /* 25   |                  */ dup
+    IL_0055:  /* 2D   | 0F               */ brtrue.s   IL_0066
 
-    IL_0051:  /* 26   |                  */ pop
-    IL_0052:  /* 72   | (70)00001D       */ ldstr      "" /* 7000001D */
-    IL_0057:  /* 72   | (70)000041       */ ldstr      "Alice" /* 70000041 */
-    IL_005c:  /* 1A   |                  */ ldc.i4.4
-    IL_005d:  /* 28   | (0A)000005       */ call       instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000003*/::Equals(string,
-                                                                                                                                           valuetype [System.Private.CoreLib/*23000001*/]System.StringComparison/*01000004*/) /* 0A000005 */
-    IL_0062:  /* 39   | 00000014         */ brfalse    IL_007b
+    IL_0057:  /* 26   |                  */ pop
+    IL_0058:  /* 72   | (70)00001D       */ ldstr      "" /* 7000001D */
+    IL_005d:  /* 2B   | 09               */ br.s       IL_0068
 
-    IL_0067:  /* 28   | (0A)000006       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000006*/ [System.Console/*23000002*/]System.Console/*01000005*/::get_Out() /* 0A000006 */
-    IL_006c:  /* 72   | (70)00004D       */ ldstr      "Welcome back, Alice!" /* 7000004D */
-    IL_0071:  /* 6F   | (0A)000007       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000006*/::WriteLine(string) /* 0A000007 */
-    IL_0076:  /* 38   | 00000041         */ br         IL_00bc
+    IL_005f:  /* A5   | (01)000004       */ unbox.any  [System.Private.CoreLib/*23000001*/]System.Int64/*01000004*/
+    IL_0064:  /* 2B   | 02               */ br.s       IL_0068
 
-    IL_007b:  /* 28   | (0A)000006       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000006*/ [System.Console/*23000002*/]System.Console/*01000005*/::get_Out() /* 0A000006 */
-    IL_0080:  /* 06   |                  */ ldloc.0
-    IL_0081:  /* 72   | (70)00001F       */ ldstr      "GREETING" /* 7000001F */
-    IL_0086:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_008b:  /* 75   | (01)000003       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000003*/
-    IL_0090:  /* 25   |                  */ dup
-    IL_0091:  /* 2D   | 06               */ brtrue.s   IL_0099
+    IL_0066:  /* 2B   | 00               */ br.s       IL_0068
 
-    IL_0093:  /* 26   |                  */ pop
-    IL_0094:  /* 72   | (70)00001D       */ ldstr      "" /* 7000001D */
-    IL_0099:  /* 06   |                  */ ldloc.0
-    IL_009a:  /* 72   | (70)000001       */ ldstr      "NAME" /* 70000001 */
-    IL_009f:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_00a4:  /* 75   | (01)000003       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000003*/
-    IL_00a9:  /* 25   |                  */ dup
-    IL_00aa:  /* 2D   | 06               */ brtrue.s   IL_00b2
+    IL_0068:  /* 06   |                  */ ldloc.0
+    IL_0069:  /* 72   | (70)00001F       */ ldstr      "GREETING" /* 7000001F */
+    IL_006e:  /* 72   | (70)000041       */ ldstr      "Alice" /* 70000041 */
+    IL_0073:  /* 6F   | (0A)000003       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
+                                                                                                                                                                                                        !1) /* 0A000003 */
+    IL_0078:  /* 1A   |                  */ ldc.i4.4
+    IL_0079:  /* 28   | (0A)000005       */ call       instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000003*/::Equals(string,
+                                                                                                                                           valuetype [System.Private.CoreLib/*23000001*/]System.StringComparison/*01000005*/) /* 0A000005 */
+    IL_007e:  /* 39   | 0000001F         */ brfalse    IL_00a2
 
-    IL_00ac:  /* 26   |                  */ pop
-    IL_00ad:  /* 72   | (70)00001D       */ ldstr      "" /* 7000001D */
-    IL_00b2:  /* 28   | (0A)000008       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000003*/::Concat(string,
+    IL_0083:  /* 28   | (0A)000006       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000002*/]System.Console/*01000006*/::get_Out() /* 0A000006 */
+    IL_0088:  /* 06   |                  */ ldloc.0
+    IL_0089:  /* 72   | (70)00001F       */ ldstr      "GREETING" /* 7000001F */
+    IL_008e:  /* 72   | (70)00004D       */ ldstr      "Welcome back, Alice!" /* 7000004D */
+    IL_0093:  /* 6F   | (0A)000003       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
+                                                                                                                                                                                                        !1) /* 0A000003 */
+    IL_0098:  /* 6F   | (0A)000007       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A000007 */
+    IL_009d:  /* 38   | 0000006D         */ br         IL_010f
+
+    IL_00a2:  /* 28   | (0A)000006       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000002*/]System.Console/*01000006*/::get_Out() /* 0A000006 */
+    IL_00a7:  /* 06   |                  */ ldloc.0
+    IL_00a8:  /* 72   | (70)00001F       */ ldstr      "GREETING" /* 7000001F */
+    IL_00ad:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_00b2:  /* 25   |                  */ dup
+    IL_00b3:  /* 75   | (01)000004       */ isinst     [System.Private.CoreLib/*23000001*/]System.Int64/*01000004*/
+    IL_00b8:  /* 25   |                  */ dup
+    IL_00b9:  /* 2D   | 12               */ brtrue.s   IL_00cd
+
+    IL_00bb:  /* 26   |                  */ pop
+    IL_00bc:  /* 25   |                  */ dup
+    IL_00bd:  /* 75   | (01)000003       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000003*/
+    IL_00c2:  /* 25   |                  */ dup
+    IL_00c3:  /* 2D   | 0F               */ brtrue.s   IL_00d4
+
+    IL_00c5:  /* 26   |                  */ pop
+    IL_00c6:  /* 72   | (70)00001D       */ ldstr      "" /* 7000001D */
+    IL_00cb:  /* 2B   | 09               */ br.s       IL_00d6
+
+    IL_00cd:  /* A5   | (01)000004       */ unbox.any  [System.Private.CoreLib/*23000001*/]System.Int64/*01000004*/
+    IL_00d2:  /* 2B   | 02               */ br.s       IL_00d6
+
+    IL_00d4:  /* 2B   | 00               */ br.s       IL_00d6
+
+    IL_00d6:  /* 06   |                  */ ldloc.0
+    IL_00d7:  /* 72   | (70)000001       */ ldstr      "NAME" /* 70000001 */
+    IL_00dc:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_00e1:  /* 25   |                  */ dup
+    IL_00e2:  /* 75   | (01)000004       */ isinst     [System.Private.CoreLib/*23000001*/]System.Int64/*01000004*/
+    IL_00e7:  /* 25   |                  */ dup
+    IL_00e8:  /* 2D   | 12               */ brtrue.s   IL_00fc
+
+    IL_00ea:  /* 26   |                  */ pop
+    IL_00eb:  /* 25   |                  */ dup
+    IL_00ec:  /* 75   | (01)000003       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000003*/
+    IL_00f1:  /* 25   |                  */ dup
+    IL_00f2:  /* 2D   | 0F               */ brtrue.s   IL_0103
+
+    IL_00f4:  /* 26   |                  */ pop
+    IL_00f5:  /* 72   | (70)00001D       */ ldstr      "" /* 7000001D */
+    IL_00fa:  /* 2B   | 09               */ br.s       IL_0105
+
+    IL_00fc:  /* A5   | (01)000004       */ unbox.any  [System.Private.CoreLib/*23000001*/]System.Int64/*01000004*/
+    IL_0101:  /* 2B   | 02               */ br.s       IL_0105
+
+    IL_0103:  /* 2B   | 00               */ br.s       IL_0105
+
+    IL_0105:  /* 28   | (0A)000008       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000003*/::Concat(string,
                                                                                                                                     string) /* 0A000008 */
-    IL_00b7:  /* 6F   | (0A)000007       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000006*/::WriteLine(string) /* 0A000007 */
-    IL_00bc:  /* 16   |                  */ ldc.i4.0
-    IL_00bd:  /* 2A   |                  */ ret
+    IL_010a:  /* 6F   | (0A)000007       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A000007 */
+    IL_010f:  /* 16   |                  */ ldc.i4.0
+    IL_0110:  /* 2A   |                  */ ret
   } // end of method AtLangProgram::Main
 
   .method /*06000002*/ public specialname rtspecialname 
           instance void  .ctor() cil managed
   // SIG: 20 00 01
   {
-    // Method begins at RVA 0x211a
+    // Method begins at RVA 0x216d
     // Code size       7 (0x7)
     .maxstack  8
     IL_0000:  /* 02   |                  */ ldarg.0
-    IL_0001:  /* 28   | (0A)000009       */ call       instance void [System.Private.CoreLib/*23000001*/]System.Object/*01000007*/::.ctor() /* 0A000009 */
+    IL_0001:  /* 28   | (0A)000009       */ call       instance void [System.Private.CoreLib/*23000001*/]System.Object/*01000008*/::.ctor() /* 0A000009 */
     IL_0006:  /* 2A   |                  */ ret
   } // end of method AtLangProgram::.ctor
 
