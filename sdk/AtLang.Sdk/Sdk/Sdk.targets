@@ -1,0 +1,43 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PackagedCompilerPath>$(MSBuildThisFileDirectory)..\tools\net9.0\any\AtLangCompiler.dll</_PackagedCompilerPath>
+    <_LocalCompilerProject>$(MSBuildThisFileDirectory)..\..\..\compiler\AtLangCompiler.csproj</_LocalCompilerProject>
+    <AtLangCompilerPath Condition="'$(AtLangCompilerPath)' == '' and Exists('$(_PackagedCompilerPath)')">$(_PackagedCompilerPath)</AtLangCompilerPath>
+    <AtLangCompilerProject Condition="'$(AtLangCompilerProject)' == '' and Exists('$(_LocalCompilerProject)')">$(_LocalCompilerProject)</AtLangCompilerProject>
+    <AtLangRuntimeConfigPath Condition="'$(AtLangRuntimeConfigPath)' == ''">$(OutputPath)$(AssemblyName).runtimeconfig.json</AtLangRuntimeConfigPath>
+    <AtLangDotNetHost>$(DotNetHostPath)</AtLangDotNetHost>
+    <AtLangDotNetHost Condition="'$(AtLangDotNetHost)' == ''">dotnet</AtLangDotNetHost>
+    <AtLangSelfContained>$([System.String]::Copy('$(SelfContained)').ToLowerInvariant())</AtLangSelfContained>
+    <AtLangSelfContained Condition="'$(AtLangSelfContained)' == ''">false</AtLangSelfContained>
+    <CoreCompileDependsOn>$(CoreCompileDependsOn);RunAtLangCompiler</CoreCompileDependsOn>
+  </PropertyGroup>
+
+  <Target Name="RunAtLangCompiler"
+          Inputs="@(AtLangSource)"
+          Outputs="$(TargetPath);$(AtLangRuntimeConfigPath)">
+    <Error Condition="'@(AtLangSource)' == ''" Text="No AtLangSource items were provided. Either add *.at files to the project or define AtLangSource items explicitly." />
+
+    <PropertyGroup Condition="'@(AtLangSource)' != ''">
+      <_AtLangSourceCount>$([System.String]::Copy('@(AtLangSource)')).Split(';').Length</_AtLangSourceCount>
+      <AtLangEntryPoint>$([System.String]::Copy('@(AtLangSource->'%(FullPath)')).Split(';')[0])</AtLangEntryPoint>
+    </PropertyGroup>
+
+    <Error Condition="'$(_AtLangSourceCount)' != '' and $(_AtLangSourceCount) &gt; 1" Text="The AtLang compiler currently supports compiling a single file per project. Found: @(AtLangSource)." />
+
+    <MakeDir Directories="$(OutputPath)" />
+
+    <Error Condition="( ('$(AtLangCompilerPath)' == '' or !Exists('$(AtLangCompilerPath)')) and ('$(AtLangCompilerProject)' == '' or !Exists('$(AtLangCompilerProject)')) )"
+           Text="The AtLang compiler binaries were not found. Either build the compiler locally or install the AtLang.Sdk NuGet package." />
+
+    <Exec Condition="'$(AtLangCompilerPath)' != '' and Exists('$(AtLangCompilerPath)')"
+          Command="&quot;$(AtLangDotNetHost)&quot; exec &quot;$(AtLangCompilerPath)&quot; &quot;$(AtLangEntryPoint)&quot; &quot;$(TargetPath)&quot; &quot;$(AtLangSelfContained)&quot;"
+          WorkingDirectory="$(MSBuildProjectDirectory)" />
+
+    <Exec Condition="(('$(AtLangCompilerPath)' == '' or !Exists('$(AtLangCompilerPath)')) and '$(AtLangCompilerProject)' != '')"
+          Command="&quot;$(AtLangDotNetHost)&quot; run --project &quot;$(AtLangCompilerProject)&quot; -- &quot;$(AtLangEntryPoint)&quot; &quot;$(TargetPath)&quot; &quot;$(AtLangSelfContained)&quot;"
+          WorkingDirectory="$(MSBuildProjectDirectory)" />
+
+    <Error Condition="!Exists('$(TargetPath)')"
+           Text="The AtLang compiler failed to produce '$(TargetPath)'. See the build output for details." />
+  </Target>
+</Project>

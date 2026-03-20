@@ -12,21 +12,70 @@ The compiler is developed in C# using .NET 9's IL assembly writing capabilities.
 
 ## Getting Started
 
-1. **Build the Compiler**  
-   Navigate to the `compiler/` directory and build the project:
+### Build with the AtLang .NET SDK
+
+1. **Restore and build a project**
    ```bash
+   dotnet build samples/hello-world/hello-world.atproj
+   ```
+   The `.atproj` file uses the local `AtLang.Sdk` (wired up through `global.json`) to automatically restore MSBuild targets and run the compiler.
+
+2. **Run the compiled program**
+   ```bash
+   dotnet samples/hello-world/bin/Debug/HelloWorldSample.dll
+   ```
+
+3. **Author your own project**
+   ```xml
+  <Project Sdk="AtLang.Sdk">
+    <PropertyGroup>
+      <TargetFramework>net9.0</TargetFramework>
+      <AssemblyName>MyApp</AssemblyName>
+      <SelfContained>false</SelfContained>
+    </PropertyGroup>
+    <ItemGroup>
+      <AtLangSource Include="Program.at" />
+    </ItemGroup>
+  </Project>
+  ```
+ Any `*.at` file included by `AtLangSource` is compiled to `bin/<Configuration>/<AssemblyName>.dll` and is runnable via `dotnet`. Set `<SelfContained>true</SelfContained>` to suppress the runtimeconfig file if you plan to bundle the runtime yourself.
+
+#### Pin the .NET SDK with `global.json`
+
+The repository's [`global.json`](./global.json) ensures `dotnet` commands consistently use the same SDK version and the in-tree `AtLang.Sdk`:
+
+```json
+{
+  "sdk": {
+    "version": "9.0.306",
+    "rollForward": "latestFeature"
+  },
+  "msbuild-sdks": {
+    "AtLang.Sdk": "sdk/AtLang.Sdk"
+  }
+}
+```
+
+- Adjust the `version` field if your environment requires a different .NET SDK.
+- Keep `rollForward` at `latestFeature` (or a stricter setting) to avoid unexpected major-version jumps.
+- When you eventually publish the SDK as a NuGet package, change the `AtLang.Sdk` entry to reference the package name instead of the relative path.
+
+### Manual CLI usage
+
+1. **Build the compiler once**
+   ```bash
+   cd compiler
    dotnet build AtLangCompiler.csproj
    ```
-2. **Move to the Output Directory**  
-   After building, switch to the folder containing the compiled artifacts.
-
-3. **Compile Your AtLang Program**  
+2. **Compile an AtLang file**
    ```bash
-   dotnet AtLangCompiler.dll your_program.at
+   dotnet bin/Debug/net9.0/AtLangCompiler.dll ../samples/hello-world/Program.at ../samples/hello-world/bin/Debug/ManualBuild.dll false
    ```
-4. **Run the Generated Program**  
+   The optional third argument specifies whether to emit the runtimeconfig file (`false` by default).
+
+3. **Run the generated assembly**
    ```bash
-   dotnet your_program.exe
+   dotnet ../samples/hello-world/bin/Debug/ManualBuild.dll
    ```
 
 ---

@@ -52,3 +52,12 @@ jobs:
       with:
         name: compiler-artifact
         path: compiler/bin/Release/net9.0/
+
+    - name: Pack AtLang.Sdk
+      run: dotnet pack sdk/AtLang.Sdk/AtLang.Sdk.csproj --configuration Release --no-build
+
+    - name: Upload SDK NuGet package
+      uses: actions/upload-artifact@v5
+      with:
+        name: atlang-sdk-packages
+        path: sdk/AtLang.Sdk/bin/Release/*.nupkg
