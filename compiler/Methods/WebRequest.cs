@@ -102,6 +102,71 @@ internal class WebRequest : IMethodEmitter<WebRequestAssign>
         il.Emit(OpCodes.Isinst, typeof(string));
         il.Emit(OpCodes.Callvirt, dictGetItem); // returns the actual URL string
 
+        // SSRF validation: block requests to internal/restricted addresses
+        LocalBuilder urlLocal = il.DeclareLocal(typeof(string));
+        il.Emit(OpCodes.Castclass, typeof(string));
+        il.Emit(OpCodes.Stloc, urlLocal);
+
+        LocalBuilder uriLocal = il.DeclareLocal(typeof(Uri));
+        il.Emit(OpCodes.Ldloc, urlLocal);
+        il.Emit(OpCodes.Newobj, typeof(Uri).GetConstructor([typeof(string)])!);
+        il.Emit(OpCodes.Stloc, uriLocal);
+
+        LocalBuilder hostLocal = il.DeclareLocal(typeof(string));
+        il.Emit(OpCodes.Ldloc, uriLocal);
+        il.Emit(OpCodes.Callvirt, typeof(Uri).GetProperty("Host")!.GetGetMethod()!);
+        il.Emit(OpCodes.Stloc, hostLocal);
+
+        Label blockedLabel = il.DefineLabel();
+        Label urlSafeLabel = il.DefineLabel();
+
+        il.Emit(OpCodes.Ldloc, hostLocal);
+        il.Emit(OpCodes.Ldstr, "localhost");
+        il.Emit(OpCodes.Call, typeof(string).GetMethod("op_Equality", [typeof(string), typeof(string)])!);
+        il.Emit(OpCodes.Brtrue, blockedLabel);
+
+        il.Emit(OpCodes.Ldloc, hostLocal);
+        il.Emit(OpCodes.Ldstr, "127.0.0.1");
+        il.Emit(OpCodes.Call, typeof(string).GetMethod("op_Equality", [typeof(string), typeof(string)])!);
+        il.Emit(OpCodes.Brtrue, blockedLabel);
+
+        il.Emit(OpCodes.Ldloc, hostLocal);
+        il.Emit(OpCodes.Ldstr, ".local");
+        il.Emit(OpCodes.Callvirt, typeof(string).GetMethod("EndsWith", [typeof(string)])!);
+        il.Emit(OpCodes.Brtrue, blockedLabel);
+
+        il.Emit(OpCodes.Ldloc, hostLocal);
+        il.Emit(OpCodes.Ldstr, "10.");
+        il.Emit(OpCodes.Callvirt, typeof(string).GetMethod("StartsWith", [typeof(string)])!);
+        il.Emit(OpCodes.Brtrue, blockedLabel);
+
+        il.Emit(OpCodes.Ldloc, hostLocal);
+        il.Emit(OpCodes.Ldstr, "192.168.");
+        il.Emit(OpCodes.Callvirt, typeof(string).GetMethod("StartsWith", [typeof(string)])!);
+        il.Emit(OpCodes.Brtrue, blockedLabel);
+
+        il.Emit(OpCodes.Ldloc, hostLocal);
+        il.Emit(OpCodes.Ldstr, "172.16.");
+        il.Emit(OpCodes.Callvirt, typeof(string).GetMethod("StartsWith", [typeof(string)])!);
+        il.Emit(OpCodes.Brtrue, blockedLabel);
+
+        il.Emit(OpCodes.Ldloc, hostLocal);
+        il.Emit(OpCodes.Ldstr, "169.254.169.254");
+        il.Emit(OpCodes.Call, typeof(string).GetMethod("op_Equality", [typeof(string), typeof(string)])!);
+        il.Emit(OpCodes.Brtrue, blockedLabel);
+
+        il.Emit(OpCodes.Br, urlSafeLabel);
+
+        il.MarkLabel(blockedLabel);
+        il.Emit(OpCodes.Ldstr, "Blocked: URL points to restricted address");
+        il.Emit(OpCodes.Newobj, typeof(Exception).GetConstructor([typeof(string)])!);
+        il.Emit(OpCodes.Throw);
+
+        il.MarkLabel(urlSafeLabel);
+
+        // Reload validated URL onto the stack
+        il.Emit(OpCodes.Ldloc, urlLocal);
+
         if (node.Method.Equals(nameof(HttpMethod.Get), StringComparison.OrdinalIgnoreCase))
         {
             // WebClient.DownloadString(string)

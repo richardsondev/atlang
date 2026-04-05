@@ -199,12 +199,35 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
 
         il.MarkLabel(notNullOrEmptyLabel); // Mark label false
 
-        // filePathLocal = Path.Combine(serverRootStrLocal, requestLocal.Url.LocalPath)
+        // filePathLocal = Path.GetFullPath(Path.Combine(serverRootStrLocal, requestUriStringLocal))
         il.Emit(OpCodes.Ldloc, serverRootStrLocal);  // the root path from dictionary
         il.Emit(OpCodes.Ldloc, requestUriStringLocal);
         System.Reflection.MethodInfo pathCombine = typeof(Path).GetMethod("Combine", [typeof(string), typeof(string)])!;
         il.Emit(OpCodes.Call, pathCombine);
+        System.Reflection.MethodInfo getFullPath = typeof(Path).GetMethod("GetFullPath", [typeof(string)])!;
+        il.Emit(OpCodes.Call, getFullPath);
         il.Emit(OpCodes.Stloc, filePathLocal);
+
+        // Path traversal check: ensure resolved path stays within server root
+        Label pathSafeLabel = il.DefineLabel();
+        il.Emit(OpCodes.Ldloc, filePathLocal);
+        il.Emit(OpCodes.Ldloc, serverRootStrLocal);
+        il.Emit(OpCodes.Callvirt, typeof(string).GetMethod("StartsWith", [typeof(string)])!);
+        il.Emit(OpCodes.Brtrue, pathSafeLabel);
+
+        // Path traversal detected — respond with 403 Forbidden
+        il.Emit(OpCodes.Ldloc, contextLocal);
+        il.Emit(OpCodes.Callvirt, typeof(HttpListenerContext).GetProperty("Response")!.GetGetMethod()!);
+        il.Emit(OpCodes.Ldc_I4, 403);
+        il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetProperty("StatusCode")!.GetSetMethod()!);
+
+        il.Emit(OpCodes.Ldloc, contextLocal);
+        il.Emit(OpCodes.Callvirt, typeof(HttpListenerContext).GetProperty("Response")!.GetGetMethod()!);
+        il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetMethod("Close")!);
+
+        il.Emit(OpCodes.Br, loopStart);
+
+        il.MarkLabel(pathSafeLabel);
 
         // Emit local path of request
         il.Emit(OpCodes.Call, typeof(Console).GetMethod("get_Out")!);
