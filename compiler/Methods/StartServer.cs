@@ -223,7 +223,7 @@ internal class StartServer : IMethodEmitter<StartServerAssign>
 
         il.Emit(OpCodes.Ldloc, contextLocal);
         il.Emit(OpCodes.Callvirt, typeof(HttpListenerContext).GetProperty("Response")!.GetGetMethod()!);
-        il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetMethod("Close")!);
+        il.Emit(OpCodes.Callvirt, typeof(HttpListenerResponse).GetMethod("Close", Type.EmptyTypes)!);
 
         il.Emit(OpCodes.Br, loopStart);
 
