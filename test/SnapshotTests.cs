@@ -8,6 +8,14 @@ namespace AtLangCompiler.Tests
     [TestClass]
     public sealed class SnapshotTests
     {
+        /// <summary>
+        /// When true, missing snapshots cause test failure instead of auto-generation.
+        /// Set UPDATE_SNAPSHOTS=true to auto-generate/update snapshots during development.
+        /// CI should always run without this variable to catch missing snapshots.
+        /// </summary>
+        private static bool UpdateSnapshots =>
+            string.Equals(Environment.GetEnvironmentVariable("UPDATE_SNAPSHOTS"), "true", StringComparison.OrdinalIgnoreCase);
+
         [TestMethod]
         [Description("Runs the compiler against all samples and validates the output IL assembly matches the known snapshot.")]
         [DynamicData(nameof(GetSamples), DynamicDataSourceType.Method, DynamicDataDisplayName = nameof(GetDisplayName))]
@@ -34,20 +42,38 @@ namespace AtLangCompiler.Tests
 
                 Assert.IsTrue(File.Exists(ildasmOutputFile), $"ILDASM failed: {ildasmOutputFile} was not generated.");
 
-                // For new samples, copy the baseline snapshot
                 if (!File.Exists(snapshotFilePath))
                 {
-                    Debug.WriteLine($"Copying new {snapshotFilePath}");
-                    File.Copy(ildasmOutputFile, snapshotFilePath);
+                    if (UpdateSnapshots)
+                    {
+                        // Dev mode: auto-generate the missing snapshot
+                        Debug.WriteLine($"Generating new snapshot: {snapshotFilePath}");
+                        File.Copy(ildasmOutputFile, snapshotFilePath);
+                    }
+                    else
+                    {
+                        // CI mode: fail with instructions
+                        Assert.Fail(
+                            $"Snapshot file missing: {Path.GetFileName(snapshotFilePath)}. " +
+                            $"Run tests with UPDATE_SNAPSHOTS=true to generate it, then commit the file to test/snapshots/.");
+                    }
                 }
-
-                Assert.IsTrue(File.Exists(snapshotFilePath), $"Snapshot file not found: {snapshotFilePath}");
 
                 // Compare IL with snapshot
                 string generatedIL = RemoveIgnoredLines(File.ReadAllText(ildasmOutputFile));
                 string snapshotIL = RemoveIgnoredLines(File.ReadAllText(snapshotFilePath));
 
-                Assert.AreEqual(snapshotIL, generatedIL, $"IL mismatch for {atFilePath}");
+                if (generatedIL != snapshotIL && UpdateSnapshots)
+                {
+                    // Dev mode: auto-update the stale snapshot
+                    Debug.WriteLine($"Updating snapshot: {snapshotFilePath}");
+                    File.Copy(ildasmOutputFile, snapshotFilePath, overwrite: true);
+                    snapshotIL = RemoveIgnoredLines(File.ReadAllText(snapshotFilePath));
+                }
+
+                Assert.AreEqual(snapshotIL, generatedIL,
+                    $"IL mismatch for {Path.GetFileName(atFilePath)}. " +
+                    $"If the change is intentional, run tests with UPDATE_SNAPSHOTS=true to update snapshots, then commit them.");
             }
             finally
             {
