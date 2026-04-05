@@ -1,5 +1,5 @@
 
-//  .NET IL Disassembler.  Version 9.0.0
+//  .NET IL Disassembler.  Version 9.0.6
 
 
 // ----- DOS Header:
@@ -25,7 +25,7 @@
 // ----- COFF Header:
 // Machine:                    0x014c
 // Number of sections:         0x0002
-// Time-date stamp:            0x67bc6905
+// Time-date stamp:            0x69d2beed
 // Ptr to symbol table:        0x00000000
 // Number of symbols:          0x00000000
 // Size of optional header:    0x00e0
@@ -34,10 +34,10 @@
 // Magic:                          0x010b
 // Major linker version:           0x30
 // Minor linker version:           0x00
-// Size of code:                   0x00000a00
+// Size of code:                   0x00000c00
 // Size of init.data:              0x00000200
 // Size of uninit.data:            0x00000000
-// Addr. of entry point:           0x0000281a
+// Addr. of entry point:           0x00002abe
 // Base of code:                   0x00002000
 // Base of data:                   0x00004000
 // Image base:                     0x00400000
@@ -61,7 +61,7 @@
 // Loader flags:                   0x00000000
 // Directories:                    0x00000010
 // 0x00000000 [0x00000000] address [size] of Export Directory:          
-// 0x000027c8 [0x0000004f] address [size] of Import Directory:          
+// 0x00002a6c [0x0000004f] address [size] of Import Directory:          
 // 0x00000000 [0x00000000] address [size] of Resource Directory:        
 // 0x00000000 [0x00000000] address [size] of Exception Directory:       
 // 0x00000000 [0x00000000] address [size] of Security Directory:        
@@ -79,9 +79,9 @@
 
 // Image sections:
 //              .text
-//              0x00000820 Virtual Size
+//              0x00000ac4 Virtual Size
 //              0x00002000 Virtual Address
-//              0x00000a00 Size of Raw Data
+//              0x00000c00 Size of Raw Data
 //              0x00000200 Pointer to Raw Data
 //              0x00000000 Pointer to Relocations
 //              0x00000000 Pointer to Linenumbers
@@ -96,7 +96,7 @@
 //              0x0000000c Virtual Size
 //              0x00004000 Virtual Address
 //              0x00000200 Size of Raw Data
-//              0x00000c00 Pointer to Raw Data
+//              0x00000e00 Pointer to Raw Data
 //              0x00000000 Pointer to Relocations
 //              0x00000000 Pointer to Linenumbers
 //                  0x0000 Number of Relocations
@@ -110,13 +110,13 @@
 //              0x00002000 Page RVA
 //              0x0000000c Block Size
 //              0x00000002 Number of Entries
-//              Entry 1: Type 0x3 Offset 0x0000081c
+//              Entry 1: Type 0x3 Offset 0x00000ac0
 //              Entry 2: Type 0x0 Offset 0x00000000
 
 // Import Address Table
 //     DLL : mscoree.dll
 //              0x00002000 Import Address Table
-//              0x0000280a Import Name Table
+//              0x00002aae Import Name Table
 //              0          Time Date Stamp
 //              0          Index of First Forwarder Reference
 //
@@ -133,11 +133,11 @@
 // Header size:                        0x00000048
 // Major runtime version:              0x0002
 // Minor runtime version:              0x0005
-// 0x000021a4 [0x000005a4] address [size] of Metadata Directory:        
+// 0x000022d8 [0x00000714] address [size] of Metadata Directory:        
 // Flags:                              0x00000001
 // Entry point token:                  0x06000001
 // 0x00000000 [0x00000000] address [size] of Resources Directory:       
-// 0x00002748 [0x00000080] address [size] of Strong Name Signature:     
+// 0x000029ec [0x00000080] address [size] of Strong Name Signature:     
 // 0x00000000 [0x00000000] address [size] of CodeManager Table:         
 // 0x00000000 [0x00000000] address [size] of VTableFixups Directory:    
 // 0x00000000 [0x00000000] address [size] of Export Address Table:      
@@ -156,23 +156,23 @@
 //                  0x0005 Number of Streams
 //    Stream 1:
 //              0x0000006c Offset
-//              0x00000138 Size
+//              0x0000017c Size
 //              '#~' Name
 //    Stream 2:
-//              0x000001a4 Offset
-//              0x00000114 Size
+//              0x000001e8 Offset
+//              0x00000158 Size
 //              '#Strings' Name
 //    Stream 3:
-//              0x000002b8 Offset
-//              0x000000b0 Size
+//              0x00000340 Offset
+//              0x00000184 Size
 //              '#US' Name
 //    Stream 4:
-//              0x00000368 Offset
+//              0x000004c4 Offset
 //              0x00000010 Size
 //              '#GUID' Name
 //    Stream 5:
-//              0x00000378 Offset
-//              0x0000022c Size
+//              0x000004d4 Offset
+//              0x00000240 Size
 //              '#Blob' Name
 
 //    Metadata Stream Header:
@@ -191,37 +191,37 @@
 // Export Address Table Jumps:
 // No data.
 
-// File size            : 3584
-// PE header size       : 512 (456 used)    (14.29%)
-// PE additional info   : 171               ( 4.77%)
+// File size            : 4096
+// PE header size       : 512 (456 used)    (12.50%)
+// PE additional info   : 171               ( 4.17%)
 // Num.of PE sections   : 2
-// CLR header size     : 72                 ( 2.01%)
-// CLR meta-data size  : 1444               (40.29%)
-// CLR additional info : 128                ( 3.57%)
-// CLR method headers  : 13                 ( 0.36%)
-// Managed code         : 324               ( 9.04%)
-// Data                 : 512               (14.29%)
-// Unaccounted          : 408               (11.38%)
+// CLR header size     : 72                 ( 1.76%)
+// CLR meta-data size  : 1812               (44.24%)
+// CLR additional info : 128                ( 3.12%)
+// CLR method headers  : 13                 ( 0.32%)
+// Managed code         : 635               (15.50%)
+// Data                 : 512               (12.50%)
+// Unaccounted          : 241               ( 5.88%)
 
 // Num.of PE sections   : 2
-//   .text    - 2560
+//   .text    - 3072
 //   .reloc   - 512
 
-// CLR meta-data size  : 1444
+// CLR meta-data size  : 1812
 //   Module        -    1 (10 bytes)
 //   TypeDef       -    2 (28 bytes)      0 interfaces, 0 explicit layout
-//   TypeRef       -    6 (36 bytes)
+//   TypeRef       -    8 (48 bytes)
 //   MethodDef     -    2 (28 bytes)      0 abstract, 0 native, 2 bodies
-//   MemberRef     -   10 (60 bytes)
+//   MemberRef     -   16 (96 bytes)
 //   StandAloneSig -    1 (2 bytes)
 //   TypeSpec      -    1 (2 bytes)
 //   Assembly      -    1 (22 bytes)
-//   AssemblyRef   -    3 (60 bytes)
-//   Strings       -   273 bytes
-//   Blobs         -   556 bytes
-//   UserStrings   -   176 bytes
+//   AssemblyRef   -    4 (80 bytes)
+//   Strings       -   343 bytes
+//   Blobs         -   576 bytes
+//   UserStrings   -   388 bytes
 //   Guids         -    16 bytes
-//   Uncategorized -   175 bytes
+//   Uncategorized -   173 bytes
 
 // CLR additional info : 128
 
@@ -230,8 +230,8 @@
 //   Num.of fat headers    - 1
 //   Num.of tiny headers   - 1
 
-// Managed code : 324
-//   Ave method size - 162
+// Managed code : 635
+//   Ave method size - 317
 // Classes defined in this module:
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Class AtLangProgram                  (public) (auto) (ansi) 
@@ -242,14 +242,14 @@
 // ===========================================================
 // Metadata section: 0x424a5342, version: 1.1, extra: 0, version len: 12, version: v4.0.30319
 //            flags: 0x00, streams: 5
-// Stream 0: name: #~, size 312
-// Stream 1: name: #Strings, size 276
-// Stream 2: name: #US, size 176
+// Stream 0: name: #~, size 380
+// Stream 1: name: #Strings, size 344
+// Stream 2: name: #US, size 388
 // Stream 3: name: #GUID, size 16
-// Stream 4: name: #Blob, size 556
+// Stream 4: name: #Blob, size 576
 // Metadata header: 2.0, heaps: 0x00, rid: 0x01, valid: 0x0000000908020447, sorted: 0x000016003301fa00
 // 
-// Strings: 273(0x111), Blobs: 556(0x22c), Guids: 16(0x10), User strings: 176(0xb0)
+// Strings: 343(0x157), Blobs: 576(0x240), Guids: 16(0x10), User strings: 388(0x184)
 // =================================================
 //  0(0): Module               cRecs:    1(0x1), cbRec: 10(0xa), cbTable:    10(0xa)
 //   col  0:  Generation   oCol: 0, cbCol:2, USHORT 
@@ -260,17 +260,19 @@
 // -------------------------------------------------
 //    1 == 0:0000, 1:string#62, 2:guid#1, 3:guid#0, 4:guid#0
 // =================================================
-//  1(0x1): TypeRef              cRecs:    6(0x6), cbRec:  6(0x6), cbTable:    36(0x24)
+//  1(0x1): TypeRef              cRecs:    8(0x8), cbRec:  6(0x6), cbTable:    48(0x30)
 //   col  0:  ResolutionScope oCol: 0, cbCol:2, ResolutionScope
 //   col  1:  Name         oCol: 2, cbCol:2, string 
 //   col  2:  Namespace    oCol: 4, cbCol:2, string 
 // -------------------------------------------------
 //    1 == 0:ResolutionScope[23000001], 1:string#1, 2:string#38
-//    2 == 0:ResolutionScope[23000001], 1:string#8c, 2:string#b3
-//    3 == 0:ResolutionScope[23000002], 1:string#f4, 2:string#de
-//    4 == 0:ResolutionScope[23000003], 1:string#5a, 2:string#b3
-//    5 == 0:ResolutionScope[23000001], 1:string#bf, 2:string#17
-//    6 == 0:ResolutionScope[23000001], 1:string#d7, 2:string#b3
+//    2 == 0:ResolutionScope[23000001], 1:string#8c, 2:string#da
+//    3 == 0:ResolutionScope[23000002], 1:string#125, 2:string#10f
+//    4 == 0:ResolutionScope[23000003], 1:string#b6, 2:string#da
+//    5 == 0:ResolutionScope[23000001], 1:string#e6, 2:string#da
+//    6 == 0:ResolutionScope[23000004], 1:string#5a, 2:string#da
+//    7 == 0:ResolutionScope[23000001], 1:string#f0, 2:string#17
+//    8 == 0:ResolutionScope[23000001], 1:string#108, 2:string#da
 // =================================================
 //  2(0x2): TypeDef              cRecs:    2(0x2), cbRec: 14(0xe), cbTable:    28(0x1c)
 //   col  0:  Flags        oCol: 0, cbCol:4, ULONG  
@@ -281,7 +283,7 @@
 //   col  5:  MethodList   oCol: c, cbCol:2, Method 
 // -------------------------------------------------
 //    1 == 0:00000000, 1:string#e, 2:string#0, 3:TypeDefOrRef[02000000], 4:Field[4000001], 5:Method[6000001]
-//    2 == 0:00000001, 1:string#93, 2:string#0, 3:TypeDefOrRef[01000006], 4:Field[4000001], 5:Method[6000001]
+//    2 == 0:00000001, 1:string#ba, 2:string#0, 3:TypeDefOrRef[01000008], 4:Field[4000001], 5:Method[6000001]
 // =================================================
 //  3(0x3): FieldPtr             cRecs:    0(0), cbRec:  2(0x2), cbTable:     0(0)
 //   col  0:  Field        oCol: 0, cbCol:2, Field  
@@ -302,8 +304,8 @@
 //   col  4:  Signature    oCol: a, cbCol:2, blob   
 //   col  5:  ParamList    oCol: c, cbCol:2, Param  
 // -------------------------------------------------
-//    1 == 0:00002050, 1:0000, 2:0096, 3:string#ba, 4:blob#225, 5:Param[8000001]
-//    2 == 0:00002199, 1:0000, 2:1806, 3:string#ca, 4:blob#aa, 5:Param[8000001]
+//    1 == 0:00002050, 1:0000, 2:0096, 3:string#e1, 4:blob#23c, 5:Param[8000001]
+//    2 == 0:000022d0, 1:0000, 2:1806, 3:string#fb, 4:blob#aa, 5:Param[8000001]
 // =================================================
 //  7(0x7): ParamPtr             cRecs:    0(0), cbRec:  2(0x2), cbTable:     0(0)
 //   col  0:  Param        oCol: 0, cbCol:2, Param  
@@ -317,21 +319,27 @@
 //   col  0:* Class        oCol: 0, cbCol:2, TypeDef
 //   col  1:  Interface    oCol: 2, cbCol:2, TypeDefOrRef
 // =================================================
-// 10(0xa): MemberRef            cRecs:   10(0xa), cbRec:  6(0x6), cbTable:    60(0x3c)
+// 10(0xa): MemberRef            cRecs:   16(0x10), cbRec:  6(0x6), cbTable:    96(0x60)
 //   col  0:  Class        oCol: 0, cbCol:2, MemberRefParent
 //   col  1:  Name         oCol: 2, cbCol:2, string 
 //   col  2:  Signature    oCol: 4, cbCol:2, blob   
 // -------------------------------------------------
-//    1 == 0:MemberRefParent[1b000001], 1:string#ca, 2:blob#aa
-//    2 == 0:MemberRefParent[1b000001], 1:string#aa, 2:blob#ae
-//    3 == 0:MemberRefParent[01000003], 1:string#ca, 2:blob#aa
-//    4 == 0:MemberRefParent[1b000001], 1:string#a1, 2:blob#158
-//    5 == 0:MemberRefParent[01000003], 1:string#77, 2:blob#15f
-//    6 == 0:MemberRefParent[01000004], 1:string#109, 2:blob#206
-//    7 == 0:MemberRefParent[01000002], 1:string#d0, 2:blob#20b
-//    8 == 0:MemberRefParent[01000005], 1:string#6d, 2:blob#211
-//    9 == 0:MemberRefParent[01000003], 1:string#86, 2:blob#216
-//    a == 0:MemberRefParent[01000006], 1:string#ca, 2:blob#aa
+//    1 == 0:MemberRefParent[1b000001], 1:string#fb, 2:blob#aa
+//    2 == 0:MemberRefParent[1b000001], 1:string#d1, 2:blob#ae
+//    3 == 0:MemberRefParent[01000003], 1:string#fb, 2:blob#aa
+//    4 == 0:MemberRefParent[1b000001], 1:string#c8, 2:blob#158
+//    5 == 0:MemberRefParent[01000004], 1:string#fb, 2:blob#201
+//    6 == 0:MemberRefParent[01000004], 1:string#13a, 2:blob#206
+//    7 == 0:MemberRefParent[01000002], 1:string#14b, 2:blob#20a
+//    8 == 0:MemberRefParent[01000002], 1:string#93, 2:blob#210
+//    9 == 0:MemberRefParent[01000002], 1:string#9c, 2:blob#210
+//    a == 0:MemberRefParent[01000005], 1:string#fb, 2:blob#201
+//    b == 0:MemberRefParent[01000003], 1:string#77, 2:blob#215
+//    c == 0:MemberRefParent[01000006], 1:string#143, 2:blob#21a
+//    d == 0:MemberRefParent[01000002], 1:string#101, 2:blob#21f
+//    e == 0:MemberRefParent[01000007], 1:string#6d, 2:blob#201
+//    f == 0:MemberRefParent[01000003], 1:string#86, 2:blob#225
+//   10 == 0:MemberRefParent[01000008], 1:string#fb, 2:blob#aa
 // =================================================
 // 11(0xb): Constant             cRecs:    0(0), cbRec:  6(0x6), cbTable:     0(0)
 //   col  0:  Type         oCol: 0, cbCol:1, BYTE   
@@ -364,7 +372,7 @@
 // 17(0x11): StandAloneSig        cRecs:    1(0x1), cbRec:  2(0x2), cbTable:     2(0x2)
 //   col  0:  Signature    oCol: 0, cbCol:2, blob   
 // -------------------------------------------------
-//    1 == 0:blob#21c
+//    1 == 0:blob#22b
 // =================================================
 // 18(0x12): EventMap             cRecs:    0(0), cbRec:  4(0x4), cbTable:     0(0)
 //   col  0:  Parent       oCol: 0, cbCol:2, TypeDef
@@ -436,7 +444,7 @@
 //   col  7:  Name         oCol:12, cbCol:2, string 
 //   col  8:  Locale       oCol:14, cbCol:2, string 
 // -------------------------------------------------
-//    1 == 0:00000000, 1:0000, 2:0000, 3:0000, 4:0000, 5:00000000, 6:blob#0, 7:string#fe, 8:string#0
+//    1 == 0:00000000, 1:0000, 2:0000, 3:0000, 4:0000, 5:00000000, 6:blob#0, 7:string#12f, 8:string#0
 // =================================================
 // 33(0x21): AssemblyProcessor    cRecs:    0(0), cbRec:  4(0x4), cbTable:     0(0)
 //   col  0:  Processor    oCol: 0, cbCol:4, ULONG  
@@ -446,7 +454,7 @@
 //   col  1:  OSMajorVersion oCol: 4, cbCol:4, ULONG  
 //   col  2:  OSMinorVersion oCol: 8, cbCol:4, ULONG  
 // =================================================
-// 35(0x23): AssemblyRef          cRecs:    3(0x3), cbRec: 20(0x14), cbTable:    60(0x3c)
+// 35(0x23): AssemblyRef          cRecs:    4(0x4), cbRec: 20(0x14), cbTable:    80(0x50)
 //   col  0:  MajorVersion oCol: 0, cbCol:2, USHORT 
 //   col  1:  MinorVersion oCol: 2, cbCol:2, USHORT 
 //   col  2:  BuildNumber  oCol: 4, cbCol:2, USHORT 
@@ -458,8 +466,9 @@
 //   col  8:  HashValue    oCol:12, cbCol:2, blob   
 // -------------------------------------------------
 //    1 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#1, 6:string#21, 7:string#0, 8:blob#0
-//    2 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#b6, 6:string#e9, 7:string#0, 8:blob#0
-//    3 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#164, 6:string#53, 7:string#0, 8:blob#0
+//    2 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#b6, 6:string#11a, 7:string#0, 8:blob#0
+//    3 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#15f, 6:string#a7, 7:string#0, 8:blob#0
+//    4 == 0:0009, 1:0000, 2:0000, 3:0000, 4:00000001, 5:blob#15f, 6:string#53, 7:string#0, 8:blob#0
 // =================================================
 // 36(0x24): AssemblyRefProcessor cRecs:    0(0), cbRec:  6(0x6), cbTable:     0(0)
 //   col  0:  Processor    oCol: 0, cbCol:4, ULONG  
@@ -540,7 +549,21 @@
                 C6 D9 13 E3 A5 41 33 3A 1D 05 D9 BE D2 2B 38 CB ) // .....A3:.....+8.
   .ver 9:0:0:0
 }
-.assembly extern /*23000003*/ System.Console
+.assembly extern /*23000003*/ System.Private.Uri
+{
+  .publickey = (00 24 00 00 04 80 00 00 94 00 00 00 06 02 00 00   // .$..............
+                00 24 00 00 52 53 41 31 00 04 00 00 01 00 01 00   // .$..RSA1........
+                07 D1 FA 57 C4 AE D9 F0 A3 2E 84 AA 0F AE FD 0D   // ...W............
+                E9 E8 FD 6A EC 8F 87 FB 03 76 6C 83 4C 99 92 1E   // ...j.....vl.L...
+                B2 3B E7 9A D9 D5 DC C1 DD 9A D2 36 13 21 02 90   // .;.........6.!..
+                0B 72 3C F9 80 95 7F C4 E1 77 10 8F C6 07 77 4F   // .r<......w....wO
+                29 E8 32 0E 92 EA 05 EC E4 E8 21 C0 A5 EF E8 F1   // ).2.......!.....
+                64 5C 4C 0C 93 C1 AB 99 28 5D 62 2C AA 65 2C 1D   // d\L.....(]b,.e,.
+                FA D6 3D 74 5D 6F 2D E5 F1 7E 5E AF 0F C4 96 3D   // ..=t]o-..~^....=
+                26 1C 8A 12 43 65 18 20 6D C0 93 34 4D 5A D2 93 ) // &...Ce. m..4MZ..
+  .ver 9:0:0:0
+}
+.assembly extern /*23000004*/ System.Console
 {
   .publickey = (00 24 00 00 04 80 00 00 94 00 00 00 06 02 00 00   // .$..............
                 00 24 00 00 52 53 41 31 00 04 00 00 01 00 01 00   // .$..RSA1........
@@ -559,19 +582,19 @@
   .ver 0:0:0:0
 }
 .module MainModule
-// MVID: {66b15fea-3301-41bb-acc1-3897b88fb192}
+// MVID: {6f36c51e-0e6e-4903-96b0-d2d4ad48a70e}
 .imagebase 0x00400000
 .file alignment 0x00000200
 .stackreserve 0x00100000
 .subsystem 0x0003       // WINDOWS_CUI
 .corflags 0x00000001    //  ILONLY
-// Image base: 0x00000179E10B0000
+// Image base: 0x000002674CD20000
 
 
 // =============== CLASS MEMBERS DECLARATION ===================
 
 .class /*02000002*/ public auto ansi AtLangProgram
-       extends [System.Private.CoreLib/*23000001*/]System.Object/*01000006*/
+       extends [System.Private.CoreLib/*23000001*/]System.Object/*01000008*/
 {
   .method /*06000001*/ public hidebysig static 
           int32  Main() cil managed
@@ -579,9 +602,15 @@
   {
     .entrypoint
     // Method begins at RVA 0x2050
-    // Code size       317 (0x13d)
+    // Code size       628 (0x274)
     .maxstack  6
-    .locals /*11000001*/ init (class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object> V_0)
+    .locals /*11000001*/ init (class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object> V_0,
+             string V_1,
+             class [System.Private.Uri/*23000003*/]System.Uri/*01000004*/ V_2,
+             string V_3,
+             string V_4,
+             class [System.Private.Uri/*23000003*/]System.Uri/*01000004*/ V_5,
+             string V_6)
     IL_0000:  /* 73   | (0A)000001       */ newobj     instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::.ctor() /* 0A000001 */
     IL_0005:  /* 0A   |                  */ stloc.0
     IL_0006:  /* 06   |                  */ ldloc.0
@@ -597,100 +626,206 @@
     IL_0027:  /* 72   | (70)000001       */ ldstr      "IPURL" /* 70000001 */
     IL_002c:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
     IL_0031:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_0036:  /* 6F   | (0A)000005       */ callvirt   instance string [System.Net.WebClient/*23000002*/]System.Net.WebClient/*01000003*/::DownloadString(string) /* 0A000005 */
-    IL_003b:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_0040:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
-                                                                                                                                                                                                        !1) /* 0A000002 */
-    IL_0045:  /* 06   |                  */ ldloc.0
-    IL_0046:  /* 72   | (70)00004F       */ ldstr      "IPTEXT" /* 7000004F */
-    IL_004b:  /* 72   | (70)00005D       */ ldstr      "Your IP is " /* 7000005D */
-    IL_0050:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_0055:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
-                                                                                                                                                                                                        !1) /* 0A000002 */
-    IL_005a:  /* 28   | (0A)000006       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000005*/ [System.Console/*23000003*/]System.Console/*01000004*/::get_Out() /* 0A000006 */
-    IL_005f:  /* 06   |                  */ ldloc.0
-    IL_0060:  /* 72   | (70)00004F       */ ldstr      "IPTEXT" /* 7000004F */
-    IL_0065:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_006a:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_006f:  /* 25   |                  */ dup
-    IL_0070:  /* 2D   | 06               */ brtrue.s   IL_0078
+    IL_0036:  /* 74   | (01)000002       */ castclass  [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_003b:  /* 0B   |                  */ stloc.1
+    IL_003c:  /* 07   |                  */ ldloc.1
+    IL_003d:  /* 73   | (0A)000005       */ newobj     instance void [System.Private.Uri/*23000003*/]System.Uri/*01000004*/::.ctor(string) /* 0A000005 */
+    IL_0042:  /* 0C   |                  */ stloc.2
+    IL_0043:  /* 08   |                  */ ldloc.2
+    IL_0044:  /* 6F   | (0A)000006       */ callvirt   instance string [System.Private.Uri/*23000003*/]System.Uri/*01000004*/::get_Host() /* 0A000006 */
+    IL_0049:  /* 0D   |                  */ stloc.3
+    IL_004a:  /* 09   |                  */ ldloc.3
+    IL_004b:  /* 72   | (70)00004F       */ ldstr      "localhost" /* 7000004F */
+    IL_0050:  /* 28   | (0A)000007       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::op_Equality(string,
+                                                                                                                                       string) /* 0A000007 */
+    IL_0055:  /* 3A   | 00000065         */ brtrue     IL_00bf
 
-    IL_0072:  /* 26   |                  */ pop
-    IL_0073:  /* 72   | (70)000075       */ ldstr      "" /* 70000075 */
-    IL_0078:  /* 06   |                  */ ldloc.0
-    IL_0079:  /* 72   | (70)000049       */ ldstr      "IP" /* 70000049 */
-    IL_007e:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_0083:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_0088:  /* 25   |                  */ dup
-    IL_0089:  /* 2D   | 06               */ brtrue.s   IL_0091
+    IL_005a:  /* 09   |                  */ ldloc.3
+    IL_005b:  /* 72   | (70)000063       */ ldstr      "127.0.0.1" /* 70000063 */
+    IL_0060:  /* 28   | (0A)000007       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::op_Equality(string,
+                                                                                                                                       string) /* 0A000007 */
+    IL_0065:  /* 3A   | 00000055         */ brtrue     IL_00bf
 
-    IL_008b:  /* 26   |                  */ pop
-    IL_008c:  /* 72   | (70)000075       */ ldstr      "" /* 70000075 */
-    IL_0091:  /* 28   | (0A)000007       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string,
-                                                                                                                                    string) /* 0A000007 */
-    IL_0096:  /* 6F   | (0A)000008       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000005*/::WriteLine(string) /* 0A000008 */
-    IL_009b:  /* 06   |                  */ ldloc.0
-    IL_009c:  /* 72   | (70)000077       */ ldstr      "POSTDATA" /* 70000077 */
-    IL_00a1:  /* 72   | (70)000089       */ ldstr      "[]" /* 70000089 */
-    IL_00a6:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_00ab:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
-                                                                                                                                                                                                        !1) /* 0A000002 */
-    IL_00b0:  /* 06   |                  */ ldloc.0
-    IL_00b1:  /* 72   | (70)000049       */ ldstr      "IP" /* 70000049 */
-    IL_00b6:  /* 73   | (0A)000003       */ newobj     instance void [System.Net.WebClient/*23000002*/]System.Net.WebClient/*01000003*/::.ctor() /* 0A000003 */
-    IL_00bb:  /* 06   |                  */ ldloc.0
-    IL_00bc:  /* 72   | (70)000001       */ ldstr      "IPURL" /* 70000001 */
-    IL_00c1:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_00c6:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_00cb:  /* 06   |                  */ ldloc.0
-    IL_00cc:  /* 72   | (70)000077       */ ldstr      "POSTDATA" /* 70000077 */
-    IL_00d1:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_00d6:  /* 6F   | (0A)000009       */ callvirt   instance string [System.Net.WebClient/*23000002*/]System.Net.WebClient/*01000003*/::UploadString(string,
-                                                                                                                                                        string) /* 0A000009 */
-    IL_00db:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_00e0:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
-                                                                                                                                                                                                        !1) /* 0A000002 */
-    IL_00e5:  /* 06   |                  */ ldloc.0
-    IL_00e6:  /* 72   | (70)00004F       */ ldstr      "IPTEXT" /* 7000004F */
-    IL_00eb:  /* 72   | (70)00008F       */ ldstr      "POST response: " /* 7000008F */
-    IL_00f0:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_00f5:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
-                                                                                                                                                                                                        !1) /* 0A000002 */
-    IL_00fa:  /* 28   | (0A)000006       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000005*/ [System.Console/*23000003*/]System.Console/*01000004*/::get_Out() /* 0A000006 */
-    IL_00ff:  /* 06   |                  */ ldloc.0
-    IL_0100:  /* 72   | (70)00004F       */ ldstr      "IPTEXT" /* 7000004F */
-    IL_0105:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_010a:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_010f:  /* 25   |                  */ dup
-    IL_0110:  /* 2D   | 06               */ brtrue.s   IL_0118
+    IL_006a:  /* 09   |                  */ ldloc.3
+    IL_006b:  /* 72   | (70)000077       */ ldstr      ".local" /* 70000077 */
+    IL_0070:  /* 6F   | (0A)000008       */ callvirt   instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::EndsWith(string) /* 0A000008 */
+    IL_0075:  /* 3A   | 00000045         */ brtrue     IL_00bf
 
-    IL_0112:  /* 26   |                  */ pop
-    IL_0113:  /* 72   | (70)000075       */ ldstr      "" /* 70000075 */
-    IL_0118:  /* 06   |                  */ ldloc.0
-    IL_0119:  /* 72   | (70)000049       */ ldstr      "IP" /* 70000049 */
-    IL_011e:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
-    IL_0123:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
-    IL_0128:  /* 25   |                  */ dup
-    IL_0129:  /* 2D   | 06               */ brtrue.s   IL_0131
+    IL_007a:  /* 09   |                  */ ldloc.3
+    IL_007b:  /* 72   | (70)000085       */ ldstr      "10." /* 70000085 */
+    IL_0080:  /* 6F   | (0A)000009       */ callvirt   instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::StartsWith(string) /* 0A000009 */
+    IL_0085:  /* 3A   | 00000035         */ brtrue     IL_00bf
 
-    IL_012b:  /* 26   |                  */ pop
-    IL_012c:  /* 72   | (70)000075       */ ldstr      "" /* 70000075 */
-    IL_0131:  /* 28   | (0A)000007       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string,
-                                                                                                                                    string) /* 0A000007 */
-    IL_0136:  /* 6F   | (0A)000008       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000005*/::WriteLine(string) /* 0A000008 */
-    IL_013b:  /* 16   |                  */ ldc.i4.0
-    IL_013c:  /* 2A   |                  */ ret
+    IL_008a:  /* 09   |                  */ ldloc.3
+    IL_008b:  /* 72   | (70)00008D       */ ldstr      "192.168." /* 7000008D */
+    IL_0090:  /* 6F   | (0A)000009       */ callvirt   instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::StartsWith(string) /* 0A000009 */
+    IL_0095:  /* 3A   | 00000025         */ brtrue     IL_00bf
+
+    IL_009a:  /* 09   |                  */ ldloc.3
+    IL_009b:  /* 72   | (70)00009F       */ ldstr      "172.16." /* 7000009F */
+    IL_00a0:  /* 6F   | (0A)000009       */ callvirt   instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::StartsWith(string) /* 0A000009 */
+    IL_00a5:  /* 3A   | 00000015         */ brtrue     IL_00bf
+
+    IL_00aa:  /* 09   |                  */ ldloc.3
+    IL_00ab:  /* 72   | (70)0000AF       */ ldstr      "169.254.169.254" /* 700000AF */
+    IL_00b0:  /* 28   | (0A)000007       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::op_Equality(string,
+                                                                                                                                       string) /* 0A000007 */
+    IL_00b5:  /* 3A   | 00000005         */ brtrue     IL_00bf
+
+    IL_00ba:  /* 38   | 0000000B         */ br         IL_00ca
+
+    IL_00bf:  /* 72   | (70)0000CF       */ ldstr      "Blocked: URL points to restricted address" /* 700000CF */
+    IL_00c4:  /* 73   | (0A)00000A       */ newobj     instance void [System.Private.CoreLib/*23000001*/]System.Exception/*01000005*/::.ctor(string) /* 0A00000A */
+    IL_00c9:  /* 7A   |                  */ throw
+
+    IL_00ca:  /* 07   |                  */ ldloc.1
+    IL_00cb:  /* 6F   | (0A)00000B       */ callvirt   instance string [System.Net.WebClient/*23000002*/]System.Net.WebClient/*01000003*/::DownloadString(string) /* 0A00000B */
+    IL_00d0:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_00d5:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
+                                                                                                                                                                                                        !1) /* 0A000002 */
+    IL_00da:  /* 06   |                  */ ldloc.0
+    IL_00db:  /* 72   | (70)000123       */ ldstr      "IPTEXT" /* 70000123 */
+    IL_00e0:  /* 72   | (70)000131       */ ldstr      "Your IP is " /* 70000131 */
+    IL_00e5:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_00ea:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
+                                                                                                                                                                                                        !1) /* 0A000002 */
+    IL_00ef:  /* 28   | (0A)00000C       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000004*/]System.Console/*01000006*/::get_Out() /* 0A00000C */
+    IL_00f4:  /* 06   |                  */ ldloc.0
+    IL_00f5:  /* 72   | (70)000123       */ ldstr      "IPTEXT" /* 70000123 */
+    IL_00fa:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_00ff:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_0104:  /* 25   |                  */ dup
+    IL_0105:  /* 2D   | 06               */ brtrue.s   IL_010d
+
+    IL_0107:  /* 26   |                  */ pop
+    IL_0108:  /* 72   | (70)000149       */ ldstr      "" /* 70000149 */
+    IL_010d:  /* 06   |                  */ ldloc.0
+    IL_010e:  /* 72   | (70)000049       */ ldstr      "IP" /* 70000049 */
+    IL_0113:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_0118:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_011d:  /* 25   |                  */ dup
+    IL_011e:  /* 2D   | 06               */ brtrue.s   IL_0126
+
+    IL_0120:  /* 26   |                  */ pop
+    IL_0121:  /* 72   | (70)000149       */ ldstr      "" /* 70000149 */
+    IL_0126:  /* 28   | (0A)00000D       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string,
+                                                                                                                                    string) /* 0A00000D */
+    IL_012b:  /* 6F   | (0A)00000E       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000E */
+    IL_0130:  /* 06   |                  */ ldloc.0
+    IL_0131:  /* 72   | (70)00014B       */ ldstr      "POSTDATA" /* 7000014B */
+    IL_0136:  /* 72   | (70)00015D       */ ldstr      "[]" /* 7000015D */
+    IL_013b:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_0140:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
+                                                                                                                                                                                                        !1) /* 0A000002 */
+    IL_0145:  /* 06   |                  */ ldloc.0
+    IL_0146:  /* 72   | (70)000049       */ ldstr      "IP" /* 70000049 */
+    IL_014b:  /* 73   | (0A)000003       */ newobj     instance void [System.Net.WebClient/*23000002*/]System.Net.WebClient/*01000003*/::.ctor() /* 0A000003 */
+    IL_0150:  /* 06   |                  */ ldloc.0
+    IL_0151:  /* 72   | (70)000001       */ ldstr      "IPURL" /* 70000001 */
+    IL_0156:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_015b:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_0160:  /* 74   | (01)000002       */ castclass  [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_0165:  /* 13   | 04               */ stloc.s    V_4
+    IL_0167:  /* 11   | 04               */ ldloc.s    V_4
+    IL_0169:  /* 73   | (0A)000005       */ newobj     instance void [System.Private.Uri/*23000003*/]System.Uri/*01000004*/::.ctor(string) /* 0A000005 */
+    IL_016e:  /* 13   | 05               */ stloc.s    V_5
+    IL_0170:  /* 11   | 05               */ ldloc.s    V_5
+    IL_0172:  /* 6F   | (0A)000006       */ callvirt   instance string [System.Private.Uri/*23000003*/]System.Uri/*01000004*/::get_Host() /* 0A000006 */
+    IL_0177:  /* 13   | 06               */ stloc.s    V_6
+    IL_0179:  /* 11   | 06               */ ldloc.s    V_6
+    IL_017b:  /* 72   | (70)00004F       */ ldstr      "localhost" /* 7000004F */
+    IL_0180:  /* 28   | (0A)000007       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::op_Equality(string,
+                                                                                                                                       string) /* 0A000007 */
+    IL_0185:  /* 3A   | 0000006B         */ brtrue     IL_01f5
+
+    IL_018a:  /* 11   | 06               */ ldloc.s    V_6
+    IL_018c:  /* 72   | (70)000063       */ ldstr      "127.0.0.1" /* 70000063 */
+    IL_0191:  /* 28   | (0A)000007       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::op_Equality(string,
+                                                                                                                                       string) /* 0A000007 */
+    IL_0196:  /* 3A   | 0000005A         */ brtrue     IL_01f5
+
+    IL_019b:  /* 11   | 06               */ ldloc.s    V_6
+    IL_019d:  /* 72   | (70)000077       */ ldstr      ".local" /* 70000077 */
+    IL_01a2:  /* 6F   | (0A)000008       */ callvirt   instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::EndsWith(string) /* 0A000008 */
+    IL_01a7:  /* 3A   | 00000049         */ brtrue     IL_01f5
+
+    IL_01ac:  /* 11   | 06               */ ldloc.s    V_6
+    IL_01ae:  /* 72   | (70)000085       */ ldstr      "10." /* 70000085 */
+    IL_01b3:  /* 6F   | (0A)000009       */ callvirt   instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::StartsWith(string) /* 0A000009 */
+    IL_01b8:  /* 3A   | 00000038         */ brtrue     IL_01f5
+
+    IL_01bd:  /* 11   | 06               */ ldloc.s    V_6
+    IL_01bf:  /* 72   | (70)00008D       */ ldstr      "192.168." /* 7000008D */
+    IL_01c4:  /* 6F   | (0A)000009       */ callvirt   instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::StartsWith(string) /* 0A000009 */
+    IL_01c9:  /* 3A   | 00000027         */ brtrue     IL_01f5
+
+    IL_01ce:  /* 11   | 06               */ ldloc.s    V_6
+    IL_01d0:  /* 72   | (70)00009F       */ ldstr      "172.16." /* 7000009F */
+    IL_01d5:  /* 6F   | (0A)000009       */ callvirt   instance bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::StartsWith(string) /* 0A000009 */
+    IL_01da:  /* 3A   | 00000016         */ brtrue     IL_01f5
+
+    IL_01df:  /* 11   | 06               */ ldloc.s    V_6
+    IL_01e1:  /* 72   | (70)0000AF       */ ldstr      "169.254.169.254" /* 700000AF */
+    IL_01e6:  /* 28   | (0A)000007       */ call       bool [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::op_Equality(string,
+                                                                                                                                       string) /* 0A000007 */
+    IL_01eb:  /* 3A   | 00000005         */ brtrue     IL_01f5
+
+    IL_01f0:  /* 38   | 0000000B         */ br         IL_0200
+
+    IL_01f5:  /* 72   | (70)0000CF       */ ldstr      "Blocked: URL points to restricted address" /* 700000CF */
+    IL_01fa:  /* 73   | (0A)00000A       */ newobj     instance void [System.Private.CoreLib/*23000001*/]System.Exception/*01000005*/::.ctor(string) /* 0A00000A */
+    IL_01ff:  /* 7A   |                  */ throw
+
+    IL_0200:  /* 11   | 04               */ ldloc.s    V_4
+    IL_0202:  /* 06   |                  */ ldloc.0
+    IL_0203:  /* 72   | (70)00014B       */ ldstr      "POSTDATA" /* 7000014B */
+    IL_0208:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_020d:  /* 6F   | (0A)00000F       */ callvirt   instance string [System.Net.WebClient/*23000002*/]System.Net.WebClient/*01000003*/::UploadString(string,
+                                                                                                                                                        string) /* 0A00000F */
+    IL_0212:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_0217:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
+                                                                                                                                                                                                        !1) /* 0A000002 */
+    IL_021c:  /* 06   |                  */ ldloc.0
+    IL_021d:  /* 72   | (70)000123       */ ldstr      "IPTEXT" /* 70000123 */
+    IL_0222:  /* 72   | (70)000163       */ ldstr      "POST response: " /* 70000163 */
+    IL_0227:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_022c:  /* 6F   | (0A)000002       */ callvirt   instance void class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::set_Item(!0,
+                                                                                                                                                                                                        !1) /* 0A000002 */
+    IL_0231:  /* 28   | (0A)00000C       */ call       class [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/ [System.Console/*23000004*/]System.Console/*01000006*/::get_Out() /* 0A00000C */
+    IL_0236:  /* 06   |                  */ ldloc.0
+    IL_0237:  /* 72   | (70)000123       */ ldstr      "IPTEXT" /* 70000123 */
+    IL_023c:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_0241:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_0246:  /* 25   |                  */ dup
+    IL_0247:  /* 2D   | 06               */ brtrue.s   IL_024f
+
+    IL_0249:  /* 26   |                  */ pop
+    IL_024a:  /* 72   | (70)000149       */ ldstr      "" /* 70000149 */
+    IL_024f:  /* 06   |                  */ ldloc.0
+    IL_0250:  /* 72   | (70)000049       */ ldstr      "IP" /* 70000049 */
+    IL_0255:  /* 6F   | (0A)000004       */ callvirt   instance !1 class [System.Private.CoreLib/*23000001*/]System.Collections.Generic.Dictionary`2/*01000001*/<string,object>/*1B000001*/::get_Item(!0) /* 0A000004 */
+    IL_025a:  /* 75   | (01)000002       */ isinst     [System.Private.CoreLib/*23000001*/]System.String/*01000002*/
+    IL_025f:  /* 25   |                  */ dup
+    IL_0260:  /* 2D   | 06               */ brtrue.s   IL_0268
+
+    IL_0262:  /* 26   |                  */ pop
+    IL_0263:  /* 72   | (70)000149       */ ldstr      "" /* 70000149 */
+    IL_0268:  /* 28   | (0A)00000D       */ call       string [System.Private.CoreLib/*23000001*/]System.String/*01000002*/::Concat(string,
+                                                                                                                                    string) /* 0A00000D */
+    IL_026d:  /* 6F   | (0A)00000E       */ callvirt   instance void [System.Private.CoreLib/*23000001*/]System.IO.TextWriter/*01000007*/::WriteLine(string) /* 0A00000E */
+    IL_0272:  /* 16   |                  */ ldc.i4.0
+    IL_0273:  /* 2A   |                  */ ret
   } // end of method AtLangProgram::Main
 
   .method /*06000002*/ public specialname rtspecialname 
           instance void  .ctor() cil managed
   // SIG: 20 00 01
   {
-    // Method begins at RVA 0x2199
+    // Method begins at RVA 0x22d0
     // Code size       7 (0x7)
     .maxstack  8
     IL_0000:  /* 02   |                  */ ldarg.0
-    IL_0001:  /* 28   | (0A)00000A       */ call       instance void [System.Private.CoreLib/*23000001*/]System.Object/*01000006*/::.ctor() /* 0A00000A */
+    IL_0001:  /* 28   | (0A)000010       */ call       instance void [System.Private.CoreLib/*23000001*/]System.Object/*01000008*/::.ctor() /* 0A000010 */
     IL_0006:  /* 2A   |                  */ ret
   } // end of method AtLangProgram::.ctor
 
