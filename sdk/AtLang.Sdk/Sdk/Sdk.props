@@ -1,0 +1,15 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutputType Condition="'$(OutputType)' == ''">Exe</OutputType>
+    <TargetFramework Condition="'$(TargetFramework)' == ''">net9.0</TargetFramework>
+    <RootNamespace Condition="'$(RootNamespace)' == ''">$(MSBuildProjectName)</RootNamespace>
+    <EnableDefaultItems Condition="'$(EnableDefaultItems)' == ''">true</EnableDefaultItems>
+    <LangVersion Condition="'$(LangVersion)' == ''">latest</LangVersion>
+    <AppendTargetFrameworkToOutputPath Condition="'$(AppendTargetFrameworkToOutputPath)' == ''">false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(EnableDefaultItems)' != 'false'">
+    <AtLangSource Include="**/*.at"
+                  Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);bin/**;obj/**" />
+  </ItemGroup>
+</Project>

@@ -9,7 +9,7 @@ namespace AtLangCompiler;
 
 public static class Compiler
 {
-    public static void CompileToIL(string source, string outputPath)
+    public static void CompileToIL(string source, string outputPath, bool selfContained = false)
     {
         if (Directory.Exists(outputPath))
         {
@@ -17,9 +17,9 @@ public static class Compiler
         }
 
         string? directory = Path.GetDirectoryName(outputPath);
-        if (!Directory.Exists(directory))
+        if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
         {
-            throw new ArgumentOutOfRangeException($"The parent directory of {nameof(outputPath)} ({directory}) was not found.");
+            Directory.CreateDirectory(directory);
         }
 
         // Parse
@@ -84,6 +84,14 @@ public static class Compiler
         peBlob.WriteContentTo(fileStream);
 
         // Required until this is self-contained
-        File.Copy("AtLangCompiler.runtimeconfig.json", $"{assemblyName}.runtimeconfig.json", true);
+        if (!selfContained)
+        {
+            string runtimeConfigSource = Path.Combine(AppContext.BaseDirectory, "AtLangCompiler.runtimeconfig.json");
+            if (File.Exists(runtimeConfigSource))
+            {
+                string runtimeConfigDestination = Path.Combine(directory ?? Directory.GetCurrentDirectory(), $"{assemblyName}.runtimeconfig.json");
+                File.Copy(runtimeConfigSource, runtimeConfigDestination, true);
+            }
+        }
     }
 }
