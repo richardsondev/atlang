@@ -32,13 +32,11 @@ internal class StringLiteral : ASTNode
 internal class Expression : IMethodEmitter<ASTNode>
 {
     private readonly ILGenerator il;
-    private readonly LocalBuilder dictLocal;
     private readonly ILMethodEmitterManager emitter;
 
-    public Expression(ILGenerator il, LocalBuilder dictLocal, ILMethodEmitterManager emitter)
+    public Expression(ILGenerator il, ILMethodEmitterManager emitter)
     {
         this.il = il ?? throw new ArgumentNullException(nameof(il));
-        this.dictLocal = dictLocal ?? throw new ArgumentNullException(nameof(dictLocal));
         this.emitter = emitter ?? throw new ArgumentNullException(nameof(emitter));
     }
 
@@ -47,25 +45,7 @@ internal class Expression : IMethodEmitter<ASTNode>
         // Evaluate VarReference, StringLiteral, or BinaryExpression
         if (expr is VarReference vr)
         {
-            // dict[varName]
-            il.Emit(OpCodes.Ldloc, dictLocal);
-            il.Emit(OpCodes.Ldstr, vr.Name);
-
-            System.Reflection.MethodInfo dictGetItem = typeof(Dictionary<string, object>)
-                .GetProperty("Item")!
-                .GetGetMethod()!;
-            il.Emit(OpCodes.Callvirt, dictGetItem);
-            il.Emit(OpCodes.Isinst, typeof(string));
-
-            // if null => ""
-            Label labelNotNull = il.DefineLabel();
-            Label labelEnd = il.DefineLabel();
-            il.Emit(OpCodes.Dup);
-            il.Emit(OpCodes.Brtrue_S, labelNotNull);
-            il.Emit(OpCodes.Pop);
-            il.Emit(OpCodes.Ldstr, string.Empty);
-            il.MarkLabel(labelNotNull);
-            il.MarkLabel(labelEnd);
+            il.Emit(OpCodes.Ldloc, emitter.GetLocal(vr.Name));
         }
         else if (expr is StringLiteral sl)
         {

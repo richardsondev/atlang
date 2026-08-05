@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Reflection.Emit;
+using System.Collections.Generic;
 
 namespace AtLangCompiler.ILEmitter;
 
@@ -7,14 +8,35 @@ internal class ILMethodEmitterManager
 {
     private readonly MethodEmitterFactory factory;
     private readonly ILGenerator il;
+    private readonly Dictionary<string, LocalBuilder> locals = new();
 
-    public ILMethodEmitterManager(ILGenerator il, LocalBuilder dictLocal)
+    public ILMethodEmitterManager(ILGenerator il)
     {
         this.il = il ?? throw new ArgumentNullException(nameof(il));
-        _ = dictLocal ?? throw new ArgumentNullException(nameof(dictLocal));
 
-        IServiceProvider serviceProvider = DIConfiguration.ConfigureServices(il, dictLocal, this);
+        IServiceProvider serviceProvider = DIConfiguration.ConfigureServices(il, this);
         this.factory = new MethodEmitterFactory(serviceProvider);
+    }
+
+    internal LocalBuilder GetOrDeclareLocal(string name, Type type)
+    {
+        if (!locals.TryGetValue(name, out LocalBuilder? local))
+        {
+            local = il.DeclareLocal(type);
+            locals[name] = local;
+        }
+
+        return local;
+    }
+
+    internal LocalBuilder GetLocal(string name)
+    {
+        if (!locals.TryGetValue(name, out LocalBuilder? local))
+        {
+            throw new InvalidOperationException($"Variable '{name}' used before assignment.");
+        }
+
+        return local;
     }
 
     internal void EmitStatement(ASTNode node)

@@ -6,13 +6,12 @@ namespace AtLangCompiler.ILEmitter;
 
 internal static class DIConfiguration
 {
-    public static IServiceProvider ConfigureServices(ILGenerator il, LocalBuilder dictLocal, ILMethodEmitterManager emitter)
+    public static IServiceProvider ConfigureServices(ILGenerator il, ILMethodEmitterManager emitter)
     {
         ServiceCollection serviceCollection = new ServiceCollection();
 
         // Register shared dependencies
         serviceCollection.AddSingleton(il);
-        serviceCollection.AddSingleton(dictLocal);
         serviceCollection.AddSingleton(emitter);
 
         // Register all emitters dynamically
